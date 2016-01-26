@@ -10,7 +10,7 @@ To clone and run this game you'll need [Git](https://git-scm.com) and [Node.js](
 
 ```bash
 # Clone this repository
-git clone git clone https://github.com/sheldarr/endless-runners.git
+git clone https://github.com/sheldarr/endless-runners.git
 # Go into the repository
 cd endless-runners
 # Install dependencies and run the app
