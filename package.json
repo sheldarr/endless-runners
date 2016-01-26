@@ -1,0 +1,22 @@
+{
+  "name": "endless-runners",
+  "version": "1.0.0",
+  "description": "Simple game",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sheldarr/endless-runners.git"
+  },
+  "author": "sheldarr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sheldarr/endless-runners/issues"
+  },
+  "devDependencies": {
+    "babel-eslint": "^5.0.0-beta6",
+    "electron-prebuilt": "^0.36.0"
+  }
+}
