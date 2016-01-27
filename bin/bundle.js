@@ -22824,7 +22824,7 @@
 
 	var _environmentInformation2 = _interopRequireDefault(_environmentInformation);
 
-	var _scene = __webpack_require__(305);
+	var _scene = __webpack_require__(146);
 
 	var _scene2 = _interopRequireDefault(_scene);
 
@@ -24556,7 +24556,120 @@
 	_reactDom2.default.render(_react2.default.createElement(_application2.default, null), document.getElementById('root'));
 
 /***/ },
-/* 146 */,
+/* 146 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(console) {'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(33);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _pixi = __webpack_require__(223);
+
+	var _pixi2 = _interopRequireDefault(_pixi);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Scene = _react2.default.createClass({
+	    displayName: 'Scene',
+	    getInitialState: function getInitialState() {
+	        return {
+	            player: undefined,
+	            renderer: new _pixi2.default.WebGLRenderer(400, 400),
+	            stage: new _pixi2.default.Container()
+	        };
+	    },
+	    componentDidMount: function componentDidMount() {
+	        var _this = this;
+
+	        document.addEventListener('keydown', function (event) {
+	            console.log(event);
+	            switch (event.keyCode) {
+	                case 37:
+	                    _this.setState(function (previousState) {
+	                        var player = previousState.player;
+
+	                        player.position.x -= 1;
+
+	                        return {
+	                            player: player
+	                        };
+	                    });
+	                    break;
+	                case 38:
+	                    _this.setState(function (previousState) {
+	                        var player = previousState.player;
+
+	                        player.position.y -= 1;
+
+	                        return {
+	                            player: player
+	                        };
+	                    });
+	                    break;
+	                case 39:
+	                    _this.setState(function (previousState) {
+	                        var player = previousState.player;
+
+	                        player.position.x += 1;
+
+	                        return {
+	                            player: player
+	                        };
+	                    });
+	                    break;
+	                case 40:
+	                    _this.setState(function (previousState) {
+	                        var player = previousState.player;
+
+	                        player.position.y += 1;
+
+	                        return {
+	                            player: player
+	                        };
+	                    });
+	                    break;
+	            }
+	        });
+
+	        document.getElementById('scene').appendChild(this.state.renderer.view);
+
+	        _pixi2.default.loader.add('player', './assets/player.png').load(function (loader, resources) {
+	            var player = new _pixi2.default.Sprite(resources.player.texture);
+
+	            player.position.x = 0;
+	            player.position.y = 0;
+
+	            player.scale.x = 1;
+	            player.scale.y = 1;
+
+	            this.setState({
+	                player: player
+	            });
+
+	            this.state.stage.addChild(player);
+	            this.state.renderer.render(this.state.stage);
+	        }.bind(this));
+	    },
+	    componentWillUpdate: function componentWillUpdate() {
+	        console.log('update');
+
+	        this.state.renderer.render(this.state.stage);
+	    },
+	    render: function render() {
+	        return _react2.default.createElement('div', { id: 'scene' });
+	    }
+	});
+
+	exports.default = Scene;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+
+/***/ },
 /* 147 */
 /***/ function(module, exports) {
 
@@ -50238,55 +50351,6 @@
 		return module;
 	}
 
-
-/***/ },
-/* 305 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(33);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _pixi = __webpack_require__(223);
-
-	var _pixi2 = _interopRequireDefault(_pixi);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Scene = _react2.default.createClass({
-	    displayName: 'Scene',
-	    componentDidMount: function componentDidMount() {
-	        var renderer = new _pixi2.default.WebGLRenderer(400, 400);
-	        document.getElementById('scene').appendChild(renderer.view);
-
-	        var stage = new _pixi2.default.Container();
-
-	        _pixi2.default.loader.add('player', './assets/player.png').load(function (loader, resources) {
-	            var player = new _pixi2.default.Sprite(resources.player.texture);
-
-	            player.position.x = 0;
-	            player.position.y = 0;
-
-	            player.scale.x = 1;
-	            player.scale.y = 1;
-
-	            stage.addChild(player);
-
-	            renderer.render(stage);
-	        });
-	    },
-	    render: function render() {
-	        return _react2.default.createElement('div', { id: 'scene' });
-	    }
-	});
-
-	exports.default = Scene;
 
 /***/ }
 /******/ ]);

@@ -2,11 +2,66 @@ import React from 'react';
 import PIXI from 'pixi.js';
 
 const Scene = React.createClass({
-    componentDidMount () {
-        var renderer = new PIXI.WebGLRenderer(400, 400);
-        document.getElementById('scene').appendChild(renderer.view);
+    getInitialState () {
+        return {
+            player: undefined,
+            renderer: new PIXI.WebGLRenderer(400, 400),
+            stage: new PIXI.Container()
+        };
+    },
 
-        var stage = new PIXI.Container();
+    componentDidMount () {
+        document.addEventListener('keydown', (event) => {
+            console.log(event);
+            switch (event.keyCode) {
+            case 37:
+                this.setState((previousState) => {
+                    var player = previousState.player;
+
+                    player.position.x -= 1;
+
+                    return {
+                        player: player
+                    };
+                });
+                break;
+            case 38:
+                this.setState((previousState) => {
+                    var player = previousState.player;
+
+                    player.position.y -= 1;
+
+                    return {
+                        player: player
+                    };
+                });
+                break;
+            case 39:
+                this.setState((previousState) => {
+                    var player = previousState.player;
+
+                    player.position.x += 1;
+
+                    return {
+                        player: player
+                    };
+                });
+                break;
+            case 40:
+                this.setState((previousState) => {
+                    var player = previousState.player;
+
+                    player.position.y += 1;
+
+                    return {
+                        player: player
+                    };
+                });
+                break;
+            }
+        });
+
+        document.getElementById('scene').appendChild(this.state.renderer.view);
 
         PIXI.loader.add('player', './assets/player.png').load(function (loader, resources) {
             var player = new PIXI.Sprite(resources.player.texture);
@@ -17,10 +72,19 @@ const Scene = React.createClass({
             player.scale.x = 1;
             player.scale.y = 1;
 
-            stage.addChild(player);
+            this.setState({
+                player: player
+            });
 
-            renderer.render(stage);
-        });
+            this.state.stage.addChild(player);
+            this.state.renderer.render(this.state.stage);
+        }.bind(this));
+    },
+
+    componentWillUpdate () {
+        console.log('update');
+
+        this.state.renderer.render(this.state.stage);
     },
 
     render () {
