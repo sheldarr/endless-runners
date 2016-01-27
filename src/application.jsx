@@ -1,7 +1,7 @@
 import React from 'react';
 
 import EnvironmentInformation from './environmentInformation.jsx';
-import Stage from './scene.jsx'
+import Scene from './scene.jsx'
 
 const Application = React.createClass({
     render () {

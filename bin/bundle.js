@@ -22837,7 +22837,7 @@
 	            'div',
 	            null,
 	            _react2.default.createElement(_environmentInformation2.default, null),
-	            _react2.default.createElement(Scene, null)
+	            _react2.default.createElement(_scene2.default, null)
 	        );
 	    }
 	});
@@ -50243,7 +50243,7 @@
 /* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(console) {'use strict';
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -50259,8 +50259,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	console.log(_pixi2.default);
-
 	var Scene = _react2.default.createClass({
 	    displayName: 'Scene',
 	    componentDidMount: function componentDidMount() {
@@ -50275,8 +50273,8 @@
 	            player.position.x = 0;
 	            player.position.y = 0;
 
-	            player.scale.x = 2;
-	            player.scale.y = 2;
+	            player.scale.x = 1;
+	            player.scale.y = 1;
 
 	            stage.addChild(player);
 
@@ -50289,7 +50287,6 @@
 	});
 
 	exports.default = Scene;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
 
 /***/ }
 /******/ ]);

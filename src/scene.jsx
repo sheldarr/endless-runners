@@ -1,8 +1,6 @@
 import React from 'react';
 import PIXI from 'pixi.js';
 
-console.log(PIXI);
-
 const Scene = React.createClass({
     componentDidMount () {
         var renderer = new PIXI.WebGLRenderer(400, 400);
@@ -16,8 +14,8 @@ const Scene = React.createClass({
             player.position.x = 0;
             player.position.y = 0;
 
-            player.scale.x = 2;
-            player.scale.y = 2;
+            player.scale.x = 1;
+            player.scale.y = 1;
 
             stage.addChild(player);
 
