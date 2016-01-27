@@ -24559,7 +24559,7 @@
 /* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(console) {'use strict';
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -24588,7 +24588,6 @@
 	        var _this = this;
 
 	        document.addEventListener('keydown', function (event) {
-	            console.log(event);
 	            switch (event.keyCode) {
 	                case 37:
 	                    _this.setState(function (previousState) {
@@ -24657,8 +24656,6 @@
 	        }.bind(this));
 	    },
 	    componentWillUpdate: function componentWillUpdate() {
-	        console.log('update');
-
 	        this.state.renderer.render(this.state.stage);
 	    },
 	    render: function render() {
@@ -24667,7 +24664,6 @@
 	});
 
 	exports.default = Scene;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
 
 /***/ },
 /* 147 */

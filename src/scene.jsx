@@ -12,7 +12,6 @@ const Scene = React.createClass({
 
     componentDidMount () {
         document.addEventListener('keydown', (event) => {
-            console.log(event);
             switch (event.keyCode) {
             case 37:
                 this.setState((previousState) => {
@@ -82,8 +81,6 @@ const Scene = React.createClass({
     },
 
     componentWillUpdate () {
-        console.log('update');
-
         this.state.renderer.render(this.state.stage);
     },
 
