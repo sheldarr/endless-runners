@@ -86,7 +86,7 @@ const Scene = React.createClass({
 
     render () {
         return (
-            <div id="scene"></div>
+            <div id='scene'></div>
         );
     }
 });
