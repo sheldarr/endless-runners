@@ -17,6 +17,11 @@
   },
   "devDependencies": {
     "babel-eslint": "^5.0.0-beta6",
-    "electron-prebuilt": "^0.36.0"
+    "electron-prebuilt": "^0.36.0",
+    "webpack": "^2.0.5-beta"
+  },
+  "dependencies": {
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6"
   }
 }
