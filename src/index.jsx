@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import EnvironmentInformation from './environmentInformation.jsx';
+import Application from './application.jsx';
 
 ReactDOM.render(
-    <EnvironmentInformation/>,
+    <Application/>,
     document.getElementById('root')
 );
