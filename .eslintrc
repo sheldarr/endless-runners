@@ -10,7 +10,6 @@
     },
     "parser": "babel-eslint",
     "plugins": [
-        "react"
     ],
     "rules": {
         "react/display-name": [1, {

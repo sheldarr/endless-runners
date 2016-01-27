@@ -1,3 +1,4 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 import EnvironmentInformation from './environmentInformation.jsx';
