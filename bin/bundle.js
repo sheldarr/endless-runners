@@ -10650,7 +10650,6 @@
 	        return React.createElement(
 	            'div',
 	            null,
-	            console.log(winow),
 	            React.createElement(
 	                'div',
 	                null,
