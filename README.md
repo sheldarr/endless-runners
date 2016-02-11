@@ -2,7 +2,7 @@
 
 ## Description
 
-Simple game based on electron, react and pixi.
+Simple game based on NW.js, react and pixi.
 
 ## To Use
 
