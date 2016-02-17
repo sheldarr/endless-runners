@@ -31637,20 +31637,71 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	var acceleration = 0.1;
+	var maxSpeed = 2;
+
 	var playerControlsHandler = {
 	    handle: function handle(keyState, player, callback) {
 	        if (keyState.leftArrowPressed) {
-	            player.position.x -= 1;
+	            if (player.position.dx >= -maxSpeed) {
+	                player.position.dx -= acceleration;
+	            }
 	        }
+
 	        if (keyState.rightArrowPressed) {
-	            player.position.x += 1;
+	            if (player.position.dx <= maxSpeed) {
+	                player.position.dx += acceleration;
+	            }
 	        }
+
 	        if (keyState.upArrowPressed) {
-	            player.position.y += 1;
+	            if (player.position.dy <= maxSpeed) {
+	                player.position.dy += acceleration;
+	            }
 	        }
+
 	        if (keyState.downArrowPressed) {
-	            player.position.y -= 1;
+	            if (player.position.dy >= -maxSpeed) {
+	                player.position.dy -= acceleration;
+	            }
 	        }
+
+	        if (!keyState.leftArrowPressed && !keyState.rightArrowPressed) {
+	            if (player.position.dx > 0) {
+	                if (player.position.dx < acceleration) {
+	                    player.position.dx = 0;
+	                } else {
+	                    player.position.dx -= acceleration;
+	                }
+	            }
+	            if (player.position.dx < 0) {
+	                if (player.position.dx > -acceleration) {
+	                    player.position.dx = 0;
+	                } else {
+	                    player.position.dx += acceleration;
+	                }
+	            }
+	        }
+
+	        if (!keyState.upArrowPressed && !keyState.downArrowPressed) {
+	            if (player.position.dy > 0) {
+	                if (player.position.dy < acceleration) {
+	                    player.position.dy = 0;
+	                } else {
+	                    player.position.dy -= acceleration;
+	                }
+	            }
+	            if (player.position.dy < 0) {
+	                if (player.position.dy > -acceleration) {
+	                    player.position.dy = 0;
+	                } else {
+	                    player.position.dy += acceleration;
+	                }
+	            }
+	        }
+
+	        player.position.x += player.position.dx;
+	        player.position.y += player.position.dy;
 	    }
 	};
 
@@ -31663,7 +31714,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	            value: true
 	});
 
 	var _pixi = __webpack_require__(192);
@@ -31673,19 +31724,22 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var playerLoader = {
-	    load: function load(callback) {
-	        _pixi2.default.loader.add('player', './assets/player.png').load(function (loader, resources) {
-	            var player = new _pixi2.default.Sprite(resources.player.texture);
+	            load: function load(callback) {
+	                        _pixi2.default.loader.add('player', './assets/player.png').load(function (loader, resources) {
+	                                    var player = new _pixi2.default.Sprite(resources.player.texture);
 
-	            player.position.x = 0;
-	            player.position.y = 0;
+	                                    player.position.x = 0;
+	                                    player.position.y = 0;
 
-	            player.scale.x = 1;
-	            player.scale.y = 1;
+	                                    player.position.dx = 0;
+	                                    player.position.dy = 0;
 
-	            callback(player);
-	        });
-	    }
+	                                    player.scale.x = 1;
+	                                    player.scale.y = 1;
+
+	                                    callback(player);
+	                        });
+	            }
 	};
 
 	exports.default = playerLoader;

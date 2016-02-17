@@ -7,6 +7,9 @@ const playerLoader = {
             player.position.x = 0;
             player.position.y = 0;
 
+            player.position.dx = 0;
+            player.position.dy = 0;
+
             player.scale.x = 1;
             player.scale.y = 1;
 
