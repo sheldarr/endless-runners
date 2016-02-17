@@ -1,22 +1,16 @@
 const playerControlsHandler = {
-    handle (event, player, callback) {
-        switch (event.keyCode) {
-        case 37:
+    handle (keyState, player, callback) {
+        if (keyState.leftArrowPressed) {
             player.position.x -= 1;
-            callback(player);
-            break;
-        case 38:
-            player.position.y -= 1;
-            callback(player);
-            break;
-        case 39:
+        }
+        if (keyState.rightArrowPressed) {
             player.position.x += 1;
-            callback(player);
-            break;
-        case 40:
+        }
+        if (keyState.upArrowPressed) {
             player.position.y += 1;
-            callback(player);
-            break;
+        }
+        if (keyState.downArrowPressed) {
+            player.position.y -= 1;
         }
     }
 };
