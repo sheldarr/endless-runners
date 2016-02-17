@@ -1,6 +1,8 @@
+const fps = 60;
+
 const engine = {
     start (callback) {
-        setInterval(callback, 33);
+        setInterval(callback, 1000 / fps);
     }
 };
 

@@ -730,7 +730,7 @@
 	}
 
 	module.exports = warning;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(23)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(24)))
 
 /***/ },
 /* 12 */
@@ -1454,7 +1454,7 @@
 	    BaseTextureCache: {}
 	};
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
 
 /***/ },
 /* 18 */
@@ -1503,7 +1503,7 @@
 	var ReactBrowserEventEmitter = __webpack_require__(78);
 	var ReactCurrentOwner = __webpack_require__(31);
 	var ReactDOMFeatureFlags = __webpack_require__(231);
-	var ReactElement = __webpack_require__(24);
+	var ReactElement = __webpack_require__(23);
 	var ReactEmptyComponentRegistry = __webpack_require__(238);
 	var ReactInstanceHandles = __webpack_require__(48);
 	var ReactInstanceMap = __webpack_require__(60);
@@ -2465,99 +2465,6 @@
 /* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {/*global window, global*/
-	var util = __webpack_require__(254)
-	var assert = __webpack_require__(256)
-	var now = __webpack_require__(281)
-
-	var slice = Array.prototype.slice
-	var console
-	var times = {}
-
-	if (typeof global !== "undefined" && global.console) {
-	    console = global.console
-	} else if (typeof window !== "undefined" && window.console) {
-	    console = window.console
-	} else {
-	    console = {}
-	}
-
-	var functions = [
-	    [log, "log"],
-	    [info, "info"],
-	    [warn, "warn"],
-	    [error, "error"],
-	    [time, "time"],
-	    [timeEnd, "timeEnd"],
-	    [trace, "trace"],
-	    [dir, "dir"],
-	    [consoleAssert, "assert"]
-	]
-
-	for (var i = 0; i < functions.length; i++) {
-	    var tuple = functions[i]
-	    var f = tuple[0]
-	    var name = tuple[1]
-
-	    if (!console[name]) {
-	        console[name] = f
-	    }
-	}
-
-	module.exports = console
-
-	function log() {}
-
-	function info() {
-	    console.log.apply(console, arguments)
-	}
-
-	function warn() {
-	    console.log.apply(console, arguments)
-	}
-
-	function error() {
-	    console.warn.apply(console, arguments)
-	}
-
-	function time(label) {
-	    times[label] = now()
-	}
-
-	function timeEnd(label) {
-	    var time = times[label]
-	    if (!time) {
-	        throw new Error("No such label: " + label)
-	    }
-
-	    var duration = now() - time
-	    console.log(label + ": " + duration + "ms")
-	}
-
-	function trace() {
-	    var err = new Error()
-	    err.name = "Trace"
-	    err.message = util.format.apply(null, arguments)
-	    console.error(err.stack)
-	}
-
-	function dir(object) {
-	    console.log(util.inspect(object) + "\n")
-	}
-
-	function consoleAssert(expression) {
-	    if (!expression) {
-	        var arr = slice.call(arguments, 1)
-	        assert.ok(false, util.format.apply(null, arr))
-	    }
-	}
-
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
-/* 24 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2014-2015, Facebook, Inc.
 	 * All rights reserved.
@@ -2806,6 +2713,99 @@
 
 	module.exports = ReactElement;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+
+/***/ },
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/*global window, global*/
+	var util = __webpack_require__(254)
+	var assert = __webpack_require__(256)
+	var now = __webpack_require__(281)
+
+	var slice = Array.prototype.slice
+	var console
+	var times = {}
+
+	if (typeof global !== "undefined" && global.console) {
+	    console = global.console
+	} else if (typeof window !== "undefined" && window.console) {
+	    console = window.console
+	} else {
+	    console = {}
+	}
+
+	var functions = [
+	    [log, "log"],
+	    [info, "info"],
+	    [warn, "warn"],
+	    [error, "error"],
+	    [time, "time"],
+	    [timeEnd, "timeEnd"],
+	    [trace, "trace"],
+	    [dir, "dir"],
+	    [consoleAssert, "assert"]
+	]
+
+	for (var i = 0; i < functions.length; i++) {
+	    var tuple = functions[i]
+	    var f = tuple[0]
+	    var name = tuple[1]
+
+	    if (!console[name]) {
+	        console[name] = f
+	    }
+	}
+
+	module.exports = console
+
+	function log() {}
+
+	function info() {
+	    console.log.apply(console, arguments)
+	}
+
+	function warn() {
+	    console.log.apply(console, arguments)
+	}
+
+	function error() {
+	    console.warn.apply(console, arguments)
+	}
+
+	function time(label) {
+	    times[label] = now()
+	}
+
+	function timeEnd(label) {
+	    var time = times[label]
+	    if (!time) {
+	        throw new Error("No such label: " + label)
+	    }
+
+	    var duration = now() - time
+	    console.log(label + ": " + duration + "ms")
+	}
+
+	function trace() {
+	    var err = new Error()
+	    err.name = "Trace"
+	    err.message = util.format.apply(null, arguments)
+	    console.error(err.stack)
+	}
+
+	function dir(object) {
+	    console.log(util.inspect(object) + "\n")
+	}
+
+	function consoleAssert(expression) {
+	    if (!expression) {
+	        var arr = slice.call(arguments, 1)
+	        assert.ok(false, util.format.apply(null, arr))
+	    }
+	}
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
 /* 25 */
@@ -5130,7 +5130,7 @@
 
 	module.exports = warning;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(23)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(24)))
 
 /***/ },
 /* 50 */
@@ -8533,7 +8533,7 @@
 	    return shader;
 	};
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
 
 /***/ },
 /* 71 */
@@ -14965,7 +14965,7 @@
 	'use strict';
 
 	var ReactCurrentOwner = __webpack_require__(31);
-	var ReactElement = __webpack_require__(24);
+	var ReactElement = __webpack_require__(23);
 	var ReactInstanceMap = __webpack_require__(60);
 	var ReactUpdates = __webpack_require__(27);
 
@@ -15761,7 +15761,7 @@
 	'use strict';
 
 	var ReactCurrentOwner = __webpack_require__(31);
-	var ReactElement = __webpack_require__(24);
+	var ReactElement = __webpack_require__(23);
 	var ReactInstanceHandles = __webpack_require__(48);
 
 	var getIteratorFn = __webpack_require__(130);
@@ -17451,7 +17451,7 @@
 	};
 
 	module.exports = EventListener;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(23)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(24)))
 
 /***/ },
 /* 153 */
@@ -25271,7 +25271,7 @@
 	'use strict';
 
 	var PooledClass = __webpack_require__(37);
-	var ReactElement = __webpack_require__(24);
+	var ReactElement = __webpack_require__(23);
 
 	var emptyFunction = __webpack_require__(28);
 	var traverseAllChildren = __webpack_require__(135);
@@ -25458,7 +25458,7 @@
 	'use strict';
 
 	var ReactComponent = __webpack_require__(229);
-	var ReactElement = __webpack_require__(24);
+	var ReactElement = __webpack_require__(23);
 	var ReactPropTypeLocations = __webpack_require__(80);
 	var ReactPropTypeLocationNames = __webpack_require__(79);
 	var ReactNoopUpdateQueue = __webpack_require__(244);
@@ -26441,7 +26441,7 @@
 	}
 
 	module.exports = React;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(23)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(24)))
 
 /***/ },
 /* 231 */
@@ -26992,7 +26992,7 @@
 
 	'use strict';
 
-	var ReactElement = __webpack_require__(24);
+	var ReactElement = __webpack_require__(23);
 	var ReactPropTypeLocations = __webpack_require__(80);
 	var ReactPropTypeLocationNames = __webpack_require__(79);
 	var ReactCurrentOwner = __webpack_require__(31);
@@ -27272,7 +27272,7 @@
 
 	'use strict';
 
-	var ReactElement = __webpack_require__(24);
+	var ReactElement = __webpack_require__(23);
 	var ReactEmptyComponentRegistry = __webpack_require__(238);
 	var ReactReconciler = __webpack_require__(44);
 
@@ -27904,7 +27904,7 @@
 
 	'use strict';
 
-	var ReactElement = __webpack_require__(24);
+	var ReactElement = __webpack_require__(23);
 	var ReactPropTypeLocationNames = __webpack_require__(79);
 
 	var emptyFunction = __webpack_require__(28);
@@ -29861,7 +29861,7 @@
 	  return Object.prototype.hasOwnProperty.call(obj, prop);
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(2), __webpack_require__(23)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(2), __webpack_require__(24)))
 
 /***/ },
 /* 255 */
@@ -31545,7 +31545,7 @@
 
 	}());
 
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(87).setImmediate, __webpack_require__(2), __webpack_require__(23)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(87).setImmediate, __webpack_require__(2), __webpack_require__(24)))
 
 /***/ },
 /* 258 */
@@ -31556,9 +31556,11 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	var fps = 60;
+
 	var engine = {
 	    start: function start(callback) {
-	        setInterval(callback, 33);
+	        setInterval(callback, 1000 / fps);
 	    }
 	};
 
@@ -33739,13 +33741,12 @@
 		"_args": [
 			[
 				"pixi.js@^3.0.9",
-				"C:\\Users\\Bartek\\Documents\\Moje dokumenty\\Project\\endless-runners"
+				"C:\\Users\\Kewin\\Documents\\Projects\\endless-runners"
 			]
 		],
 		"_from": "pixi.js@>=3.0.9 <4.0.0",
 		"_id": "pixi.js@3.0.9",
 		"_inCache": true,
-		"_installable": true,
 		"_location": "/pixi.js",
 		"_nodeVersion": "4.2.1",
 		"_npmUser": {
@@ -33769,7 +33770,7 @@
 		"_shasum": "2dc18c388a7c6d329dd064defbdb2aadea70c861",
 		"_shrinkwrap": null,
 		"_spec": "pixi.js@^3.0.9",
-		"_where": "C:\\Users\\Bartek\\Documents\\Moje dokumenty\\Project\\endless-runners",
+		"_where": "C:\\Users\\Kewin\\Documents\\Projects\\endless-runners",
 		"author": {
 			"name": "Mat Groves"
 		},
@@ -33843,6 +33844,7 @@
 		],
 		"gitHead": "962f5bdff1ed2d96cfeaef22897ed83b7cce79bd",
 		"homepage": "http://goodboydigital.com/",
+		"installable": true,
 		"license": "MIT",
 		"main": "./src/index.js",
 		"maintainers": [
@@ -33853,7 +33855,6 @@
 		],
 		"name": "pixi.js",
 		"optionalDependencies": {},
-		"readme": "ERROR: No README data found!",
 		"repository": {
 			"type": "git",
 			"url": "git+https://github.com/pixijs/pixi.js.git"
@@ -43152,7 +43153,7 @@
 	    return core.utils.uid();
 	};
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
 
 /***/ },
 /* 382 */
@@ -58300,7 +58301,7 @@
 	};
 
 	module.exports = Danger;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(23)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(24)))
 
 /***/ },
 /* 491 */
@@ -59240,7 +59241,7 @@
 
 	var ReactComponentEnvironment = __webpack_require__(122);
 	var ReactCurrentOwner = __webpack_require__(31);
-	var ReactElement = __webpack_require__(24);
+	var ReactElement = __webpack_require__(23);
 	var ReactInstanceMap = __webpack_require__(60);
 	var ReactPerf = __webpack_require__(26);
 	var ReactPropTypeLocations = __webpack_require__(80);
@@ -60962,7 +60963,7 @@
 
 	'use strict';
 
-	var ReactElement = __webpack_require__(24);
+	var ReactElement = __webpack_require__(23);
 	var ReactElementValidator = __webpack_require__(236);
 
 	var mapObject = __webpack_require__(307);
@@ -61989,7 +61990,7 @@
 	};
 
 	module.exports = ReactDefaultPerf;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
 
 /***/ },
 /* 509 */
@@ -62520,7 +62521,7 @@
 	var ReactComponent = __webpack_require__(229);
 	var ReactClass = __webpack_require__(228);
 	var ReactDOMFactories = __webpack_require__(502);
-	var ReactElement = __webpack_require__(24);
+	var ReactElement = __webpack_require__(23);
 	var ReactElementValidator = __webpack_require__(236);
 	var ReactPropTypes = __webpack_require__(245);
 	var ReactVersion = __webpack_require__(125);
@@ -63463,7 +63464,7 @@
 	'use strict';
 
 	var ReactDefaultBatchingStrategy = __webpack_require__(234);
-	var ReactElement = __webpack_require__(24);
+	var ReactElement = __webpack_require__(23);
 	var ReactInstanceHandles = __webpack_require__(48);
 	var ReactMarkupChecksum = __webpack_require__(241);
 	var ReactServerBatchingStrategy = __webpack_require__(518);
@@ -65422,7 +65423,7 @@
 	 */
 	'use strict';
 
-	var ReactElement = __webpack_require__(24);
+	var ReactElement = __webpack_require__(23);
 
 	var invariant = __webpack_require__(6);
 
@@ -66625,7 +66626,7 @@
 
 	}());
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(87).setImmediate, __webpack_require__(23)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(87).setImmediate, __webpack_require__(24)))
 
 /***/ },
 /* 543 */
