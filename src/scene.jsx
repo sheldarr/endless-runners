@@ -1,6 +1,7 @@
 import React from 'react';
 import PIXI from 'pixi.js';
 import playerLoader from './playerLoader.js';
+import playerControlsHandler from './playerControlsHandler.js';
 
 const Scene = React.createClass({
     getInitialState () {
@@ -11,68 +12,28 @@ const Scene = React.createClass({
         };
     },
 
-    componentDidMount () {
+    componentWillMount () {
         playerLoader.load((player) => {
+            this.setState({
+                player: player
+            });
             this.state.stage.addChild(player);
             this.state.renderer.render(this.state.stage);
         });
 
         document.addEventListener('keydown', (event) => {
-            switch (event.keyCode) {
-            case 37:
-                this.setState((previousState) => {
-                    var player = previousState.player;
-
-                    player.position.x -= 1;
-
-                    return {
-                        player: player
-                    };
+            playerControlsHandler.handle(event, this.state.player, (player) => {
+                this.setState({
+                    player: player
                 });
-                break;
-            case 38:
-                this.setState((previousState) => {
-                    var player = previousState.player;
+            });
 
-                    player.position.y -= 1;
-
-                    return {
-                        player: player
-                    };
-                });
-                break;
-            case 39:
-                this.setState((previousState) => {
-                    var player = previousState.player;
-
-                    player.position.x += 1;
-
-                    return {
-                        player: player
-                    };
-                });
-                break;
-            case 40:
-                this.setState((previousState) => {
-                    var player = previousState.player;
-
-                    player.position.y += 1;
-
-                    return {
-                        player: player
-                    };
-                });
-                break;
-            }
+            this.state.renderer.render(this.state.stage);
         });
-
-        document.getElementById('scene').appendChild(this.state.renderer.view);
-
-
     },
 
-    componentWillUpdate () {
-        this.state.renderer.render(this.state.stage);
+    componentDidUpdate () {
+        document.getElementById('scene').appendChild(this.state.renderer.view);
     },
 
     render () {

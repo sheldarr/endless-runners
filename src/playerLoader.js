@@ -1,5 +1,5 @@
 import PIXI from 'pixi.js';
-var playerLoader = {
+const playerLoader = {
     load (callback) {
         PIXI.loader.add('player', './assets/player.png').load((loader, resources) => {
             var player = new PIXI.Sprite(resources.player.texture);
