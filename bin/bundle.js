@@ -25973,12 +25973,13 @@
 		"_args": [
 			[
 				"pixi.js@^3.0.9",
-				"C:\\Users\\Kewin\\Documents\\Projects\\endless-runners"
+				"C:\\Users\\Bartek\\Documents\\Moje dokumenty\\Project\\endless-runners"
 			]
 		],
 		"_from": "pixi.js@>=3.0.9 <4.0.0",
 		"_id": "pixi.js@3.0.9",
 		"_inCache": true,
+		"_installable": true,
 		"_location": "/pixi.js",
 		"_nodeVersion": "4.2.1",
 		"_npmUser": {
@@ -26002,7 +26003,7 @@
 		"_shasum": "2dc18c388a7c6d329dd064defbdb2aadea70c861",
 		"_shrinkwrap": null,
 		"_spec": "pixi.js@^3.0.9",
-		"_where": "C:\\Users\\Kewin\\Documents\\Projects\\endless-runners",
+		"_where": "C:\\Users\\Bartek\\Documents\\Moje dokumenty\\Project\\endless-runners",
 		"author": {
 			"name": "Mat Groves"
 		},
@@ -26076,7 +26077,6 @@
 		],
 		"gitHead": "962f5bdff1ed2d96cfeaef22897ed83b7cce79bd",
 		"homepage": "http://goodboydigital.com/",
-		"installable": true,
 		"license": "MIT",
 		"main": "./src/index.js",
 		"maintainers": [
@@ -26087,6 +26087,7 @@
 		],
 		"name": "pixi.js",
 		"optionalDependencies": {},
+		"readme": "ERROR: No README data found!",
 		"repository": {
 			"type": "git",
 			"url": "git+https://github.com/pixijs/pixi.js.git"
