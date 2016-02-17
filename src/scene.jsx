@@ -1,5 +1,6 @@
 import React from 'react';
 import PIXI from 'pixi.js';
+import playerLoader from './playerLoader.js';
 
 const Scene = React.createClass({
     getInitialState () {
@@ -11,6 +12,11 @@ const Scene = React.createClass({
     },
 
     componentDidMount () {
+        playerLoader.load((player) => {
+            this.state.stage.addChild(player);
+            this.state.renderer.render(this.state.stage);
+        });
+
         document.addEventListener('keydown', (event) => {
             switch (event.keyCode) {
             case 37:
@@ -62,22 +68,7 @@ const Scene = React.createClass({
 
         document.getElementById('scene').appendChild(this.state.renderer.view);
 
-        PIXI.loader.add('player', './assets/player.png').load(function (loader, resources) {
-            var player = new PIXI.Sprite(resources.player.texture);
 
-            player.position.x = 0;
-            player.position.y = 0;
-
-            player.scale.x = 1;
-            player.scale.y = 1;
-
-            this.setState({
-                player: player
-            });
-
-            this.state.stage.addChild(player);
-            this.state.renderer.render(this.state.stage);
-        }.bind(this));
     },
 
     componentWillUpdate () {
