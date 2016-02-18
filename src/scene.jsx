@@ -1,12 +1,14 @@
 import React from 'react';
 import PIXI from 'pixi.js';
 import playerLoader from './playerLoader.js';
+import backgroundLoader from './backgroundLoader.js';
 import playerControlsHandler from './playerControlsHandler.js';
 import engine from './engine';
 
 const Scene = React.createClass({
     getInitialState () {
         return {
+            background: undefined,
             player: undefined,
             renderer: new PIXI.WebGLRenderer(400, 400),
             stage: new PIXI.Container(),
@@ -20,6 +22,12 @@ const Scene = React.createClass({
     },
 
     componentWillMount () {
+        backgroundLoader.load((background) => {
+            this.setState({
+                background: background
+            });
+            this.state.stage.addChild(background);
+        });
         playerLoader.load((player) => {
             this.setState({
                 player: player
@@ -116,7 +124,6 @@ const Scene = React.createClass({
                     player: player
                 });
             });
-
             this.state.renderer.render(this.state.stage);
         });
     },
