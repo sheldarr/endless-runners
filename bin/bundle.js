@@ -31592,7 +31592,7 @@
 /* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -31606,6 +31606,9 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	var gui = global.window.nwDispatcher.requireNwGui();
+	var window = gui.Window.get();
+
 	var Menu = _react2.default.createClass({
 	    displayName: 'Menu',
 
@@ -31613,20 +31616,76 @@
 	        onStartGame: _react2.default.PropTypes.func.isRequired
 	    },
 
+	    close: function close() {
+	        window.close();
+	    },
 	    render: function render() {
 	        return _react2.default.createElement(
-	            'div',
+	            _reactBootstrap.Grid,
 	            null,
 	            _react2.default.createElement(
-	                _reactBootstrap.Button,
-	                { bsStyle: 'success', onClick: this.props.onStartGame },
-	                'Start game'
+	                _reactBootstrap.Row,
+	                { style: { marginTop: '10%' } },
+	                _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { xs: 4, xsOffset: 4 },
+	                    _react2.default.createElement(
+	                        _reactBootstrap.Button,
+	                        { block: true, bsStyle: 'success', onClick: this.props.onStartGame },
+	                        _react2.default.createElement(
+	                            'span',
+	                            null,
+	                            _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'play' }),
+	                            ' ',
+	                            'Start game'
+	                        )
+	                    )
+	                )
+	            ),
+	            _react2.default.createElement(
+	                _reactBootstrap.Row,
+	                { style: { marginTop: 20 } },
+	                _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { xs: 4, xsOffset: 4 },
+	                    _react2.default.createElement(
+	                        _reactBootstrap.Button,
+	                        { block: true, bsStyle: 'primary' },
+	                        _react2.default.createElement(
+	                            'span',
+	                            null,
+	                            _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'cog' }),
+	                            ' ',
+	                            'Options'
+	                        )
+	                    )
+	                )
+	            ),
+	            _react2.default.createElement(
+	                _reactBootstrap.Row,
+	                { style: { marginTop: 20 } },
+	                _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { xs: 4, xsOffset: 4 },
+	                    _react2.default.createElement(
+	                        _reactBootstrap.Button,
+	                        { block: true, bsStyle: 'danger', onClick: this.close },
+	                        _react2.default.createElement(
+	                            'span',
+	                            null,
+	                            _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'off' }),
+	                            ' ',
+	                            'Quit'
+	                        )
+	                    )
+	                )
 	            )
 	        );
 	    }
 	});
 
 	exports.default = Menu;
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
 /* 261 */
