@@ -31843,7 +31843,6 @@
 	                player: player
 	            });
 	            _this.state.stage.addChild(player);
-	            _this.state.renderer.render(_this.state.stage);
 	        });
 
 	        document.addEventListener('keydown', function (event) {

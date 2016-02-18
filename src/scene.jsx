@@ -33,7 +33,6 @@ const Scene = React.createClass({
                 player: player
             });
             this.state.stage.addChild(player);
-            this.state.renderer.render(this.state.stage);
         });
 
         document.addEventListener('keydown', (event) => {
