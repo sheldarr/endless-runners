@@ -31733,32 +31733,32 @@
 	var maxSpeed = 2;
 
 	var playerControlsHandler = {
-	    handle: function handle(keyState, player, callback) {
-	        if (keyState.leftArrowPressed) {
+	    handle: function handle(pressedKeys, player, callback) {
+	        if (pressedKeys.leftArrowPressed) {
 	            if (player.position.dx >= -maxSpeed) {
 	                player.position.dx -= acceleration;
 	            }
 	        }
 
-	        if (keyState.rightArrowPressed) {
+	        if (pressedKeys.rightArrowPressed) {
 	            if (player.position.dx <= maxSpeed) {
 	                player.position.dx += acceleration;
 	            }
 	        }
 
-	        if (keyState.upArrowPressed) {
+	        if (pressedKeys.upArrowPressed) {
 	            if (player.position.dy <= maxSpeed) {
 	                player.position.dy += acceleration;
 	            }
 	        }
 
-	        if (keyState.downArrowPressed) {
+	        if (pressedKeys.downArrowPressed) {
 	            if (player.position.dy >= -maxSpeed) {
 	                player.position.dy -= acceleration;
 	            }
 	        }
 
-	        if (!keyState.leftArrowPressed && !keyState.rightArrowPressed) {
+	        if (!pressedKeys.leftArrowPressed && !pressedKeys.rightArrowPressed) {
 	            if (player.position.dx > 0) {
 	                if (player.position.dx < acceleration) {
 	                    player.position.dx = 0;
@@ -31775,7 +31775,7 @@
 	            }
 	        }
 
-	        if (!keyState.upArrowPressed && !keyState.downArrowPressed) {
+	        if (!pressedKeys.upArrowPressed && !pressedKeys.downArrowPressed) {
 	            if (player.position.dy > 0) {
 	                if (player.position.dy < acceleration) {
 	                    player.position.dy = 0;
@@ -31880,7 +31880,7 @@
 	            player: undefined,
 	            renderer: new _pixi2.default.WebGLRenderer(400, 400),
 	            stage: new _pixi2.default.Container(),
-	            keyState: {
+	            pressedKeys: {
 	                leftArrowPressed: false,
 	                rightArrowPressed: false,
 	                upArrowPressed: false,
@@ -31908,37 +31908,37 @@
 	            switch (event.keyCode) {
 	                case 37:
 	                    _this.setState(function (previousState) {
-	                        var keyState = previousState.keyState;
-	                        keyState.leftArrowPressed = true;
+	                        var pressedKeys = previousState.pressedKeys;
+	                        pressedKeys.leftArrowPressed = true;
 	                        return {
-	                            keyState: keyState
+	                            pressedKeys: pressedKeys
 	                        };
 	                    });
 	                    break;
 	                case 38:
 	                    _this.setState(function (previousState) {
-	                        var keyState = previousState.keyState;
-	                        keyState.downArrowPressed = true;
+	                        var pressedKeys = previousState.pressedKeys;
+	                        pressedKeys.downArrowPressed = true;
 	                        return {
-	                            keyState: keyState
+	                            pressedKeys: pressedKeys
 	                        };
 	                    });
 	                    break;
 	                case 39:
 	                    _this.setState(function (previousState) {
-	                        var keyState = previousState.keyState;
-	                        keyState.rightArrowPressed = true;
+	                        var pressedKeys = previousState.pressedKeys;
+	                        pressedKeys.rightArrowPressed = true;
 	                        return {
-	                            keyState: keyState
+	                            pressedKeys: pressedKeys
 	                        };
 	                    });
 	                    break;
 	                case 40:
 	                    _this.setState(function (previousState) {
-	                        var keyState = previousState.keyState;
-	                        keyState.upArrowPressed = true;
+	                        var pressedKeys = previousState.pressedKeys;
+	                        pressedKeys.upArrowPressed = true;
 	                        return {
-	                            keyState: keyState
+	                            pressedKeys: pressedKeys
 	                        };
 	                    });
 	                    break;
@@ -31949,37 +31949,37 @@
 	            switch (event.keyCode) {
 	                case 37:
 	                    _this.setState(function (previousState) {
-	                        var keyState = previousState.keyState;
-	                        keyState.leftArrowPressed = false;
+	                        var pressedKeys = previousState.pressedKeys;
+	                        pressedKeys.leftArrowPressed = false;
 	                        return {
-	                            keyState: keyState
+	                            pressedKeys: pressedKeys
 	                        };
 	                    });
 	                    break;
 	                case 38:
 	                    _this.setState(function (previousState) {
-	                        var keyState = previousState.keyState;
-	                        keyState.downArrowPressed = false;
+	                        var pressedKeys = previousState.pressedKeys;
+	                        pressedKeys.downArrowPressed = false;
 	                        return {
-	                            keyState: keyState
+	                            pressedKeys: pressedKeys
 	                        };
 	                    });
 	                    break;
 	                case 39:
 	                    _this.setState(function (previousState) {
-	                        var keyState = previousState.keyState;
-	                        keyState.rightArrowPressed = false;
+	                        var pressedKeys = previousState.pressedKeys;
+	                        pressedKeys.rightArrowPressed = false;
 	                        return {
-	                            keyState: keyState
+	                            pressedKeys: pressedKeys
 	                        };
 	                    });
 	                    break;
 	                case 40:
 	                    _this.setState(function (previousState) {
-	                        var keyState = previousState.keyState;
-	                        keyState.upArrowPressed = false;
+	                        var pressedKeys = previousState.pressedKeys;
+	                        pressedKeys.upArrowPressed = false;
 	                        return {
-	                            keyState: keyState
+	                            pressedKeys: pressedKeys
 	                        };
 	                    });
 	                    break;
@@ -31987,7 +31987,7 @@
 	        });
 
 	        _engine2.default.start(function () {
-	            _playerControlsHandler2.default.handle(_this.state.keyState, _this.state.player, function (player) {
+	            _playerControlsHandler2.default.handle(_this.state.pressedKeys, _this.state.player, function (player) {
 	                _this.setState({
 	                    player: player
 	                });
@@ -33896,13 +33896,12 @@
 		"_args": [
 			[
 				"pixi.js@^3.0.9",
-				"C:\\Users\\Bartek\\Documents\\Moje dokumenty\\Project\\endless-runners"
+				"C:\\Users\\Kewin\\Documents\\Projects\\endless-runners"
 			]
 		],
 		"_from": "pixi.js@>=3.0.9 <4.0.0",
 		"_id": "pixi.js@3.0.9",
 		"_inCache": true,
-		"_installable": true,
 		"_location": "/pixi.js",
 		"_nodeVersion": "4.2.1",
 		"_npmUser": {
@@ -33926,7 +33925,7 @@
 		"_shasum": "2dc18c388a7c6d329dd064defbdb2aadea70c861",
 		"_shrinkwrap": null,
 		"_spec": "pixi.js@^3.0.9",
-		"_where": "C:\\Users\\Bartek\\Documents\\Moje dokumenty\\Project\\endless-runners",
+		"_where": "C:\\Users\\Kewin\\Documents\\Projects\\endless-runners",
 		"author": {
 			"name": "Mat Groves"
 		},
@@ -34000,6 +33999,7 @@
 		],
 		"gitHead": "962f5bdff1ed2d96cfeaef22897ed83b7cce79bd",
 		"homepage": "http://goodboydigital.com/",
+		"installable": true,
 		"license": "MIT",
 		"main": "./src/index.js",
 		"maintainers": [
@@ -34010,7 +34010,6 @@
 		],
 		"name": "pixi.js",
 		"optionalDependencies": {},
-		"readme": "ERROR: No README data found!",
 		"repository": {
 			"type": "git",
 			"url": "git+https://github.com/pixijs/pixi.js.git"

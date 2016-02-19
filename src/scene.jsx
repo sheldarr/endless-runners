@@ -12,7 +12,7 @@ const Scene = React.createClass({
             player: undefined,
             renderer: new PIXI.WebGLRenderer(400, 400),
             stage: new PIXI.Container(),
-            keyState: {
+            pressedKeys: {
                 leftArrowPressed: false,
                 rightArrowPressed: false,
                 upArrowPressed: false,
@@ -39,37 +39,37 @@ const Scene = React.createClass({
             switch (event.keyCode) {
             case 37:
                 this.setState((previousState) => {
-                    var keyState = previousState.keyState;
-                    keyState.leftArrowPressed = true;
+                    var pressedKeys = previousState.pressedKeys;
+                    pressedKeys.leftArrowPressed = true;
                     return {
-                        keyState: keyState
+                        pressedKeys: pressedKeys
                     };
                 });
                 break;
             case 38:
                 this.setState((previousState) => {
-                    var keyState = previousState.keyState;
-                    keyState.downArrowPressed = true;
+                    var pressedKeys = previousState.pressedKeys;
+                    pressedKeys.downArrowPressed = true;
                     return {
-                        keyState: keyState
+                        pressedKeys: pressedKeys
                     };
                 });
                 break;
             case 39:
                 this.setState((previousState) => {
-                    var keyState = previousState.keyState;
-                    keyState.rightArrowPressed = true;
+                    var pressedKeys = previousState.pressedKeys;
+                    pressedKeys.rightArrowPressed = true;
                     return {
-                        keyState: keyState
+                        pressedKeys: pressedKeys
                     };
                 });
                 break;
             case 40:
                 this.setState((previousState) => {
-                    var keyState = previousState.keyState;
-                    keyState.upArrowPressed = true;
+                    var pressedKeys = previousState.pressedKeys;
+                    pressedKeys.upArrowPressed = true;
                     return {
-                        keyState: keyState
+                        pressedKeys: pressedKeys
                     };
                 });
                 break;
@@ -80,37 +80,37 @@ const Scene = React.createClass({
             switch (event.keyCode) {
             case 37:
                 this.setState((previousState) => {
-                    var keyState = previousState.keyState;
-                    keyState.leftArrowPressed = false;
+                    var pressedKeys = previousState.pressedKeys;
+                    pressedKeys.leftArrowPressed = false;
                     return {
-                        keyState: keyState
+                        pressedKeys: pressedKeys
                     };
                 });
                 break;
             case 38:
                 this.setState((previousState) => {
-                    var keyState = previousState.keyState;
-                    keyState.downArrowPressed = false;
+                    var pressedKeys = previousState.pressedKeys;
+                    pressedKeys.downArrowPressed = false;
                     return {
-                        keyState: keyState
+                        pressedKeys: pressedKeys
                     };
                 });
                 break;
             case 39:
                 this.setState((previousState) => {
-                    var keyState = previousState.keyState;
-                    keyState.rightArrowPressed = false;
+                    var pressedKeys = previousState.pressedKeys;
+                    pressedKeys.rightArrowPressed = false;
                     return {
-                        keyState: keyState
+                        pressedKeys: pressedKeys
                     };
                 });
                 break;
             case 40:
                 this.setState((previousState) => {
-                    var keyState = previousState.keyState;
-                    keyState.upArrowPressed = false;
+                    var pressedKeys = previousState.pressedKeys;
+                    pressedKeys.upArrowPressed = false;
                     return {
-                        keyState: keyState
+                        pressedKeys: pressedKeys
                     };
                 });
                 break;
@@ -118,7 +118,7 @@ const Scene = React.createClass({
         });
 
         engine.start(() => {
-            playerControlsHandler.handle(this.state.keyState, this.state.player, (player) => {
+            playerControlsHandler.handle(this.state.pressedKeys, this.state.player, (player) => {
                 this.setState({
                     player: player
                 });
@@ -133,7 +133,7 @@ const Scene = React.createClass({
 
     render () {
         return (
-            <div id='scene'></div>
+            <div id="scene"></div>
         );
     }
 });

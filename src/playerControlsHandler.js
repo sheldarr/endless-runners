@@ -2,32 +2,32 @@ const acceleration = 0.1;
 const maxSpeed = 2;
 
 const playerControlsHandler = {
-    handle (keyState, player, callback) {
-        if (keyState.leftArrowPressed) {
+    handle (pressedKeys, player, callback) {
+        if (pressedKeys.leftArrowPressed) {
             if (player.position.dx >= -maxSpeed) {
                 player.position.dx -= acceleration;
             }
         }
 
-        if (keyState.rightArrowPressed) {
+        if (pressedKeys.rightArrowPressed) {
             if (player.position.dx <= maxSpeed) {
                 player.position.dx += acceleration;
             }
         }
 
-        if (keyState.upArrowPressed) {
+        if (pressedKeys.upArrowPressed) {
             if (player.position.dy <= maxSpeed) {
                 player.position.dy += acceleration;
             }
         }
 
-        if (keyState.downArrowPressed) {
+        if (pressedKeys.downArrowPressed) {
             if (player.position.dy >= -maxSpeed) {
                 player.position.dy -= acceleration;
             }
         }
 
-        if (!keyState.leftArrowPressed && !keyState.rightArrowPressed) {
+        if (!pressedKeys.leftArrowPressed && !pressedKeys.rightArrowPressed) {
             if (player.position.dx > 0) {
                 if (player.position.dx < acceleration) {
                     player.position.dx = 0;
@@ -44,7 +44,7 @@ const playerControlsHandler = {
             }
         }
 
-        if (!keyState.upArrowPressed && !keyState.downArrowPressed) {
+        if (!pressedKeys.upArrowPressed && !pressedKeys.downArrowPressed) {
             if (player.position.dy > 0) {
                 if (player.position.dy < acceleration) {
                     player.position.dy = 0;
