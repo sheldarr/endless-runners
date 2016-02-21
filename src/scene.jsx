@@ -13,10 +13,10 @@ const Scene = React.createClass({
             renderer: new PIXI.WebGLRenderer(400, 400),
             stage: new PIXI.Container(),
             pressedKeys: {
-                leftArrowPressed: false,
-                rightArrowPressed: false,
-                upArrowPressed: false,
-                downArrowPressed: false
+                leftArrow: false,
+                rightArrow: false,
+                upArrow: false,
+                downArrow: false
             }
         };
     },
@@ -40,7 +40,7 @@ const Scene = React.createClass({
             case 37:
                 this.setState((previousState) => {
                     var pressedKeys = previousState.pressedKeys;
-                    pressedKeys.leftArrowPressed = true;
+                    pressedKeys.leftArrow = true;
                     return {
                         pressedKeys: pressedKeys
                     };
@@ -49,7 +49,7 @@ const Scene = React.createClass({
             case 38:
                 this.setState((previousState) => {
                     var pressedKeys = previousState.pressedKeys;
-                    pressedKeys.downArrowPressed = true;
+                    pressedKeys.downArrow = true;
                     return {
                         pressedKeys: pressedKeys
                     };
@@ -58,7 +58,7 @@ const Scene = React.createClass({
             case 39:
                 this.setState((previousState) => {
                     var pressedKeys = previousState.pressedKeys;
-                    pressedKeys.rightArrowPressed = true;
+                    pressedKeys.rightArrow = true;
                     return {
                         pressedKeys: pressedKeys
                     };
@@ -67,7 +67,7 @@ const Scene = React.createClass({
             case 40:
                 this.setState((previousState) => {
                     var pressedKeys = previousState.pressedKeys;
-                    pressedKeys.upArrowPressed = true;
+                    pressedKeys.upArrow = true;
                     return {
                         pressedKeys: pressedKeys
                     };
@@ -81,7 +81,7 @@ const Scene = React.createClass({
             case 37:
                 this.setState((previousState) => {
                     var pressedKeys = previousState.pressedKeys;
-                    pressedKeys.leftArrowPressed = false;
+                    pressedKeys.leftArrow = false;
                     return {
                         pressedKeys: pressedKeys
                     };
@@ -90,7 +90,7 @@ const Scene = React.createClass({
             case 38:
                 this.setState((previousState) => {
                     var pressedKeys = previousState.pressedKeys;
-                    pressedKeys.downArrowPressed = false;
+                    pressedKeys.downArrow = false;
                     return {
                         pressedKeys: pressedKeys
                     };
@@ -99,7 +99,7 @@ const Scene = React.createClass({
             case 39:
                 this.setState((previousState) => {
                     var pressedKeys = previousState.pressedKeys;
-                    pressedKeys.rightArrowPressed = false;
+                    pressedKeys.rightArrow = false;
                     return {
                         pressedKeys: pressedKeys
                     };
@@ -108,7 +108,7 @@ const Scene = React.createClass({
             case 40:
                 this.setState((previousState) => {
                     var pressedKeys = previousState.pressedKeys;
-                    pressedKeys.upArrowPressed = false;
+                    pressedKeys.upArrow = false;
                     return {
                         pressedKeys: pressedKeys
                     };
