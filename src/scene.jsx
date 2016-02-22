@@ -46,7 +46,7 @@ const Scene = React.createClass({
                     player: player
                 });
             });
-            collisionHandler.handle(this.state.player, { position: { x: 50 } }, (player) => {
+            collisionHandler.handle(this.state.player, this.state.background, (player) => {
                 this.setState({
                     player: player
                 });
@@ -59,6 +59,9 @@ const Scene = React.createClass({
     componentDidMount () {
         var background = backgroundFactory.create();
         var player = playerFactory.create();
+
+        console.log(background);
+
 
         this.setState({
             background: background,
