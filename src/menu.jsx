@@ -9,7 +9,8 @@ const Menu = React.createClass({
         gameLoaded: React.PropTypes.bool.isRequired,
         loadingProgress: React.PropTypes.number.isRequired,
         loadingResource: React.PropTypes.string.isRequired,
-        onStartGame: React.PropTypes.func.isRequired
+        optionsSelected: React.PropTypes.func.isRequired,
+        startGameSelected: React.PropTypes.func.isRequired
     },
 
     close () {
@@ -25,7 +26,7 @@ const Menu = React.createClass({
                             block
                             bsStyle="success"
                             disabled={!this.props.gameLoaded}
-                            onClick={this.props.onStartGame}
+                            onClick={this.props.startGameSelected}
                         >
                             <span><Glyphicon glyph="play"/> {'Start game'}</span>
                         </Button>
@@ -33,7 +34,7 @@ const Menu = React.createClass({
                 </Row>
                 <Row style={{marginTop: 20}}>
                     <Col xs={4} xsOffset={4}>
-                        <Button block bsStyle="primary">
+                        <Button block bsStyle="primary" onClick={this.props.optionsSelected}>
                             <span><Glyphicon glyph="cog"/> {'Options'}</span>
                         </Button>
                     </Col>

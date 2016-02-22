@@ -29885,18 +29885,28 @@
 
 	var _menu2 = _interopRequireDefault(_menu);
 
+	var _options = __webpack_require__(556);
+
+	var _options2 = _interopRequireDefault(_options);
+
 	var _scene = __webpack_require__(267);
 
 	var _scene2 = _interopRequireDefault(_scene);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	var ACTIVE_DISPLAY = {
+	    MENU: 0,
+	    GAME: 1,
+	    OPTIONS: 2
+	};
+
 	var Application = _react2.default.createClass({
 	    displayName: 'Application',
 	    getInitialState: function getInitialState() {
 	        return {
+	            activeDisplay: ACTIVE_DISPLAY.MENU,
 	            gameLoaded: false,
-	            gameStarted: false,
 	            loadingProgress: 0,
 	            loadingResource: ''
 	        };
@@ -29918,19 +29928,41 @@
 	    },
 	    startGame: function startGame() {
 	        this.setState({
-	            gameStarted: true
+	            activeDisplay: ACTIVE_DISPLAY.GAME
+	        });
+	    },
+	    displayOptions: function displayOptions() {
+	        this.setState({
+	            activeDisplay: ACTIVE_DISPLAY.OPTIONS
+	        });
+	    },
+	    displayMenu: function displayMenu() {
+	        this.setState({
+	            activeDisplay: ACTIVE_DISPLAY.MENU
+	        });
+	    },
+	    renderActiveDisplay: function renderActiveDisplay() {
+	        if (this.state.activeDisplay === ACTIVE_DISPLAY.GAME) {
+	            return _react2.default.createElement(_scene2.default, null);
+	        }
+
+	        if (this.state.activeDisplay === ACTIVE_DISPLAY.OPTIONS) {
+	            return _react2.default.createElement(_options2.default, { onClose: this.displayMenu });
+	        }
+
+	        return _react2.default.createElement(_menu2.default, {
+	            gameLoaded: this.state.gameLoaded,
+	            loadingProgress: this.state.loadingProgress,
+	            loadingResource: this.state.loadingResource,
+	            optionsSelected: this.displayOptions,
+	            startGameSelected: this.startGame
 	        });
 	    },
 	    render: function render() {
 	        return _react2.default.createElement(
 	            'div',
 	            null,
-	            this.state.gameStarted ? _react2.default.createElement(_scene2.default, null) : _react2.default.createElement(_menu2.default, {
-	                gameLoaded: this.state.gameLoaded,
-	                loadingProgress: this.state.loadingProgress,
-	                loadingResource: this.state.loadingResource,
-	                onStartGame: this.startGame
-	            })
+	            this.renderActiveDisplay()
 	        );
 	    }
 	});
@@ -31592,7 +31624,7 @@
 
 	var assetsLoader = {
 	    load: function load(onProgress, onLoad) {
-	        _pixi2.default.loader.add('./assets/tiles/grass.png').add('./assets/tiles/dirt.png').add('./assets/tiles/barrel.png').add('./assets/player.png').on(onProgress).load(onLoad);
+	        _pixi2.default.loader.add('./assets/tiles/grass.png').add('./assets/tiles/dirt.png').add('./assets/tiles/barrel.png').add('./assets/player.png').on('progress', onProgress).load(onLoad);
 	    }
 	};
 
@@ -31743,7 +31775,8 @@
 	        gameLoaded: _react2.default.PropTypes.bool.isRequired,
 	        loadingProgress: _react2.default.PropTypes.number.isRequired,
 	        loadingResource: _react2.default.PropTypes.string.isRequired,
-	        onStartGame: _react2.default.PropTypes.func.isRequired
+	        optionsSelected: _react2.default.PropTypes.func.isRequired,
+	        startGameSelected: _react2.default.PropTypes.func.isRequired
 	    },
 
 	    close: function close() {
@@ -31765,7 +31798,7 @@
 	                            block: true,
 	                            bsStyle: 'success',
 	                            disabled: !this.props.gameLoaded,
-	                            onClick: this.props.onStartGame
+	                            onClick: this.props.startGameSelected
 	                        },
 	                        _react2.default.createElement(
 	                            'span',
@@ -31785,7 +31818,7 @@
 	                    { xs: 4, xsOffset: 4 },
 	                    _react2.default.createElement(
 	                        _reactBootstrap.Button,
-	                        { block: true, bsStyle: 'primary' },
+	                        { block: true, bsStyle: 'primary', onClick: this.props.optionsSelected },
 	                        _react2.default.createElement(
 	                            'span',
 	                            null,
@@ -67845,6 +67878,99 @@
 		return module;
 	}
 
+
+/***/ },
+/* 556 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(0);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(476);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Options = _react2.default.createClass({
+	    displayName: 'Options',
+
+	    propTypes: {
+	        onClose: _react2.default.PropTypes.func.isRequired
+	    },
+
+	    render: function render() {
+	        return _react2.default.createElement(
+	            _reactBootstrap.Grid,
+	            null,
+	            _react2.default.createElement(
+	                _reactBootstrap.Row,
+	                { style: { marginTop: '10%' } },
+	                _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { xs: 4, xsOffset: 4 },
+	                    _react2.default.createElement(_reactBootstrap.Input, { addonAfter: _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'user' }), label: 'Nickname', type: 'text' })
+	                )
+	            ),
+	            _react2.default.createElement(
+	                _reactBootstrap.Row,
+	                { style: { marginTop: 20 } },
+	                _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { xs: 4, xsOffset: 4 },
+	                    _react2.default.createElement(_reactBootstrap.Input, { addonAfter: _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'music' }),
+	                        label: 'Music',
+	                        max: '100',
+	                        min: '0',
+	                        step: '1',
+	                        type: 'range'
+	                    })
+	                )
+	            ),
+	            _react2.default.createElement(
+	                _reactBootstrap.Row,
+	                { style: { marginTop: 20 } },
+	                _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { xs: 4, xsOffset: 4 },
+	                    _react2.default.createElement(_reactBootstrap.Input, { addonAfter: _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'volume-up' }),
+	                        label: 'Sounds',
+	                        max: '100',
+	                        min: '0',
+	                        step: '1',
+	                        type: 'range'
+	                    })
+	                )
+	            ),
+	            _react2.default.createElement(
+	                _reactBootstrap.Row,
+	                { style: { marginTop: 20 } },
+	                _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { xs: 4, xsOffset: 4 },
+	                    _react2.default.createElement(
+	                        _reactBootstrap.Button,
+	                        { block: true, bsStyle: 'primary', onClick: this.props.onClose },
+	                        _react2.default.createElement(
+	                            'span',
+	                            null,
+	                            _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'arrow-left' }),
+	                            ' ',
+	                            'Back'
+	                        )
+	                    )
+	                )
+	            )
+	        );
+	    }
+	});
+
+	exports.default = Options;
 
 /***/ }
 /******/ ]);
