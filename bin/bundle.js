@@ -29938,7 +29938,7 @@
 	    },
 	    displayMenu: function displayMenu() {
 	        this.setState({
-	            activeDisplay: ACTIVE_DISPLAY.Menu
+	            activeDisplay: ACTIVE_DISPLAY.MENU
 	        });
 	    },
 	    renderActiveDisplay: function renderActiveDisplay() {
@@ -31624,7 +31624,7 @@
 
 	var assetsLoader = {
 	    load: function load(onProgress, onLoad) {
-	        _pixi2.default.loader.add('./assets/tiles/grass.png').add('./assets/tiles/dirt.png').add('./assets/tiles/barrel.png').add('./assets/player.png').on(onProgress).load(onLoad);
+	        _pixi2.default.loader.add('./assets/tiles/grass.png').add('./assets/tiles/dirt.png').add('./assets/tiles/barrel.png').add('./assets/player.png').on('progress', onProgress).load(onLoad);
 	    }
 	};
 

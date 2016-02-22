@@ -49,7 +49,7 @@ const Application = React.createClass({
 
     displayMenu () {
         this.setState({
-            activeDisplay: ACTIVE_DISPLAY.Menu
+            activeDisplay: ACTIVE_DISPLAY.MENU
         });
     },
 
