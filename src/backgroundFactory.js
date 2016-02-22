@@ -2,7 +2,7 @@ import PIXI from 'pixi.js';
 
 const backgroundFactory = {
     create () {
-        var background = new PIXI.Sprite(PIXI.utils.TextureCache['./assets/grass.png']);
+        var background = new PIXI.Sprite(PIXI.utils.TextureCache['./assets/tiles/grass.png']);
         background.position.x = 0;
         background.position.y = 0;
 
