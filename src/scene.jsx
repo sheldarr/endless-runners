@@ -4,6 +4,7 @@ import playerFactory from './playerFactory.js';
 import backgroundFactory from './backgroundFactory.js';
 import playerControlsHandler from './playerControlsHandler.js';
 import pressedKeysHandler from './pressedKeysHandler.js';
+import collisionHandler from './collisionHandler.js';
 import engine from './engine';
 
 const Scene = React.createClass({
@@ -45,6 +46,12 @@ const Scene = React.createClass({
                     player: player
                 });
             });
+            collisionHandler.handle(this.state.player, this.state.background, (player) => {
+                this.setState({
+                    player: player
+                });
+            });
+
             this.state.renderer.render(this.state.stage);
         });
     },
@@ -52,6 +59,9 @@ const Scene = React.createClass({
     componentDidMount () {
         var background = backgroundFactory.create();
         var player = playerFactory.create();
+
+        console.log(background);
+
 
         this.setState({
             background: background,

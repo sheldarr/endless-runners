@@ -32036,7 +32036,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	        value: true
 	});
 
 	var _pixi = __webpack_require__(74);
@@ -32046,16 +32046,35 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var backgroundFactory = {
-	    create: function create() {
-	        var background = new _pixi2.default.Sprite(_pixi2.default.utils.TextureCache['./assets/tiles/grass.png']);
-	        background.position.x = 0;
-	        background.position.y = 0;
+	        create: function create() {
+	                var background = new _pixi2.default.Container();
 
-	        background.scale.x = 1;
-	        background.scale.y = 1;
+	                var grassTile = new _pixi2.default.Sprite(_pixi2.default.utils.TextureCache['./assets/tiles/grass.png']);
+	                grassTile.isSolid = false;
+	                grassTile.position.x = 0;
+	                grassTile.position.y = 0;
+	                grassTile.scale.x = 1;
+	                grassTile.scale.y = 1;
+	                background.addChild(grassTile);
 
-	        return background;
-	    }
+	                var dirtTile = new _pixi2.default.Sprite(_pixi2.default.utils.TextureCache['./assets/tiles/dirt.png']);
+	                dirtTile.isSolid = false;
+	                dirtTile.position.x = 33;
+	                dirtTile.position.y = 33;
+	                dirtTile.scale.x = 1;
+	                dirtTile.scale.y = 1;
+	                background.addChild(dirtTile);
+
+	                var barrelTile = new _pixi2.default.Sprite(_pixi2.default.utils.TextureCache['./assets/tiles/barrel.png']);
+	                barrelTile.isSolid = false;
+	                barrelTile.position.x = 66;
+	                barrelTile.position.y = 66;
+	                barrelTile.scale.x = 1;
+	                barrelTile.scale.y = 1;
+	                background.addChild(barrelTile);
+
+	                return background;
+	        }
 	};
 
 	exports.default = backgroundFactory;
@@ -32535,7 +32554,7 @@
 /* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function(console) {'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -32564,6 +32583,10 @@
 	var _pressedKeysHandler = __webpack_require__(267);
 
 	var _pressedKeysHandler2 = _interopRequireDefault(_pressedKeysHandler);
+
+	var _collisionHandler = __webpack_require__(556);
+
+	var _collisionHandler2 = _interopRequireDefault(_collisionHandler);
 
 	var _engine = __webpack_require__(261);
 
@@ -32612,12 +32635,20 @@
 	                    player: player
 	                });
 	            });
+	            _collisionHandler2.default.handle(_this.state.player, _this.state.background, function (player) {
+	                _this.setState({
+	                    player: player
+	                });
+	            });
+
 	            _this.state.renderer.render(_this.state.stage);
 	        });
 	    },
 	    componentDidMount: function componentDidMount() {
 	        var background = _backgroundFactory2.default.create();
 	        var player = _playerFactory2.default.create();
+
+	        console.log(background);
 
 	        this.setState({
 	            background: background,
@@ -32635,6 +32666,7 @@
 	});
 
 	exports.default = Scene;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)))
 
 /***/ },
 /* 269 */
@@ -67962,6 +67994,25 @@
 		return module;
 	}
 
+
+/***/ },
+/* 556 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var collisionHandler = {
+	    handle: function handle(player, obstacle, callback) {
+	        if (player.position.x > obstacle.position.x) {
+	            player.position.dx = -player.position.dx;
+	        }
+	    }
+	};
+
+	exports.default = collisionHandler;
 
 /***/ }
 /******/ ]);
