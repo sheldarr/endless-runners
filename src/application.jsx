@@ -16,6 +16,11 @@ const Application = React.createClass({
         return {
             activeDisplay: ACTIVE_DISPLAY.MENU,
             gameLoaded: false,
+            gameOptions: {
+                nickname: 'Player',
+                music: 100,
+                sounds: 100
+            },
             loadingProgress: 0,
             loadingResource: ''
         };
@@ -47,6 +52,12 @@ const Application = React.createClass({
         });
     },
 
+    updateOptions (gameOptions) {
+        this.setState({
+            gameOptions: gameOptions
+        });
+    },
+
     displayMenu () {
         this.setState({
             activeDisplay: ACTIVE_DISPLAY.MENU
@@ -59,7 +70,7 @@ const Application = React.createClass({
         }
 
         if (this.state.activeDisplay === ACTIVE_DISPLAY.OPTIONS) {
-            return <Options onClose={this.displayMenu}/>;
+            return <Options onChange={this.updateOptions} onClose={this.displayMenu} options={this.state.gameOptions}/>;
         }
 
         return (
