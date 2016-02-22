@@ -22,6 +22,7 @@ const Application = React.createClass({
             });
         }, () => {
             this.setState({
+                gameLoaded: true,
                 loadingResource: 'All Resources Loaded'
             });
         });

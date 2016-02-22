@@ -21,7 +21,12 @@ const Menu = React.createClass({
             <Grid>
                 <Row style={{marginTop: '10%'}}>
                     <Col xs={4} xsOffset={4}>
-                        <Button block bsStyle="success" disabled={!this.props.gameLoaded} onClick={this.props.onStartGame}>
+                        <Button
+                            block
+                            bsStyle="success"
+                            disabled={!this.props.gameLoaded}
+                            onClick={this.props.onStartGame}
+                        >
                             <span><Glyphicon glyph="play"/> {'Start game'}</span>
                         </Button>
                     </Col>

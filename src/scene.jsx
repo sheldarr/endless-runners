@@ -1,7 +1,7 @@
 import React from 'react';
 import PIXI from 'pixi.js';
-import playerLoader from './playerLoader.js';
-import backgroundLoader from './backgroundLoader.js';
+import playerFactory from './playerFactory.js';
+import backgroundFactory from './backgroundFactory.js';
 import playerControlsHandler from './playerControlsHandler.js';
 import engine from './engine';
 
@@ -22,19 +22,6 @@ const Scene = React.createClass({
     },
 
     componentWillMount () {
-        backgroundLoader.load((background) => {
-            this.setState({
-                background: background
-            });
-            this.state.stage.addChild(background);
-        });
-        playerLoader.load((player) => {
-            this.setState({
-                player: player
-            });
-            this.state.stage.addChild(player);
-        });
-
         document.addEventListener('keydown', (event) => {
             switch (event.keyCode) {
             case 37:
@@ -125,6 +112,19 @@ const Scene = React.createClass({
             });
             this.state.renderer.render(this.state.stage);
         });
+    },
+
+    componentDidMount () {
+        var background = backgroundFactory.create();
+        var player = playerFactory.create();
+
+        this.setState({
+            background: background,
+            player: player
+        });
+
+        this.state.stage.addChild(background);
+        this.state.stage.addChild(player);
     },
 
     componentDidUpdate () {
