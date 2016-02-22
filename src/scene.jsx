@@ -3,6 +3,7 @@ import PIXI from 'pixi.js';
 import playerFactory from './playerFactory.js';
 import backgroundFactory from './backgroundFactory.js';
 import playerControlsHandler from './playerControlsHandler.js';
+import pressedKeysHandler from './pressedKeysHandler.js';
 import engine from './engine';
 
 const Scene = React.createClass({
@@ -23,85 +24,19 @@ const Scene = React.createClass({
 
     componentWillMount () {
         document.addEventListener('keydown', (event) => {
-            switch (event.keyCode) {
-            case 37:
-                this.setState((previousState) => {
-                    var pressedKeys = previousState.pressedKeys;
-                    pressedKeys.leftArrow = true;
-                    return {
-                        pressedKeys: pressedKeys
-                    };
-                });
-                break;
-            case 38:
-                this.setState((previousState) => {
-                    var pressedKeys = previousState.pressedKeys;
-                    pressedKeys.downArrow = true;
-                    return {
-                        pressedKeys: pressedKeys
-                    };
-                });
-                break;
-            case 39:
-                this.setState((previousState) => {
-                    var pressedKeys = previousState.pressedKeys;
-                    pressedKeys.rightArrow = true;
-                    return {
-                        pressedKeys: pressedKeys
-                    };
-                });
-                break;
-            case 40:
-                this.setState((previousState) => {
-                    var pressedKeys = previousState.pressedKeys;
-                    pressedKeys.upArrow = true;
-                    return {
-                        pressedKeys: pressedKeys
-                    };
-                });
-                break;
-            }
+            this.setState((previousState) => {
+                return {
+                    pressedKeys: pressedKeysHandler.keydown(event.keyCode, this.state.pressedKeys)
+                };
+            });
         });
 
         document.addEventListener('keyup', (event) => {
-            switch (event.keyCode) {
-            case 37:
-                this.setState((previousState) => {
-                    var pressedKeys = previousState.pressedKeys;
-                    pressedKeys.leftArrow = false;
-                    return {
-                        pressedKeys: pressedKeys
-                    };
-                });
-                break;
-            case 38:
-                this.setState((previousState) => {
-                    var pressedKeys = previousState.pressedKeys;
-                    pressedKeys.downArrow = false;
-                    return {
-                        pressedKeys: pressedKeys
-                    };
-                });
-                break;
-            case 39:
-                this.setState((previousState) => {
-                    var pressedKeys = previousState.pressedKeys;
-                    pressedKeys.rightArrow = false;
-                    return {
-                        pressedKeys: pressedKeys
-                    };
-                });
-                break;
-            case 40:
-                this.setState((previousState) => {
-                    var pressedKeys = previousState.pressedKeys;
-                    pressedKeys.upArrow = false;
-                    return {
-                        pressedKeys: pressedKeys
-                    };
-                });
-                break;
-            }
+            this.setState((previousState) => {
+                return {
+                    pressedKeys: pressedKeysHandler.keyup(event.keyCode, this.state.pressedKeys)
+                };
+            });
         });
 
         engine.start(() => {
