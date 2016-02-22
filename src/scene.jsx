@@ -60,9 +60,7 @@ const Scene = React.createClass({
 
         this.state.stage.addChild(background);
         this.state.stage.addChild(player);
-    },
 
-    componentDidUpdate () {
         document.getElementById('scene').appendChild(this.state.renderer.view);
     },
 

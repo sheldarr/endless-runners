@@ -32016,8 +32016,7 @@
 
 	        this.state.stage.addChild(background);
 	        this.state.stage.addChild(player);
-	    },
-	    componentDidUpdate: function componentDidUpdate() {
+
 	        document.getElementById('scene').appendChild(this.state.renderer.view);
 	    },
 	    render: function render() {
