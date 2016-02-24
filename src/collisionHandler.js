@@ -1,12 +1,12 @@
 const collisionHandler = {
-    handleVerticalCollision(player, tile) {
+    handleVerticalCollision (player, tile) {
         if ((player.position.y < tile.position.y && player.position.y + player.height < tile.position.y) ||
         (player.position.y > tile.position.y + tile.height && player.position.y + player.height > tile.position.y + tile.height)) {
             player.position.dy *= -1.1;
         }
     },
 
-    handleHorizontalCollision(player, tile) {
+    handleHorizontalCollision (player, tile) {
         if ((player.position.x < tile.position.x && player.position.x + player.width < tile.position.x) ||
         (player.position.x > tile.position.x + tile.width && player.position.x + player.width > tile.position.x + tile.width)) {
             player.position.dx *= -1.1;
@@ -21,7 +21,7 @@ const collisionHandler = {
                 player.position.y + player.position.dy > tile.position.y + tile.height ||
                 player.position.y + player.height + player.position.dy < tile.position.y)) {
                     this.handleVerticalCollision(player, tile);
-                    this.handleHorizontalCollision(player, tile)
+                    this.handleHorizontalCollision(player, tile);
                 }
             }
         });
