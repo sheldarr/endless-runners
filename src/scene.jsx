@@ -12,7 +12,7 @@ const Scene = React.createClass({
         return {
             background: undefined,
             player: undefined,
-            renderer: new PIXI.WebGLRenderer(400, 400),
+            renderer: new PIXI.WebGLRenderer(640, 320),
             stage: new PIXI.Container(),
             pressedKeys: {
                 leftArrow: false,
