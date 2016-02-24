@@ -21,7 +21,7 @@ const backgroundFactory = {
         background.addChild(dirtTile);
 
         var barrelTile = new PIXI.Sprite(PIXI.utils.TextureCache['./assets/tiles/barrel.png']);
-        barrelTile.isSolid = false;
+        barrelTile.isSolid = true;
         barrelTile.position.x = 66;
         barrelTile.position.y = 66;
         barrelTile.scale.x = 1;
