@@ -20,7 +20,7 @@ const Menu = React.createClass({
     render () {
         return (
             <Grid>
-                <Row style={{marginTop: '10%'}}>
+                <Row style={{marginTop: '5%'}}>
                     <Col xs={4} xsOffset={4}>
                         <Button
                             block

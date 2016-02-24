@@ -22,12 +22,12 @@
     "fullscreen": false,
     "toolbar": true,
     "resizeable": false,
-    "height": 768,
-    "width": 1024,
-    "min_width": 1024,
-    "max_width": 1024,
-    "min_height": 768,
-    "max_height": 768,
+    "width": 640,
+    "height": 370,
+    "min_width": 640,
+    "max_width": 640,
+    "min_height": 360,
+    "max_height": 370,
     "position": "center"
   },
   "dependencies": {
