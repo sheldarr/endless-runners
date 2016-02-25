@@ -5,7 +5,6 @@ import backgroundFactory from './backgroundFactory.js';
 import playerControlsHandler from './playerControlsHandler.js';
 import pressedKeysHandler from './pressedKeysHandler.js';
 import collisionHandler from './collisionHandler.js';
-import engine from './engine';
 
 const Scene = React.createClass({
     getInitialState () {
@@ -39,36 +38,40 @@ const Scene = React.createClass({
                 };
             });
         });
-
-        engine.start(() => {
-            playerControlsHandler.handle(this.state.pressedKeys, this.state.player, (player) => {
-                this.setState({
-                    player: player
-                });
-            });
-            collisionHandler.handle(this.state.player, this.state.background.children, (player) => {
-                this.setState({
-                    player: player
-                });
-            });
-
-            this.state.renderer.render(this.state.stage);
-        });
     },
 
     componentDidMount () {
         var background = backgroundFactory.createSewerBackground();
         var player = playerFactory.create();
 
-        this.setState({
-            background: background,
-            player: player
-        });
-
         this.state.stage.addChild(background);
         this.state.stage.addChild(player);
 
         document.getElementById('scene').appendChild(this.state.renderer.view);
+
+        this.setState({
+            background: background,
+            player: player
+        }, () => {
+            this.animate();
+        });
+    },
+
+    animate () {
+        requestAnimationFrame(this.animate);
+
+        playerControlsHandler.handle(this.state.pressedKeys, this.state.player, (player) => {
+            this.setState({
+                player: player
+            });
+        });
+        collisionHandler.handle(this.state.player, this.state.background.children, (player) => {
+            this.setState({
+                player: player
+            });
+        });
+
+        this.state.renderer.render(this.state.stage);
     },
 
     render () {
