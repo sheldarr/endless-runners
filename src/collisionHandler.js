@@ -1,9 +1,9 @@
 const collisionHandler = {
     handleHorizontalCollision (player, tile) {
-        if ((player.position.y + player.height - tile.position.y < tile.position.y + tile.height - player.position.y &&
+        if ((player.position.y + 0.5 * player.height < tile.position.y + 0.5 * tile.height &&
             player.position.y + player.height - tile.position.y < player.position.x + player.width - tile.position.x &&
             player.position.y + player.height - tile.position.y < tile.position.x + tile.width - player.position.x) ||
-            (tile.position.y + tile.height - player.position.y < player.position.y + player.height - tile.position.y &&
+            (tile.position.y + 0.5 * tile.height < player.position.y + 0.5 * player.height &&
             tile.position.y + tile.height - player.position.y < player.position.x + player.width - tile.position.x &&
             tile.position.y + tile.height - player.position.y < tile.position.x + tile.width - player.position.x)) {
             player.position.dy *= -1.1;
@@ -11,10 +11,10 @@ const collisionHandler = {
     },
 
     handleVerticalCollision (player, tile) {
-        if ((player.position.x + player.width - tile.position.x < tile.position.x + tile.width - player.position.x &&
+        if ((player.position.x + 0.5 * player.width < tile.position.x + 0.5 * tile.width &&
             player.position.x + player.width - tile.position.x < player.position.y + player.height - tile.position.y &&
             player.position.x + player.width - tile.position.x < tile.position.y + tile.height - player.position.y) ||
-            (tile.position.x + tile.width - player.position.x < player.position.x + player.width - tile.position.x &&
+            (tile.position.x + 0.5 * tile.width < player.position.x + 0.5 * player.width &&
             tile.position.x + tile.width - player.position.x < player.position.y + player.height - tile.position.y &&
             tile.position.x + tile.width - player.position.x < tile.position.y + tile.height - player.position.y)) {
             player.position.dx *= -1.1;
