@@ -3,8 +3,8 @@ const playerFactory = {
     create () {
         var player = new PIXI.Sprite(PIXI.utils.TextureCache['./assets/player.png']);
 
-        player.position.x = 0;
-        player.position.y = 0;
+        player.position.x = 128;
+        player.position.y = 128;
 
         player.position.dx = 0;
         player.position.dy = 0;

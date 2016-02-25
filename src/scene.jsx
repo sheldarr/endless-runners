@@ -57,7 +57,7 @@ const Scene = React.createClass({
     },
 
     componentDidMount () {
-        var background = backgroundFactory.create();
+        var background = backgroundFactory.createSewerBackground();
         var player = playerFactory.create();
 
         this.setState({
