@@ -63,6 +63,16 @@ const playerControlsHandler = {
 
         player.position.x += player.position.dx;
         player.position.y += player.position.dy;
+
+        if (player.position.x < 0) {
+            player.position.x = 0;
+            player.position.dx = 0;
+        }
+
+        if (player.position.x + player.width > 640) {
+            player.position.x = 640 - player.width;
+            player.position.dx = 0;
+        }
     }
 };
 
