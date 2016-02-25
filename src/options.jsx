@@ -39,7 +39,7 @@ const Options = React.createClass({
     render () {
         return (
             <Grid>
-                <Row style={{marginTop: '10%'}}>
+                <Row>
                     <Col xs={4} xsOffset={4}>
                         <Input
                             addonAfter={<Glyphicon glyph="user"/>}
