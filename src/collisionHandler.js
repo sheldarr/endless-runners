@@ -1,14 +1,22 @@
 const collisionHandler = {
-    handleVerticalCollision (player, tile) {
-        if ((player.position.y < tile.position.y && player.position.y + player.height < tile.position.y) ||
-        (player.position.y > tile.position.y + tile.height && player.position.y + player.height > tile.position.y + tile.height)) {
+    handleHorizontalCollision (player, tile) {
+        if ((player.position.y + player.height - tile.position.y < tile.position.y + tile.height - player.position.y &&
+            player.position.y + player.height - tile.position.y < player.position.x + player.width - tile.position.x &&
+            player.position.y + player.height - tile.position.y < tile.position.x + tile.width - player.position.x) ||
+            (tile.position.y + tile.height - player.position.y < player.position.y + player.height - tile.position.y &&
+            tile.position.y + tile.height - player.position.y < player.position.x + player.width - tile.position.x &&
+            tile.position.y + tile.height - player.position.y < tile.position.x + tile.width - player.position.x)) {
             player.position.dy *= -1.1;
         }
     },
 
-    handleHorizontalCollision (player, tile) {
-        if ((player.position.x < tile.position.x && player.position.x + player.width < tile.position.x) ||
-        (player.position.x > tile.position.x + tile.width && player.position.x + player.width > tile.position.x + tile.width)) {
+    handleVerticalCollision (player, tile) {
+        if ((player.position.x + player.width - tile.position.x < tile.position.x + tile.width - player.position.x &&
+            player.position.x + player.width - tile.position.x < player.position.y + player.height - tile.position.y &&
+            player.position.x + player.width - tile.position.x < tile.position.y + tile.height - player.position.y) ||
+            (tile.position.x + tile.width - player.position.x < player.position.x + player.width - tile.position.x &&
+            tile.position.x + tile.width - player.position.x < player.position.y + player.height - tile.position.y &&
+            tile.position.x + tile.width - player.position.x < tile.position.y + tile.height - player.position.y)) {
             player.position.dx *= -1.1;
         }
     },
