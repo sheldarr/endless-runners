@@ -1,10 +1,10 @@
 import React from 'react';
 import PIXI from 'pixi.js';
-import playerFactory from './factories/playerFactory.js';
-import backgroundFactory from './factories/backgroundFactory.js';
-import playerControlsHandler from './playerControlsHandler.js';
-import pressedKeysHandler from './pressedKeysHandler.js';
-import collisionHandler from './collisionHandler.js';
+import playerFactory from '../factories/playerFactory.js';
+import backgroundFactory from '../factories/backgroundFactory.js';
+import playerControlsHandler from '../engine/playerControlsHandler.js';
+import pressedKeysHandler from '../engine/pressedKeysHandler.js';
+import collisionHandler from '../engine/collisionHandler.js';
 
 const Scene = React.createClass({
     getInitialState () {
