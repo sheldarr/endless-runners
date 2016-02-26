@@ -1,6 +1,6 @@
 import React from 'react';
 
-import assetsLoader from '../engine/assetsLoader';
+import assetsLoader from '../etc/assetsLoader';
 import Menu from './menu.jsx';
 import Options from './options.jsx';
 import Scene from './scene.jsx';
