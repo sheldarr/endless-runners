@@ -2,13 +2,13 @@ import PIXI from 'pixi.js';
 
 const backgroundFactory = {
     createDebugBackground () {
-        var background = new PIXI.Container();
+        let background = new PIXI.Container();
 
-        for (var i = 0; i < 20; i++) {
-            for (var j = 0; j < 10; j++) {
-                var newTile;
+        for (let i = 0; i < 20; i++) {
+            for (let j = 0; j < 10; j++) {
+                let newTile;
 
-                var randomNumber = Math.random();
+                let randomNumber = Math.random();
                 if (randomNumber <= 0.08) {
                     newTile = new PIXI.Sprite(PIXI.utils.TextureCache['./assets/tiles/barrel.png']);
                     newTile.isSolid = true;
@@ -31,11 +31,11 @@ const backgroundFactory = {
     },
 
     createSewerBackground () {
-        var background = new PIXI.Container();
+        let background = new PIXI.Container();
 
         for (let i = 0; i < 12; i++) {
             for (let j = 0; j < 20; j++) {
-                var floorTile = new PIXI.Sprite(PIXI.utils.TextureCache['./assets/tiles/floor.png']);
+                let floorTile = new PIXI.Sprite(PIXI.utils.TextureCache['./assets/tiles/floor.png']);
 
                 floorTile.isSolid = false;
                 floorTile.position.x = j * 32;
@@ -49,7 +49,7 @@ const backgroundFactory = {
 
         for (let i = 0; i < 12; i++) {
             for (let j = 0; j < 20; j++) {
-                var newTile;
+                let newTile;
 
                 if (i !== 0 && i !== 8 && i !== 9) {
                     if (Math.random() <= 0.10) {
