@@ -6,7 +6,8 @@ const collisionHandler = {
             (tile.position.y + 0.5 * tile.height < player.position.y + 0.5 * player.height &&
             tile.position.y + tile.height - player.position.y < player.position.x + player.width - tile.position.x &&
             tile.position.y + tile.height - player.position.y < tile.position.x + tile.width - player.position.x)) {
-            player.position.dy *= -1.1;
+            player.position.y = player.position.y - player.position.dy;
+            player.position.dy = 0;
         }
     },
 
@@ -17,7 +18,8 @@ const collisionHandler = {
             (tile.position.x + 0.5 * tile.width < player.position.x + 0.5 * player.width &&
             tile.position.x + tile.width - player.position.x < player.position.y + player.height - tile.position.y &&
             tile.position.x + tile.width - player.position.x < tile.position.y + tile.height - player.position.y)) {
-            player.position.dx *= -1.1;
+            player.position.x = player.position.x - player.position.dx;
+            player.position.dx = 0;
         }
     },
 
