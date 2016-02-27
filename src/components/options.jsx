@@ -50,7 +50,7 @@ const Options = React.createClass({
                         />
                     </Col>
                 </Row>
-                <Row style={{marginTop: 20}}>
+                <Row>
                     <Col xs={4} xsOffset={4}>
                         <Input addonAfter={<Glyphicon glyph="music"/>}
                             label="Music"
@@ -63,7 +63,7 @@ const Options = React.createClass({
                         />
                     </Col>
                 </Row>
-                <Row style={{marginTop: 20}}>
+                <Row>
                     <Col xs={4} xsOffset={4}>
                         <Input addonAfter={<Glyphicon glyph="volume-up"/>}
                             label="Sounds"
@@ -76,10 +76,17 @@ const Options = React.createClass({
                         />
                     </Col>
                 </Row>
-                <Row style={{marginTop: 20}}>
-                    <Col xs={4} xsOffset={4}>
+                <Row>
+                    <Col style={{marginTop: 10}} xs={4} xsOffset={4}>
+                        <Button block bsStyle="success" onClick={this.props.onClose}>
+                            <span><Glyphicon glyph="floppy-disk"/> {'Save'}</span>
+                        </Button>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col style={{marginTop: 10}} xs={4} xsOffset={4}>
                         <Button block bsStyle="primary" onClick={this.props.onClose}>
-                            <span><Glyphicon glyph="arrow-left"/> {'Back'}</span>
+                            <span><Glyphicon glyph="remove"/> {'Cancel'}</span>
                         </Button>
                     </Col>
                 </Row>
