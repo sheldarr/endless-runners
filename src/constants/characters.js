@@ -30,7 +30,7 @@ const CHARACTERS = [{
     sizeCategory: 'Medium'
 }, {
     acceleration: 0.2,
-    asset: 'Player.png',
+    asset: 'player.png',
     maxSpeed: 2,
     name: 'Player',
     sizeCategory: 'Medium'
@@ -48,13 +48,13 @@ const CHARACTERS = [{
     sizeCategory: 'Medium'
 }, {
     acceleration: 0.1,
-    asset: 'Tortoise.png',
+    asset: 'tortoise.png',
     maxSpeed: 8,
     name: 'Tortoise',
     sizeCategory: 'Big'
 }, {
     acceleration: 1.0,
-    asset: 'Wasp.png',
+    asset: 'wasp.png',
     maxSpeed: 8,
     name: 'Wasp',
     sizeCategory: 'Medium'
