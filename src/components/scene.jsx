@@ -2,15 +2,19 @@ import React from 'react';
 import PIXI from 'pixi.js';
 import playerFactory from '../factories/playerFactory.js';
 import backgroundFactory from '../factories/backgroundFactory.js';
+import cameraFactory from '../factories/cameraFactory.js';
 import playerControlsHandler from '../handlers/playerControlsHandler.js';
 import pressedKeysHandler from '../handlers/pressedKeysHandler.js';
 import collisionHandler from '../handlers/collisionHandler.js';
+import coordinatesConverter from '../handlers/coordinatesConverter.js';
+import cameraHandler from '../handlers/cameraHandler.js';
 
 const Scene = React.createClass({
     getInitialState () {
         return {
             background: undefined,
             player: undefined,
+            camera: undefined,
             renderer: new PIXI.WebGLRenderer(640, 320),
             stage: new PIXI.Container(),
             pressedKeys: {
@@ -43,6 +47,7 @@ const Scene = React.createClass({
     componentDidMount () {
         var background = backgroundFactory.createSewerBackground();
         var player = playerFactory.create();
+        var camera = cameraFactory.create();
 
         this.state.stage.addChild(background);
         this.state.stage.addChild(player);
@@ -51,7 +56,8 @@ const Scene = React.createClass({
 
         this.setState({
             background: background,
-            player: player
+            player: player,
+            camera: camera
         }, () => {
             this.animate();
         });
@@ -68,6 +74,17 @@ const Scene = React.createClass({
         collisionHandler.handle(this.state.player, this.state.background.children, (player) => {
             this.setState({
                 player: player
+            });
+        });
+        coordinatesConverter.toScreen(this.state.player, this.state.background.children, this.state.camera, (player, background) => {
+            this.setState({
+                player: player,
+                background: background
+            });
+        });
+        cameraHandler.handle(this.state.camera, this.state.player, (camera) => {
+            this.setState({
+                camera: camera
             });
         });
 
