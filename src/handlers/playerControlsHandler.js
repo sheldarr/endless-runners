@@ -69,8 +69,8 @@ const playerControlsHandler = {
             player.worldPosition.dx = 0;
         }
 
-        if (player.worldPosition.x + player.width > 640) {
-            player.worldPosition.x = 640 - player.width;
+        if (player.worldPosition.x + player.width > 40 * 32) {
+            player.worldPosition.x = 40 * 32 - player.width;
             player.worldPosition.dx = 0;
         }
     }
