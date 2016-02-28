@@ -4,74 +4,74 @@ const maxSpeed = 2;
 const playerControlsHandler = {
     handle (pressedKeys, player, callback) {
         if (pressedKeys.leftArrow) {
-            if (player.position.dx >= -maxSpeed) {
-                player.position.dx -= acceleration;
+            if (player.worldPosition.dx >= -maxSpeed) {
+                player.worldPosition.dx -= acceleration;
             }
         }
 
         if (pressedKeys.rightArrow) {
-            if (player.position.dx <= maxSpeed) {
-                player.position.dx += acceleration;
+            if (player.worldPosition.dx <= maxSpeed) {
+                player.worldPosition.dx += acceleration;
             }
         }
 
         if (pressedKeys.upArrow) {
-            if (player.position.dy <= maxSpeed) {
-                player.position.dy += acceleration;
+            if (player.worldPosition.dy <= maxSpeed) {
+                player.worldPosition.dy += acceleration;
             }
         }
 
         if (pressedKeys.downArrow) {
-            if (player.position.dy >= -maxSpeed) {
-                player.position.dy -= acceleration;
+            if (player.worldPosition.dy >= -maxSpeed) {
+                player.worldPosition.dy -= acceleration;
             }
         }
 
         if (!pressedKeys.leftArrow && !pressedKeys.rightArrow) {
-            if (player.position.dx > 0) {
-                if (player.position.dx < acceleration) {
-                    player.position.dx = 0;
+            if (player.worldPosition.dx > 0) {
+                if (player.worldPosition.dx < acceleration) {
+                    player.worldPosition.dx = 0;
                 } else {
-                    player.position.dx -= acceleration;
+                    player.worldPosition.dx -= acceleration;
                 }
             }
-            if (player.position.dx < 0) {
-                if (player.position.dx > -acceleration) {
-                    player.position.dx = 0;
+            if (player.worldPosition.dx < 0) {
+                if (player.worldPosition.dx > -acceleration) {
+                    player.worldPosition.dx = 0;
                 } else {
-                    player.position.dx += acceleration;
+                    player.worldPosition.dx += acceleration;
                 }
             }
         }
 
         if (!pressedKeys.upArrow && !pressedKeys.downArrow) {
-            if (player.position.dy > 0) {
-                if (player.position.dy < acceleration) {
-                    player.position.dy = 0;
+            if (player.worldPosition.dy > 0) {
+                if (player.worldPosition.dy < acceleration) {
+                    player.worldPosition.dy = 0;
                 } else {
-                    player.position.dy -= acceleration;
+                    player.worldPosition.dy -= acceleration;
                 }
             }
-            if (player.position.dy < 0) {
-                if (player.position.dy > -acceleration) {
-                    player.position.dy = 0;
+            if (player.worldPosition.dy < 0) {
+                if (player.worldPosition.dy > -acceleration) {
+                    player.worldPosition.dy = 0;
                 } else {
-                    player.position.dy += acceleration;
+                    player.worldPosition.dy += acceleration;
                 }
             }
         }
 
-        player.position.x += player.position.dx;
-        player.position.y += player.position.dy;
+        player.worldPosition.x += player.worldPosition.dx;
+        player.worldPosition.y += player.worldPosition.dy;
 
-        if (player.position.x < 0) {
-            player.position.x = 0;
-            player.position.dx = 0;
+        if (player.worldPosition.x < 0) {
+            player.worldPosition.x = 0;
+            player.worldPosition.dx = 0;
         }
 
-        if (player.position.x + player.width > 640) {
-            player.position.x = 640 - player.width;
-            player.position.dx = 0;
+        if (player.worldPosition.x + player.width > 640) {
+            player.worldPosition.x = 640 - player.width;
+            player.worldPosition.dx = 0;
         }
     }
 };
