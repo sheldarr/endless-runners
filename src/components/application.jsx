@@ -3,12 +3,14 @@ import React from 'react';
 import assetsLoader from '../etc/assetsLoader';
 import Menu from './menu.jsx';
 import Options from './options.jsx';
+import PlayersLobby from './playersLobby.jsx';
 import Scene from './scene.jsx';
 
 const ACTIVE_DISPLAY = {
     MENU: 0,
     GAME: 1,
-    OPTIONS: 2
+    OPTIONS: 2,
+    LOBBY: 3
 };
 
 const Application = React.createClass({
@@ -58,6 +60,12 @@ const Application = React.createClass({
         });
     },
 
+    displayLobby () {
+        this.setState({
+            activeDisplay: ACTIVE_DISPLAY.LOBBY
+        });
+    },
+
     displayMenu () {
         this.setState({
             activeDisplay: ACTIVE_DISPLAY.MENU
@@ -73,13 +81,17 @@ const Application = React.createClass({
             return <Options onChange={this.updateOptions} onClose={this.displayMenu} options={this.state.gameOptions}/>;
         }
 
+        if (this.state.activeDisplay === ACTIVE_DISPLAY.LOBBY) {
+            return <PlayersLobby onCancel={this.displayMenu} onStart={this.startGame}/>;
+        }
+
         return (
             <Menu
                 gameLoaded={this.state.gameLoaded}
                 loadingProgress={this.state.loadingProgress}
                 loadingResource={this.state.loadingResource}
                 optionsSelected={this.displayOptions}
-                startGameSelected={this.startGame}
+                startGameSelected={this.displayLobby}
             />
         );
     },
