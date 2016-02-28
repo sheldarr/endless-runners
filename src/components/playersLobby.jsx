@@ -20,7 +20,7 @@ const playersLobby = React.createClass({
 
         if (selectedCharacterIndex === 0) {
             this.setState({
-                selectedCharacter: CHARACTERS[this.state.characters.length - 1]
+                selectedCharacter: CHARACTERS[CHARACTERS.length - 1]
             });
 
             return;

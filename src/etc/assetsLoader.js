@@ -11,7 +11,7 @@ const assetsLoader = {
             .add('./assets/tiles/wall.png')
             .add('./assets/tiles/water_edge_top.png')
             .add('./assets/characters/blob.png')
-            .add('./assets/characters/dragon.png')
+            .add('./assets/characters/drake.png')
             .add('./assets/characters/ettercap.png')
             .add('./assets/characters/goblin.png')
             .add('./assets/characters/mage.png')
