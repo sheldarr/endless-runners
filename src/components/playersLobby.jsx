@@ -52,18 +52,32 @@ const playersLobby = React.createClass({
             <Grid>
                 <Row>
                     <Col xs={4} xsOffset={4}>
-                        <Button bsStyle="primary" onClick={this.previousCharacter}>
-                            <Glyphicon glyph="arrow-left"/>
-                        </Button>
-                        <Image rounded src={`./assets/characters/${this.state.selectedCharacter.asset}`}/>
-                        <Button bsStyle="primary" onClick={this.nextCharacter}>
-                            <Glyphicon glyph="arrow-right"/>
-                        </Button>
+                        <Row>
+                            <Col xs={4}>
+                                <Button bsStyle="primary" onClick={this.previousCharacter}>
+                                    <Glyphicon glyph="arrow-left"/>
+                                </Button>
+                            </Col>
+                            <Col xs={4}>
+                                <Image rounded src={`./assets/characters/${this.state.selectedCharacter.asset}`}/>
+
+                            </Col>
+                            <Col xs={4}>
+                                <Button bsStyle="primary" onClick={this.nextCharacter}>
+                                    <Glyphicon glyph="arrow-right"/>
+                                </Button>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col style={{textAlign: 'center'}} xs={4} xsOffset={4}>
+                        <strong>{`${this.state.selectedCharacter.name} | ${this.state.selectedCharacter.sizeCategory}`}</strong>
                     </Col>
                 </Row>
                 <Row>
                     <Row>
-                        <Col style={{textAlign: 'center'}} xs={4} xsOffset={4}>
+                        <Col style={{marginTop: 15, textAlign: 'center'}} xs={4} xsOffset={4}>
                             <span>{'Acceleration'}</span>
                         </Col>
                     </Row>
@@ -80,13 +94,6 @@ const playersLobby = React.createClass({
                     <Col xs={4} xsOffset={4}>
                         <ProgressBar bsStyle="success" now={this.state.selectedCharacter.maxSpeed / 8 * 100}/>
                     </Col>
-                </Row>
-                <Row>
-                    <Row>
-                        <Col style={{textAlign: 'center'}} xs={4} xsOffset={4}>
-                            <span>{`Size Category: ${this.state.selectedCharacter.sizeCategory}`}</span>
-                        </Col>
-                    </Row>
                 </Row>
                 <Row>
                     <Col style={{marginTop: 10}} xs={4} xsOffset={4}>
