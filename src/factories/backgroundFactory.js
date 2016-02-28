@@ -4,8 +4,8 @@ const backgroundFactory = {
     createDebugBackground () {
         let background = new PIXI.Container();
 
-        for (let i = 0; i < 20; i++) {
-            for (let j = 0; j < 10; j++) {
+        for (let i = 0; i < 40; i++) {
+            for (let j = 0; j < 12; j++) {
                 let newTile;
 
                 let randomNumber = Math.random();
@@ -34,7 +34,7 @@ const backgroundFactory = {
         let background = new PIXI.Container();
 
         for (let i = 0; i < 12; i++) {
-            for (let j = 0; j < 20; j++) {
+            for (let j = 0; j < 40; j++) {
                 let floorTile = new PIXI.Sprite(PIXI.utils.TextureCache['./assets/tiles/floor.png']);
 
                 floorTile.worldPosition = new PIXI.Point();
@@ -50,7 +50,7 @@ const backgroundFactory = {
         }
 
         for (let i = 0; i < 12; i++) {
-            for (let j = 0; j < 20; j++) {
+            for (let j = 0; j < 40; j++) {
                 let newTile;
 
                 if (i !== 0 && i !== 8 && i !== 9) {
