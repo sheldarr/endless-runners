@@ -73,7 +73,7 @@ const playersLobby = React.createClass({
                 </Row>
                 <Row>
                     <Col style={{marginTop: 10}} xs={4} xsOffset={4}>
-                        <Button block bsStyle="success" onClick={this.props.onStart}>
+                        <Button block bsStyle="success" onClick={this.props.onStart.bind(null, this.state.selectedCharacter)}>
                             <span><Glyphicon glyph="play"/> {'Start'}</span>
                         </Button>
                     </Col>

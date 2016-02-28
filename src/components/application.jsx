@@ -24,7 +24,8 @@ const Application = React.createClass({
                 sounds: 100
             },
             loadingProgress: 0,
-            loadingResource: ''
+            loadingResource: '',
+            selectedCharacter: ''
         };
     },
 
@@ -42,9 +43,10 @@ const Application = React.createClass({
         });
     },
 
-    startGame () {
+    startGame (character) {
         this.setState({
-            activeDisplay: ACTIVE_DISPLAY.GAME
+            activeDisplay: ACTIVE_DISPLAY.GAME,
+            selectedCharacter: character
         });
     },
 
@@ -74,7 +76,7 @@ const Application = React.createClass({
 
     renderActiveDisplay () {
         if (this.state.activeDisplay === ACTIVE_DISPLAY.GAME) {
-            return <Scene/>;
+            return <Scene characterName={this.state.selectedCharacter}/>;
         }
 
         if (this.state.activeDisplay === ACTIVE_DISPLAY.OPTIONS) {

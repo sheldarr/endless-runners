@@ -7,6 +7,10 @@ import pressedKeysHandler from '../handlers/pressedKeysHandler.js';
 import collisionHandler from '../handlers/collisionHandler.js';
 
 const Scene = React.createClass({
+    propTypes: {
+        characterName: React.PropTypes.string.isRequired
+    },
+
     getInitialState () {
         return {
             background: undefined,
@@ -42,7 +46,11 @@ const Scene = React.createClass({
 
     componentDidMount () {
         var background = backgroundFactory.createSewerBackground();
-        var player = charactersFactory.createPlayer({ x: 128, y: 128});
+        console.log(this.props.characterName);
+
+        var player = charactersFactory.createCharacter(this.props.characterName, { x: 128, y: 128});
+
+        console.log(player);
 
         this.state.stage.addChild(background);
         this.state.stage.addChild(player);
