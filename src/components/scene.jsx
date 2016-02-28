@@ -1,6 +1,6 @@
 import React from 'react';
 import PIXI from 'pixi.js';
-import playerFactory from '../factories/playerFactory.js';
+import charactersFactory from '../factories/charactersFactory.js';
 import backgroundFactory from '../factories/backgroundFactory.js';
 import playerControlsHandler from '../handlers/playerControlsHandler.js';
 import pressedKeysHandler from '../handlers/pressedKeysHandler.js';
@@ -42,7 +42,7 @@ const Scene = React.createClass({
 
     componentDidMount () {
         var background = backgroundFactory.createSewerBackground();
-        var player = playerFactory.create();
+        var player = charactersFactory.createPlayer({ x: 128, y: 128});
 
         this.state.stage.addChild(background);
         this.state.stage.addChild(player);

@@ -10,7 +10,7 @@ const assetsLoader = {
             .add('./assets/tiles/floor.png')
             .add('./assets/tiles/wall.png')
             .add('./assets/tiles/water_edge_top.png')
-            .add('./assets/player.png')
+            .add('./assets/characters/player.png')
             .on('progress', onProgress)
             .load(onLoad);
     }
