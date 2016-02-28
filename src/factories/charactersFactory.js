@@ -13,6 +13,8 @@ const charactersFactory = {
         character.position.dx = 0;
         character.position.dy = 0;
 
+        Object.assign(character, characterOptions);
+
         return character;
     }
 };

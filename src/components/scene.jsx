@@ -46,7 +46,6 @@ const Scene = React.createClass({
 
     componentDidMount () {
         var background = backgroundFactory.createSewerBackground();
-        console.log(this.props.selectedCharacter.name);
 
         var player = charactersFactory.createCharacter(this.props.selectedCharacter, { x: 128, y: 128});
 
