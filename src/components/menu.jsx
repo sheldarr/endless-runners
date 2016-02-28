@@ -55,7 +55,7 @@ const Menu = React.createClass({
                         </Row>
                         <Row>
                             <Col xs={12}>
-                                <ProgressBar active bsStyle="success" now={this.props.loadingProgress}/>
+                                <ProgressBar bsStyle="success" now={this.props.loadingProgress}/>
                             </Col>
                         </Row>
                     </Col>

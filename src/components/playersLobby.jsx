@@ -76,23 +76,31 @@ const playersLobby = React.createClass({
                     </Col>
                 </Row>
                 <Row>
-                    <Row>
-                        <Col style={{marginTop: 15, textAlign: 'center'}} xs={4} xsOffset={4}>
-                            <span>{'Acceleration'}</span>
-                        </Col>
-                    </Row>
-                    <Col xs={4} xsOffset={4}>
-                        <ProgressBar bsStyle="success" now={this.state.selectedCharacter.acceleration / 1 * 100}/>
+                    <Col xs={12}>
+                        <Row>
+                            <Col style={{marginTop: 15, textAlign: 'center'}} xs={4} xsOffset={4}>
+                                <span>{'Acceleration'}</span>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={4} xsOffset={4}>
+                                <ProgressBar bsStyle="success" now={this.state.selectedCharacter.acceleration / 1 * 100}/>
+                            </Col>
+                        </Row>
                     </Col>
                 </Row>
                 <Row>
-                    <Row>
-                        <Col style={{textAlign: 'center'}} xs={4} xsOffset={4}>
-                            <span>{'Max Speed'}</span>
-                        </Col>
-                    </Row>
-                    <Col xs={4} xsOffset={4}>
-                        <ProgressBar bsStyle="success" now={this.state.selectedCharacter.maxSpeed / 8 * 100}/>
+                    <Col xs={12}>
+                        <Row>
+                            <Col style={{textAlign: 'center'}} xs={4} xsOffset={4}>
+                                <span>{'Max Speed'}</span>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={4} xsOffset={4}>
+                                <ProgressBar bsStyle="success" now={this.state.selectedCharacter.maxSpeed / 8 * 100}/>
+                            </Col>
+                        </Row>
                     </Col>
                 </Row>
                 <Row>
