@@ -1,0 +1,63 @@
+const CHARACTERS = [{
+    acceleration: 0.1,
+    asset: 'blob.png',
+    maxSpeed: 4,
+    name: 'Blob',
+    sizeCategory: 'Small'
+}, {
+    acceleration: 0.5,
+    asset: 'dragon.png',
+    maxSpeed: 5,
+    name: 'Dragon',
+    sizeCategory: 'Big'
+}, {
+    acceleration: 0.2,
+    asset: 'ettercap.png',
+    maxSpeed: 4,
+    name: 'Ettercap',
+    sizeCategory: 'Big'
+}, {
+    acceleration: 0.1,
+    asset: 'goblin.png',
+    maxSpeed: 2,
+    name: 'Goblin',
+    sizeCategory: 'Medium'
+}, {
+    acceleration: 0.2,
+    asset: 'mage.png',
+    maxSpeed: 3,
+    name: 'Mage',
+    sizeCategory: 'Medium'
+}, {
+    acceleration: 0.2,
+    asset: 'Player.png',
+    maxSpeed: 2,
+    name: 'Player',
+    sizeCategory: 'Medium'
+}, {
+    acceleration: 0.1,
+    asset: 'skeleton.png',
+    maxSpeed: 3,
+    name: 'Skeleton',
+    sizeCategory: 'Medium'
+}, {
+    acceleration: 0.5,
+    asset: 'spider.png',
+    maxSpeed: 3,
+    name: 'Spider',
+    sizeCategory: 'Medium'
+}, {
+    acceleration: 0.1,
+    asset: 'Tortoise.png',
+    maxSpeed: 8,
+    name: 'Tortoise',
+    sizeCategory: 'Big'
+}, {
+    acceleration: 1.0,
+    asset: 'Wasp.png',
+    maxSpeed: 8,
+    name: 'Wasp',
+    sizeCategory: 'Medium'
+}];
+
+export default CHARACTERS;
