@@ -6,9 +6,9 @@ const CHARACTERS = [{
     sizeCategory: 'Small'
 }, {
     acceleration: 0.5,
-    asset: 'dragon.png',
+    asset: 'drake.png',
     maxSpeed: 5,
-    name: 'Dragon',
+    name: 'Drake',
     sizeCategory: 'Big'
 }, {
     acceleration: 0.2,
