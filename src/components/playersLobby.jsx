@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button, Col, Glyphicon, Grid, Image, Row } from 'react-bootstrap';
+import { Button, Col, Glyphicon, Grid, Image, ProgressBar, Row } from 'react-bootstrap';
+
+import CHARACTERS from '../constants/characters.js';
 
 const playersLobby = React.createClass({
     propTypes: {
@@ -9,51 +11,39 @@ const playersLobby = React.createClass({
 
     getInitialState () {
         return {
-            characters: [
-                'blob',
-                'dragon',
-                'ettercap',
-                'goblin',
-                'mage',
-                'player',
-                'skeleton',
-                'spider',
-                'tortoise',
-                'wasp'
-            ],
-            selectedCharacter: 'player'
+            selectedCharacter: CHARACTERS[0]
         };
     },
 
     previousCharacter () {
-        let selectedCharacterIndex = this.state.characters.indexOf(this.state.selectedCharacter);
+        let selectedCharacterIndex = CHARACTERS.indexOf(this.state.selectedCharacter);
 
         if (selectedCharacterIndex === 0) {
             this.setState({
-                selectedCharacter: this.state.characters[this.state.characters.length - 1]
+                selectedCharacter: CHARACTERS[this.state.characters.length - 1]
             });
 
             return;
         }
 
         this.setState({
-            selectedCharacter: this.state.characters[selectedCharacterIndex - 1]
+            selectedCharacter: CHARACTERS[selectedCharacterIndex - 1]
         });
     },
 
     nextCharacter () {
-        let selectedCharacterIndex = this.state.characters.indexOf(this.state.selectedCharacter);
+        let selectedCharacterIndex = CHARACTERS.indexOf(this.state.selectedCharacter);
 
-        if (selectedCharacterIndex === this.state.characters.length - 1) {
+        if (selectedCharacterIndex === CHARACTERS.length - 1) {
             this.setState({
-                selectedCharacter: this.state.characters[0]
+                selectedCharacter: CHARACTERS[0]
             });
 
             return;
         }
 
         this.setState({
-            selectedCharacter: this.state.characters[selectedCharacterIndex + 1]
+            selectedCharacter: CHARACTERS[selectedCharacterIndex + 1]
         });
     },
 
@@ -65,11 +55,38 @@ const playersLobby = React.createClass({
                         <Button bsStyle="primary" onClick={this.previousCharacter}>
                             <Glyphicon glyph="arrow-left"/>
                         </Button>
-                        <Image rounded src={`./assets/characters/${this.state.selectedCharacter}.png`}/>
+                        <Image rounded src={`./assets/characters/${this.state.selectedCharacter.asset}`}/>
                         <Button bsStyle="primary" onClick={this.nextCharacter}>
                             <Glyphicon glyph="arrow-right"/>
                         </Button>
                     </Col>
+                </Row>
+                <Row>
+                    <Row>
+                        <Col style={{textAlign: 'center'}} xs={4} xsOffset={4}>
+                            <span>{'Acceleration'}</span>
+                        </Col>
+                    </Row>
+                    <Col xs={4} xsOffset={4}>
+                        <ProgressBar bsStyle="success" now={this.state.selectedCharacter.acceleration / 1 * 100}/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Row>
+                        <Col style={{textAlign: 'center'}} xs={4} xsOffset={4}>
+                            <span>{'Max Speed'}</span>
+                        </Col>
+                    </Row>
+                    <Col xs={4} xsOffset={4}>
+                        <ProgressBar bsStyle="success" now={this.state.selectedCharacter.maxSpeed / 8 * 100}/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Row>
+                        <Col style={{textAlign: 'center'}} xs={4} xsOffset={4}>
+                            <span>{`Size Category: ${this.state.selectedCharacter.sizeCategory}`}</span>
+                        </Col>
+                    </Row>
                 </Row>
                 <Row>
                     <Col style={{marginTop: 10}} xs={4} xsOffset={4}>

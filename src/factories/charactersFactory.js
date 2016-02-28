@@ -6,8 +6,8 @@ const charactersFactory = {
         character.position.dy = 0;
     },
 
-    createCharacter (characterName, position) {
-        let character = new PIXI.Sprite(PIXI.utils.TextureCache[`./assets/characters/${characterName}.png`]);
+    createCharacter (characterOptions, position) {
+        let character = new PIXI.Sprite(PIXI.utils.TextureCache[`./assets/characters/${characterOptions.asset}`]);
 
         character.position = position;
         character.position.dx = 0;

@@ -25,7 +25,7 @@ const Application = React.createClass({
             },
             loadingProgress: 0,
             loadingResource: '',
-            selectedCharacter: ''
+            selectedCharacter: {}
         };
     },
 
@@ -76,7 +76,7 @@ const Application = React.createClass({
 
     renderActiveDisplay () {
         if (this.state.activeDisplay === ACTIVE_DISPLAY.GAME) {
-            return <Scene characterName={this.state.selectedCharacter}/>;
+            return <Scene selectedCharacter={this.state.selectedCharacter}/>;
         }
 
         if (this.state.activeDisplay === ACTIVE_DISPLAY.OPTIONS) {

@@ -8,7 +8,7 @@ import collisionHandler from '../handlers/collisionHandler.js';
 
 const Scene = React.createClass({
     propTypes: {
-        characterName: React.PropTypes.string.isRequired
+        selectedCharacter: React.PropTypes.object.isRequired
     },
 
     getInitialState () {
@@ -46,11 +46,9 @@ const Scene = React.createClass({
 
     componentDidMount () {
         var background = backgroundFactory.createSewerBackground();
-        console.log(this.props.characterName);
+        console.log(this.props.selectedCharacter.name);
 
-        var player = charactersFactory.createCharacter(this.props.characterName, { x: 128, y: 128});
-
-        console.log(player);
+        var player = charactersFactory.createCharacter(this.props.selectedCharacter, { x: 128, y: 128});
 
         this.state.stage.addChild(background);
         this.state.stage.addChild(player);
