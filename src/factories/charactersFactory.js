@@ -10,6 +10,7 @@ const charactersFactory = {
         let character = new PIXI.Sprite(PIXI.utils.TextureCache[`./assets/characters/${characterOptions.asset}`]);
 
         character.worldPosition = position;
+
         character.worldPosition.dx = 0;
         character.worldPosition.dy = 0;
 

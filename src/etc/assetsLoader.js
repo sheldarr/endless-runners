@@ -20,6 +20,8 @@ const assetsLoader = {
             .add('./assets/characters/spider.png')
             .add('./assets/characters/tortoise.png')
             .add('./assets/characters/wasp.png')
+            .add('./assets/xbox-buttons/a.png')
+            .add('./assets/xbox-buttons/b.png')
             .on('progress', onProgress)
             .load(onLoad);
     }

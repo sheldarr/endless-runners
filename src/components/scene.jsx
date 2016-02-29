@@ -8,6 +8,7 @@ import pressedKeysHandler from '../handlers/pressedKeysHandler.js';
 import collisionHandler from '../handlers/collisionHandler.js';
 import coordinatesConverter from '../handlers/coordinatesConverter.js';
 import cameraHandler from '../handlers/cameraHandler.js';
+import gamepadHandler from '../handlers/gamepadHandler.js';
 
 const Scene = React.createClass({
     propTypes: {
@@ -57,6 +58,9 @@ const Scene = React.createClass({
         this.state.stage.addChild(player);
 
         document.getElementById('scene').appendChild(this.state.renderer.view);
+
+        window.addEventListener('gamepadconnected', (event) => gamepadHandler.onConnect(event));
+        window.addEventListener('gamepaddisconnected', (event) => gamepadHandler.onDisconnect(event));
 
         this.setState({
             background: background,
