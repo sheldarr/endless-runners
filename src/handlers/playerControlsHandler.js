@@ -1,74 +1,74 @@
 const playerControlsHandler = {
-    handle (pressedKeys, player, callback) {
+    handle (pressedKeys, player) {
         if (pressedKeys.leftArrow) {
-            if (player.position.dx >= -player.maxSpeed) {
-                player.position.dx -= player.acceleration;
+            if (player.worldPosition.dx >= -player.maxSpeed) {
+                player.worldPosition.dx -= player.acceleration;
             }
         }
 
         if (pressedKeys.rightArrow) {
-            if (player.position.dx <= player.maxSpeed) {
-                player.position.dx += player.acceleration;
+            if (player.worldPosition.dx <= player.maxSpeed) {
+                player.worldPosition.dx += player.acceleration;
             }
         }
 
         if (pressedKeys.upArrow) {
-            if (player.position.dy <= player.maxSpeed) {
-                player.position.dy += player.acceleration;
+            if (player.worldPosition.dy <= player.maxSpeed) {
+                player.worldPosition.dy += player.acceleration;
             }
         }
 
         if (pressedKeys.downArrow) {
-            if (player.position.dy >= -player.maxSpeed) {
-                player.position.dy -= player.acceleration;
+            if (player.worldPosition.dy >= -player.maxSpeed) {
+                player.worldPosition.dy -= player.acceleration;
             }
         }
 
         if (!pressedKeys.leftArrow && !pressedKeys.rightArrow) {
-            if (player.position.dx > 0) {
-                if (player.position.dx < player.acceleration) {
-                    player.position.dx = 0;
+            if (player.worldPosition.dx > 0) {
+                if (player.worldPosition.dx < player.acceleration) {
+                    player.worldPosition.dx = 0;
                 } else {
-                    player.position.dx -= player.acceleration;
+                    player.worldPosition.dx -= player.acceleration;
                 }
             }
-            if (player.position.dx < 0) {
-                if (player.position.dx > -player.acceleration) {
-                    player.position.dx = 0;
+            if (player.worldPosition.dx < 0) {
+                if (player.worldPosition.dx > -player.acceleration) {
+                    player.worldPosition.dx = 0;
                 } else {
-                    player.position.dx += player.acceleration;
+                    player.worldPosition.dx += player.acceleration;
                 }
             }
         }
 
         if (!pressedKeys.upArrow && !pressedKeys.downArrow) {
-            if (player.position.dy > 0) {
-                if (player.position.dy < player.acceleration) {
-                    player.position.dy = 0;
+            if (player.worldPosition.dy > 0) {
+                if (player.worldPosition.dy < player.acceleration) {
+                    player.worldPosition.dy = 0;
                 } else {
-                    player.position.dy -= player.acceleration;
+                    player.worldPosition.dy -= player.acceleration;
                 }
             }
-            if (player.position.dy < 0) {
-                if (player.position.dy > -player.acceleration) {
-                    player.position.dy = 0;
+            if (player.worldPosition.dy < 0) {
+                if (player.worldPosition.dy > -player.acceleration) {
+                    player.worldPosition.dy = 0;
                 } else {
-                    player.position.dy += player.acceleration;
+                    player.worldPosition.dy += player.acceleration;
                 }
             }
         }
 
-        player.position.x += player.position.dx;
-        player.position.y += player.position.dy;
+        player.worldPosition.x += player.worldPosition.dx;
+        player.worldPosition.y += player.worldPosition.dy;
 
-        if (player.position.x < 0) {
-            player.position.x = 0;
-            player.position.dx = 0;
+        if (player.worldPosition.x < 0) {
+            player.worldPosition.x = 0;
+            player.worldPosition.dx = 0;
         }
 
-        if (player.position.x + player.width > 640) {
-            player.position.x = 640 - player.width;
-            player.position.dx = 0;
+        if (player.worldPosition.x + player.width > 40 * 32) {
+            player.worldPosition.x = 40 * 32 - player.width;
+            player.worldPosition.dx = 0;
         }
     }
 };

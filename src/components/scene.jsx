@@ -2,9 +2,12 @@ import React from 'react';
 import PIXI from 'pixi.js';
 import charactersFactory from '../factories/charactersFactory.js';
 import backgroundFactory from '../factories/backgroundFactory.js';
+import cameraFactory from '../factories/cameraFactory.js';
 import playerControlsHandler from '../handlers/playerControlsHandler.js';
 import pressedKeysHandler from '../handlers/pressedKeysHandler.js';
 import collisionHandler from '../handlers/collisionHandler.js';
+import coordinatesConverter from '../handlers/coordinatesConverter.js';
+import cameraHandler from '../handlers/cameraHandler.js';
 
 const Scene = React.createClass({
     propTypes: {
@@ -15,6 +18,7 @@ const Scene = React.createClass({
         return {
             background: undefined,
             player: undefined,
+            camera: undefined,
             renderer: new PIXI.WebGLRenderer(640, 320),
             stage: new PIXI.Container(),
             pressedKeys: {
@@ -46,8 +50,8 @@ const Scene = React.createClass({
 
     componentDidMount () {
         var background = backgroundFactory.createSewerBackground();
-
         var player = charactersFactory.createCharacter(this.props.selectedCharacter, { x: 128, y: 128});
+        var camera = cameraFactory.create();
 
         this.state.stage.addChild(background);
         this.state.stage.addChild(player);
@@ -56,7 +60,8 @@ const Scene = React.createClass({
 
         this.setState({
             background: background,
-            player: player
+            player: player,
+            camera: camera
         }, () => {
             this.animate();
         });
@@ -65,16 +70,10 @@ const Scene = React.createClass({
     animate () {
         requestAnimationFrame(this.animate);
 
-        playerControlsHandler.handle(this.state.pressedKeys, this.state.player, (player) => {
-            this.setState({
-                player: player
-            });
-        });
-        collisionHandler.handle(this.state.player, this.state.background.children, (player) => {
-            this.setState({
-                player: player
-            });
-        });
+        playerControlsHandler.handle(this.state.pressedKeys, this.state.player);
+        collisionHandler.handle(this.state.player, this.state.background.children);
+        coordinatesConverter.toScreen(this.state.player, this.state.background.children, this.state.camera);
+        cameraHandler.handle(this.state.camera, this.state.player);
 
         this.state.renderer.render(this.state.stage);
     },
