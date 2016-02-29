@@ -58,17 +58,25 @@ const playerControlsHandler = {
             }
         }
 
-        player.texture.worldPosition.x += player.velocity.x;
-        player.texture.worldPosition.y += player.velocity.y;
+        player.sprite.worldPosition.x += player.velocity.x;
+        player.sprite.worldPosition.y += player.velocity.y;
 
-        if (player.texture.worldPosition.x < 0) {
-            player.texture.worldPosition.x = 0;
+        if (player.sprite.worldPosition.x < 0) {
+            player.sprite.worldPosition.x = 0;
             player.velocity.x = 0;
         }
 
-        if (player.texture.worldPosition.x + player.texture.width > 40 * 32) {
-            player.texture.worldPosition.x = 40 * 32 - player.texture.width;
+        if (player.sprite.worldPosition.x + player.sprite.width > 40 * 32) {
+            player.sprite.worldPosition.x = 40 * 32 - player.sprite.width;
             player.velocity.x = 0;
+        }
+
+        if (pressedKeys.leftArrow) {
+            player.sprite.scale.x = -1;
+        }
+
+        if (pressedKeys.rightArrow) {
+            player.sprite.scale.x = 1;
         }
     }
 };

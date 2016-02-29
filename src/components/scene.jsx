@@ -56,7 +56,7 @@ const Scene = React.createClass({
         var camera = cameraFactory.create();
 
         this.state.stage.addChild(background);
-        this.state.stage.addChild(player.texture);
+        this.state.stage.addChild(player.sprite);
 
         document.getElementById('scene').appendChild(this.state.renderer.view);
 
