@@ -66,27 +66,10 @@ const Scene = React.createClass({
     animate () {
         requestAnimationFrame(this.animate);
 
-        playerControlsHandler.handle(this.state.pressedKeys, this.state.player, (player) => {
-            this.setState({
-                player: player
-            });
-        });
-        collisionHandler.handle(this.state.player, this.state.background.children, (player) => {
-            this.setState({
-                player: player
-            });
-        });
-        coordinatesConverter.toScreen(this.state.player, this.state.background.children, this.state.camera, (player, background) => {
-            this.setState({
-                player: player,
-                background: background
-            });
-        });
-        cameraHandler.handle(this.state.camera, this.state.player, (camera) => {
-            this.setState({
-                camera: camera
-            });
-        });
+        playerControlsHandler.handle(this.state.pressedKeys, this.state.player);
+        collisionHandler.handle(this.state.player, this.state.background.children);
+        coordinatesConverter.toScreen(this.state.player, this.state.background.children, this.state.camera);
+        cameraHandler.handle(this.state.camera, this.state.player);
 
         this.state.renderer.render(this.state.stage);
     },

@@ -2,7 +2,7 @@ const acceleration = 0.1;
 const maxSpeed = 2;
 
 const playerControlsHandler = {
-    handle (pressedKeys, player, callback) {
+    handle (pressedKeys, player) {
         if (pressedKeys.leftArrow) {
             if (player.worldPosition.dx >= -maxSpeed) {
                 player.worldPosition.dx -= acceleration;

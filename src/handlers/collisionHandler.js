@@ -23,7 +23,7 @@ const collisionHandler = {
         }
     },
 
-    handle (player, tiles, callback) {
+    handle (player, tiles) {
         tiles.forEach((tile) => {
             if (tile.isSolid) {
                 if (!(player.worldPosition.x + player.worldPosition.dx > tile.worldPosition.x + tile.width ||
