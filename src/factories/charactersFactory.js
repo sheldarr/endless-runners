@@ -1,4 +1,5 @@
 import PIXI from 'pixi.js';
+
 const charactersFactory = {
     createCharacter (characterOptions, position) {
         let character = new PIXI.Sprite(PIXI.utils.TextureCache[`./assets/characters/${characterOptions.asset}`]);
