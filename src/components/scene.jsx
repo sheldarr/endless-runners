@@ -1,7 +1,7 @@
 import React from 'react';
 import PIXI from 'pixi.js';
-import charactersFactory from '../factories/charactersFactory.js';
 import backgroundFactory from '../factories/backgroundFactory.js';
+import playersFactory from '../factories/playersFactory.js';
 import cameraFactory from '../factories/cameraFactory.js';
 import playerControlsHandler from '../handlers/playerControlsHandler.js';
 import pressedKeysHandler from '../handlers/pressedKeysHandler.js';
@@ -51,11 +51,12 @@ const Scene = React.createClass({
 
     componentDidMount () {
         var background = backgroundFactory.createSewerBackground();
-        var player = charactersFactory.createCharacter(this.props.selectedCharacter, { x: 128, y: 128});
+        var player = playersFactory.create(0, {x: 128, y: 128}, this.props.selectedCharacter);
+
         var camera = cameraFactory.create();
 
         this.state.stage.addChild(background);
-        this.state.stage.addChild(player);
+        this.state.stage.addChild(player.texture);
 
         document.getElementById('scene').appendChild(this.state.renderer.view);
 
