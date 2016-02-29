@@ -16,8 +16,6 @@ function Player (index, position, character) {
         y: this.sprite.height / 2
     };
     this.sprite.worldPosition = position;
-
-    console.log(this);
 }
 
 Player.prototype.moveLeft = function () {
