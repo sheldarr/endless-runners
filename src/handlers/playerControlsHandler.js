@@ -1,74 +1,74 @@
 const playerControlsHandler = {
     handle (pressedKeys, player) {
         if (pressedKeys.leftArrow) {
-            if (player.worldPosition.dx >= -player.maxSpeed) {
-                player.worldPosition.dx -= player.acceleration;
+            if (player.velocity.x >= -player.maxSpeed) {
+                player.velocity.x -= player.acceleration;
             }
         }
 
         if (pressedKeys.rightArrow) {
-            if (player.worldPosition.dx <= player.maxSpeed) {
-                player.worldPosition.dx += player.acceleration;
+            if (player.velocity.x <= player.maxSpeed) {
+                player.velocity.x += player.acceleration;
             }
         }
 
         if (pressedKeys.upArrow) {
-            if (player.worldPosition.dy <= player.maxSpeed) {
-                player.worldPosition.dy += player.acceleration;
+            if (player.velocity.y <= player.maxSpeed) {
+                player.velocity.y += player.acceleration;
             }
         }
 
         if (pressedKeys.downArrow) {
-            if (player.worldPosition.dy >= -player.maxSpeed) {
-                player.worldPosition.dy -= player.acceleration;
+            if (player.velocity.y >= -player.maxSpeed) {
+                player.velocity.y -= player.acceleration;
             }
         }
 
         if (!pressedKeys.leftArrow && !pressedKeys.rightArrow) {
-            if (player.worldPosition.dx > 0) {
-                if (player.worldPosition.dx < player.acceleration) {
-                    player.worldPosition.dx = 0;
+            if (player.velocity.x > 0) {
+                if (player.velocity.x < player.acceleration) {
+                    player.velocity.x = 0;
                 } else {
-                    player.worldPosition.dx -= player.acceleration;
+                    player.velocity.x -= player.acceleration;
                 }
             }
-            if (player.worldPosition.dx < 0) {
-                if (player.worldPosition.dx > -player.acceleration) {
-                    player.worldPosition.dx = 0;
+            if (player.velocity.x < 0) {
+                if (player.velocity.x > -player.acceleration) {
+                    player.velocity.x = 0;
                 } else {
-                    player.worldPosition.dx += player.acceleration;
+                    player.velocity.x += player.acceleration;
                 }
             }
         }
 
         if (!pressedKeys.upArrow && !pressedKeys.downArrow) {
-            if (player.worldPosition.dy > 0) {
-                if (player.worldPosition.dy < player.acceleration) {
-                    player.worldPosition.dy = 0;
+            if (player.velocity.y > 0) {
+                if (player.velocity.y < player.acceleration) {
+                    player.velocity.y = 0;
                 } else {
-                    player.worldPosition.dy -= player.acceleration;
+                    player.velocity.y -= player.acceleration;
                 }
             }
-            if (player.worldPosition.dy < 0) {
-                if (player.worldPosition.dy > -player.acceleration) {
-                    player.worldPosition.dy = 0;
+            if (player.velocity.y < 0) {
+                if (player.velocity.y > -player.acceleration) {
+                    player.velocity.y = 0;
                 } else {
-                    player.worldPosition.dy += player.acceleration;
+                    player.velocity.y += player.acceleration;
                 }
             }
         }
 
-        player.worldPosition.x += player.worldPosition.dx;
-        player.worldPosition.y += player.worldPosition.dy;
+        player.texture.worldPosition.x += player.velocity.x;
+        player.texture.worldPosition.y += player.velocity.y;
 
-        if (player.worldPosition.x < 0) {
-            player.worldPosition.x = 0;
-            player.worldPosition.dx = 0;
+        if (player.texture.worldPosition.x < 0) {
+            player.texture.worldPosition.x = 0;
+            player.velocity.x = 0;
         }
 
-        if (player.worldPosition.x + player.width > 40 * 32) {
-            player.worldPosition.x = 40 * 32 - player.width;
-            player.worldPosition.dx = 0;
+        if (player.texture.worldPosition.x + player.texture.width > 40 * 32) {
+            player.texture.worldPosition.x = 40 * 32 - player.texture.width;
+            player.velocity.x = 0;
         }
     }
 };
