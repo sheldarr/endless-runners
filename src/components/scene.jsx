@@ -2,7 +2,7 @@ import React from 'react';
 import PIXI from 'pixi.js';
 import backgroundFactory from '../factories/backgroundFactory.js';
 import cameraFactory from '../factories/cameraFactory.js';
-import playerControlsHandler from '../handlers/playerControlsHandler.js';
+import playersControlsHandler from '../handlers/playersControlsHandler.js';
 import collisionHandler from '../handlers/collisionHandler.js';
 import coordinatesConverter from '../handlers/coordinatesConverter.js';
 import cameraHandler from '../handlers/cameraHandler.js';
@@ -28,7 +28,10 @@ const Scene = React.createClass({
         var camera = cameraFactory.create();
 
         this.state.stage.addChild(background);
-        this.state.stage.addChild(gameState.players[0].sprite);
+
+        gameState.players.forEach((player) => {
+            this.state.stage.addChild(player.sprite);
+        });
 
         document.getElementById('scene').appendChild(this.state.renderer.view);
 
@@ -43,9 +46,9 @@ const Scene = React.createClass({
     animate () {
         requestAnimationFrame(this.animate);
 
-        playerControlsHandler.handle(gameState.pressedKeys, gameState.players[0]);
-        collisionHandler.handle(gameState.players[0], this.state.background.children);
-        coordinatesConverter.toScreen(gameState.players[0], this.state.background.children, this.state.camera);
+        playersControlsHandler.handle(gameState.pressedKeys, gameState.players);
+        collisionHandler.handle(gameState.players, this.state.background.children);
+        coordinatesConverter.toScreen(gameState.players, this.state.background.children, this.state.camera);
         cameraHandler.handle(this.state.camera, gameState.players[0]);
 
         this.state.renderer.render(this.state.stage);

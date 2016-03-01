@@ -1,8 +1,8 @@
 const KEYBOARD_MAP = {
     LEFT_ARROW: 37,
-    DOWN_ARROW: 38,
+    UP_ARROW: 38,
     RIGHT_ARROW: 39,
-    UP_ARROW: 40,
+    DOWN_ARROW: 40,
     NUMBER_1: 49,
     NUMBER_2: 50,
     NUMBER_3: 51,

@@ -23,17 +23,19 @@ const collisionHandler = {
         }
     },
 
-    handle (player, tiles) {
-        tiles.forEach((tile) => {
-            if (tile.isSolid) {
-                if (!(player.sprite.worldPosition.x + player.velocity.x > tile.worldPosition.x + tile.width ||
-                player.sprite.worldPosition.x + player.sprite.width + player.velocity.x < tile.worldPosition.x ||
-                player.sprite.worldPosition.y + player.velocity.y > tile.worldPosition.y + tile.height ||
-                player.sprite.worldPosition.y + player.sprite.height + player.velocity.y < tile.worldPosition.y)) {
-                    this.handleVerticalCollision(player, tile);
-                    this.handleHorizontalCollision(player, tile);
+    handle (players, tiles) {
+        players.forEach((player) => {
+            tiles.forEach((tile) => {
+                if (tile.isSolid) {
+                    if (!(player.sprite.worldPosition.x + player.velocity.x > tile.worldPosition.x + tile.width ||
+                    player.sprite.worldPosition.x + player.sprite.width + player.velocity.x < tile.worldPosition.x ||
+                    player.sprite.worldPosition.y + player.velocity.y > tile.worldPosition.y + tile.height ||
+                    player.sprite.worldPosition.y + player.sprite.height + player.velocity.y < tile.worldPosition.y)) {
+                        this.handleVerticalCollision(player, tile);
+                        this.handleHorizontalCollision(player, tile);
+                    }
                 }
-            }
+            });
         });
     }
 };
