@@ -1,30 +1,32 @@
+import KEYBOARD_MAP from '../constants/keyboardMap.js';
+
 const playerControlsHandler = {
     handle (pressedKeys, player) {
-        if (pressedKeys.leftArrow) {
+        if (pressedKeys[KEYBOARD_MAP.LEFT_ARROW]) {
             if (player.velocity.x >= -player.maxSpeed) {
                 player.velocity.x -= player.acceleration;
             }
         }
 
-        if (pressedKeys.rightArrow) {
+        if (pressedKeys[KEYBOARD_MAP.RIGHT_ARROW]) {
             if (player.velocity.x <= player.maxSpeed) {
                 player.velocity.x += player.acceleration;
             }
         }
 
-        if (pressedKeys.upArrow) {
+        if (pressedKeys[KEYBOARD_MAP.UP_ARROW]) {
             if (player.velocity.y <= player.maxSpeed) {
                 player.velocity.y += player.acceleration;
             }
         }
 
-        if (pressedKeys.downArrow) {
+        if (pressedKeys[KEYBOARD_MAP.DOWN_ARROW]) {
             if (player.velocity.y >= -player.maxSpeed) {
                 player.velocity.y -= player.acceleration;
             }
         }
 
-        if (!pressedKeys.leftArrow && !pressedKeys.rightArrow) {
+        if (!pressedKeys[KEYBOARD_MAP.LEFT_ARROW] && !pressedKeys[KEYBOARD_MAP.RIGHT_ARROW]) {
             if (player.velocity.x > 0) {
                 if (player.velocity.x < player.acceleration) {
                     player.velocity.x = 0;
@@ -41,7 +43,7 @@ const playerControlsHandler = {
             }
         }
 
-        if (!pressedKeys.upArrow && !pressedKeys.downArrow) {
+        if (!pressedKeys[KEYBOARD_MAP.UP_ARROW] && !pressedKeys[KEYBOARD_MAP.DOWN_ARROW]) {
             if (player.velocity.y > 0) {
                 if (player.velocity.y < player.acceleration) {
                     player.velocity.y = 0;
@@ -69,14 +71,6 @@ const playerControlsHandler = {
         if (player.sprite.worldPosition.x + player.sprite.width > 40 * 32) {
             player.sprite.worldPosition.x = 40 * 32 - player.sprite.width;
             player.velocity.x = 0;
-        }
-
-        if (pressedKeys.leftArrow) {
-            player.sprite.scale.x = -1;
-        }
-
-        if (pressedKeys.rightArrow) {
-            player.sprite.scale.x = 1;
         }
     }
 };

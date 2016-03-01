@@ -6,6 +6,8 @@ import Options from './options.jsx';
 import PlayersLobby from './playersLobby.jsx';
 import Scene from './scene.jsx';
 
+import eventsBinder from '../etc/eventsBinder.js';
+
 const ACTIVE_DISPLAY = {
     MENU: 0,
     GAME: 1,
@@ -30,6 +32,8 @@ const Application = React.createClass({
     },
 
     componentDidMount () {
+        eventsBinder.bind();
+
         assetsLoader.load((loader, resource) => {
             this.setState({
                 loadingProgress: loader.progress,

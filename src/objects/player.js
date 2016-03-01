@@ -12,10 +12,6 @@ function Player (index, position, character) {
     };
 
     this.sprite = new PIXI.Sprite(PIXI.utils.TextureCache[`./assets/characters/${character.asset}`]);
-    this.sprite.pivot = {
-        x: this.sprite.width / 2,
-        y: this.sprite.height / 2
-    };
     this.sprite.worldPosition = position;
 }
 

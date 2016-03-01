@@ -1,4 +1,4 @@
-const XBOX_CONTROLLER_BUTTONS = {
+const XBOX_CONTROLLER_MAP = {
     A: 0,
     B: 1,
     X: 2,
@@ -17,4 +17,4 @@ const XBOX_CONTROLLER_BUTTONS = {
     DPAD_RIGHT: 15
 };
 
-export default XBOX_CONTROLLER_BUTTONS;
+export default XBOX_CONTROLLER_MAP;
