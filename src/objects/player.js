@@ -1,6 +1,6 @@
 import PIXI from 'pixi.js';
 
-function Player (index, position, character) {
+function Player (index, position, character, controls) {
     this.index = index;
     this.enabled = false;
 
@@ -13,6 +13,8 @@ function Player (index, position, character) {
 
     this.sprite = new PIXI.Sprite(PIXI.utils.TextureCache[`./assets/characters/${character.asset}`]);
     this.sprite.worldPosition = position;
+
+    this.controls = controls;
 }
 
 Player.prototype.moveLeft = function () {

@@ -2,31 +2,31 @@ import KEYBOARD_MAP from '../constants/keyboardMap.js';
 
 const playerControlsHandler = {
     handle (pressedKeys, player) {
-        if (pressedKeys[KEYBOARD_MAP.LEFT_ARROW]) {
+        if (pressedKeys[player.controls.left]) {
             if (player.velocity.x >= -player.maxSpeed) {
                 player.velocity.x -= player.acceleration;
             }
         }
 
-        if (pressedKeys[KEYBOARD_MAP.RIGHT_ARROW]) {
+        if (pressedKeys[player.controls.right]) {
             if (player.velocity.x <= player.maxSpeed) {
                 player.velocity.x += player.acceleration;
             }
         }
 
-        if (pressedKeys[KEYBOARD_MAP.UP_ARROW]) {
+        if (pressedKeys[player.controls.up]) {
             if (player.velocity.y <= player.maxSpeed) {
                 player.velocity.y += player.acceleration;
             }
         }
 
-        if (pressedKeys[KEYBOARD_MAP.DOWN_ARROW]) {
+        if (pressedKeys[player.controls.down]) {
             if (player.velocity.y >= -player.maxSpeed) {
                 player.velocity.y -= player.acceleration;
             }
         }
 
-        if (!pressedKeys[KEYBOARD_MAP.LEFT_ARROW] && !pressedKeys[KEYBOARD_MAP.RIGHT_ARROW]) {
+        if (!pressedKeys[player.controls.left] && !pressedKeys[player.controls.right]) {
             if (player.velocity.x > 0) {
                 if (player.velocity.x < player.acceleration) {
                     player.velocity.x = 0;
@@ -43,7 +43,7 @@ const playerControlsHandler = {
             }
         }
 
-        if (!pressedKeys[KEYBOARD_MAP.UP_ARROW] && !pressedKeys[KEYBOARD_MAP.DOWN_ARROW]) {
+        if (!pressedKeys[player.controls.up] && !pressedKeys[player.controls.down]) {
             if (player.velocity.y > 0) {
                 if (player.velocity.y < player.acceleration) {
                     player.velocity.y = 0;
