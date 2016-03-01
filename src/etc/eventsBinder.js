@@ -13,10 +13,6 @@ const eventsBinder = {
 
         window.addEventListener('gamepadconnected', (event) => gamepadHandler.onConnect(event, gameState.players));
         window.addEventListener('gamepaddisconnected', (event) => gamepadHandler.onDisconnect(event, gameState.players));
-        window.addEventListener('resize', (event) => {
-            this.state.renderer.view.style.width = `${event.target.innerWidth}px`;
-            this.state.renderer.view.style.height = `${event.target.innerHeight}px`;
-        });
     }
 };
 

@@ -41,6 +41,11 @@ const Scene = React.createClass({
         }, () => {
             this.animate();
         });
+
+        window.addEventListener('resize', (event) => {
+            this.state.renderer.view.style.width = `${event.target.innerWidth}px`;
+            this.state.renderer.view.style.height = `${event.target.innerHeight}px`;
+        });
     },
 
     animate () {
