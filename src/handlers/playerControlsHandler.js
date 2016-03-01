@@ -1,5 +1,3 @@
-import KEYBOARD_MAP from '../constants/keyboardMap.js';
-
 const playerControlsHandler = {
     handle (pressedKeys, player) {
         if (pressedKeys[player.controls.left]) {
