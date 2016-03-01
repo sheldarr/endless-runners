@@ -62,6 +62,10 @@ const Scene = React.createClass({
 
         window.addEventListener('gamepadconnected', (event) => gamepadHandler.onConnect(event));
         window.addEventListener('gamepaddisconnected', (event) => gamepadHandler.onDisconnect(event));
+        window.addEventListener('resize', (event) => {
+            this.state.renderer.view.style.width = `${event.target.innerWidth}px`;
+            this.state.renderer.view.style.height = `${event.target.innerHeight}px`;
+        });
 
         this.setState({
             background: background,
