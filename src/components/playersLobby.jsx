@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Col, Glyphicon, Grid, Image, ProgressBar, Row } from 'react-bootstrap';
+import { Button, Col, Glyphicon, Grid, Row } from 'react-bootstrap';
 
-import CHARACTERS from '../constants/characters.js';
+import PlayerSelect from './PlayerSelect.jsx';
 
 const playersLobby = React.createClass({
     propTypes: {
@@ -9,103 +9,18 @@ const playersLobby = React.createClass({
         onStart: React.PropTypes.func.isRequired
     },
 
-    getInitialState () {
-        return {
-            selectedCharacter: CHARACTERS[0]
-        };
-    },
-
-    previousCharacter () {
-        let selectedCharacterIndex = CHARACTERS.indexOf(this.state.selectedCharacter);
-
-        if (selectedCharacterIndex === 0) {
-            this.setState({
-                selectedCharacter: CHARACTERS[CHARACTERS.length - 1]
-            });
-
-            return;
-        }
-
-        this.setState({
-            selectedCharacter: CHARACTERS[selectedCharacterIndex - 1]
-        });
-    },
-
-    nextCharacter () {
-        let selectedCharacterIndex = CHARACTERS.indexOf(this.state.selectedCharacter);
-
-        if (selectedCharacterIndex === CHARACTERS.length - 1) {
-            this.setState({
-                selectedCharacter: CHARACTERS[0]
-            });
-
-            return;
-        }
-
-        this.setState({
-            selectedCharacter: CHARACTERS[selectedCharacterIndex + 1]
-        });
-    },
-
     render () {
         return (
             <Grid>
                 <Row>
-                    <Col xs={4} xsOffset={4}>
-                        <Row>
-                            <Col xs={4}>
-                                <Button bsStyle="primary" onClick={this.previousCharacter}>
-                                    <Glyphicon glyph="arrow-left"/>
-                                </Button>
-                            </Col>
-                            <Col xs={4}>
-                                <Image rounded src={`./assets/characters/${this.state.selectedCharacter.asset}`}/>
-
-                            </Col>
-                            <Col xs={4}>
-                                <Button bsStyle="primary" onClick={this.nextCharacter}>
-                                    <Glyphicon glyph="arrow-right"/>
-                                </Button>
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col style={{textAlign: 'center'}} xs={4} xsOffset={4}>
-                        <strong>{`${this.state.selectedCharacter.name} | ${this.state.selectedCharacter.sizeCategory}`}</strong>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs={12}>
-                        <Row>
-                            <Col style={{marginTop: 15, textAlign: 'center'}} xs={4} xsOffset={4}>
-                                <span>{'Acceleration'}</span>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs={4} xsOffset={4}>
-                                <ProgressBar bsStyle="success" now={this.state.selectedCharacter.acceleration / 1 * 100}/>
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs={12}>
-                        <Row>
-                            <Col style={{textAlign: 'center'}} xs={4} xsOffset={4}>
-                                <span>{'Max Speed'}</span>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs={4} xsOffset={4}>
-                                <ProgressBar bsStyle="success" now={this.state.selectedCharacter.maxSpeed / 8 * 100}/>
-                            </Col>
-                        </Row>
-                    </Col>
+                    <PlayerSelect playerIndex={0}/>
+                    <PlayerSelect playerIndex={1}/>
+                    <PlayerSelect playerIndex={2}/>
+                    <PlayerSelect playerIndex={3}/>
                 </Row>
                 <Row>
                     <Col style={{marginTop: 10}} xs={4} xsOffset={4}>
-                        <Button block bsStyle="success" onClick={this.props.onStart.bind(null, this.state.selectedCharacter)}>
+                        <Button block bsStyle="success" onClick={this.props.onStart}>
                             <span><Glyphicon glyph="play"/> {'Start'}</span>
                         </Button>
                     </Col>

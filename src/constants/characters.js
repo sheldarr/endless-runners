@@ -2,62 +2,52 @@ const CHARACTERS = [{
     acceleration: 0.1,
     asset: 'blob.png',
     maxSpeed: 4,
-    name: 'Blob',
-    sizeCategory: 'Small'
+    name: 'Blob'
 }, {
     acceleration: 0.5,
     asset: 'drake.png',
     maxSpeed: 5,
-    name: 'Drake',
-    sizeCategory: 'Big'
+    name: 'Drake'
 }, {
     acceleration: 0.2,
     asset: 'ettercap.png',
     maxSpeed: 4,
-    name: 'Ettercap',
-    sizeCategory: 'Big'
+    name: 'Ettercap'
 }, {
     acceleration: 0.1,
     asset: 'goblin.png',
     maxSpeed: 2,
-    name: 'Goblin',
-    sizeCategory: 'Medium'
+    name: 'Goblin'
 }, {
     acceleration: 0.2,
     asset: 'mage.png',
     maxSpeed: 3,
-    name: 'Mage',
-    sizeCategory: 'Medium'
+    name: 'Mage'
 }, {
     acceleration: 0.2,
     asset: 'player.png',
     maxSpeed: 2,
-    name: 'Player',
-    sizeCategory: 'Medium'
+    name: 'Player'
 }, {
     acceleration: 0.1,
     asset: 'skeleton.png',
     maxSpeed: 3,
-    name: 'Skeleton',
-    sizeCategory: 'Medium'
+    name: 'Skeleton'
 }, {
     acceleration: 0.5,
     asset: 'spider.png',
     maxSpeed: 3,
-    name: 'Spider',
-    sizeCategory: 'Medium'
+    name: 'Spider'
 }, {
     acceleration: 0.1,
     asset: 'tortoise.png',
     maxSpeed: 8,
-    name: 'Tortoise',
-    sizeCategory: 'Big'
+    name: 'Tortoise'
 }, {
     acceleration: 1.0,
     asset: 'wasp.png',
     maxSpeed: 8,
-    name: 'Wasp',
-    sizeCategory: 'Medium'
+    name: 'Wasp'
 }];
 
 export default CHARACTERS;

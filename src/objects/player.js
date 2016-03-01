@@ -2,6 +2,7 @@ import PIXI from 'pixi.js';
 
 function Player (index, position, character) {
     this.index = index;
+    this.enabled = false;
 
     this.acceleration = character.acceleration;
     this.maxSpeed = character.maxSpeed;
