@@ -3,11 +3,11 @@ import React from 'react';
 import { Button, Col, Glyphicon, Image, ProgressBar, Row } from 'react-bootstrap';
 
 import CHARACTERS from '../constants/characters.js';
-import gameState from '../etc/gameState.js';
 import playersFactory from '../factories/playersFactory.js';
 
 const PlayerSelect = React.createClass({
     propTypes: {
+        gameState: React.PropTypes.object.isRequired,
         playerIndex: React.PropTypes.number.isRequired
     },
 
@@ -19,10 +19,13 @@ const PlayerSelect = React.createClass({
 
     componentDidMount () {
         this.updatePlayerCharacter();
+
+        console.log(this.props.gameState.players[this.props.playerIndex]);
+        console.log(this.props.gameState.players);
     },
 
     updatePlayerCharacter () {
-        gameState.players[this.props.playerIndex] = playersFactory.create(this.props.playerIndex,
+        this.props.gameState.players[this.props.playerIndex] = playersFactory.create(this.props.playerIndex,
             new PIXI.Point(128, 128),
             this.state.selectedCharacter
         );
@@ -69,6 +72,21 @@ const PlayerSelect = React.createClass({
     },
 
     render () {
+        console.log(this.props.gameState.players[this.props.playerIndex]);
+        console.log(this.props.gameState.players);
+
+        if (!this.props.gameState.players[this.props.playerIndex]) {
+            return (
+                <Col xs={3}>
+                    <Row style={{height: '50%'}}>
+                        <Col xs={4} xsOffset={4}>
+                            <Image rounded src="./assets/xbox-buttons/a.png"/>
+                        </Col>
+                    </Row>
+                </Col>
+            );
+        }
+
         return (
             <Col xs={3}>
                 <Row>
@@ -79,7 +97,6 @@ const PlayerSelect = React.createClass({
                     </Col>
                     <Col xs={4}>
                         <Image rounded src={`./assets/characters/${this.state.selectedCharacter.asset}`}/>
-
                     </Col>
                     <Col xs={4}>
                         <Button bsStyle="primary" onClick={this.nextCharacter}>

@@ -7,6 +7,7 @@ import PlayersLobby from './playersLobby.jsx';
 import Scene from './scene.jsx';
 
 import eventsBinder from '../etc/eventsBinder.js';
+import gameState from '../etc/gameState.js';
 
 const ACTIVE_DISPLAY = {
     MENU: 0,
@@ -26,13 +27,12 @@ const Application = React.createClass({
                 sounds: 100
             },
             loadingProgress: 0,
-            loadingResource: '',
-            selectedCharacter: {}
+            loadingResource: ''
         };
     },
 
     componentDidMount () {
-        eventsBinder.bind();
+        eventsBinder.bind(gameState.keyboard, gameState.players);
 
         assetsLoader.load((loader, resource) => {
             this.setState({
@@ -49,8 +49,7 @@ const Application = React.createClass({
 
     startGame (character) {
         this.setState({
-            activeDisplay: ACTIVE_DISPLAY.GAME,
-            selectedCharacter: character
+            activeDisplay: ACTIVE_DISPLAY.GAME
         });
     },
 
@@ -80,7 +79,7 @@ const Application = React.createClass({
 
     renderActiveDisplay () {
         if (this.state.activeDisplay === ACTIVE_DISPLAY.GAME) {
-            return <Scene selectedCharacter={this.state.selectedCharacter}/>;
+            return <Scene gameState={gameState}/>;
         }
 
         if (this.state.activeDisplay === ACTIVE_DISPLAY.OPTIONS) {
@@ -88,7 +87,7 @@ const Application = React.createClass({
         }
 
         if (this.state.activeDisplay === ACTIVE_DISPLAY.LOBBY) {
-            return <PlayersLobby onCancel={this.displayMenu} onStart={this.startGame}/>;
+            return <PlayersLobby gameState={gameState} onCancel={this.displayMenu} onStart={this.startGame}/>;
         }
 
         return (

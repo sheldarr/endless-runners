@@ -5,6 +5,7 @@ import PlayerSelect from './PlayerSelect.jsx';
 
 const playersLobby = React.createClass({
     propTypes: {
+        gameState: React.PropTypes.object.isRequired,
         onCancel: React.PropTypes.func.isRequired,
         onStart: React.PropTypes.func.isRequired
     },
@@ -13,10 +14,10 @@ const playersLobby = React.createClass({
         return (
             <Grid>
                 <Row>
-                    <PlayerSelect playerIndex={0}/>
-                    <PlayerSelect playerIndex={1}/>
-                    <PlayerSelect playerIndex={2}/>
-                    <PlayerSelect playerIndex={3}/>
+                    <PlayerSelect gameState={this.props.gameState} playerIndex={0}/>
+                    <PlayerSelect gameState={this.props.gameState} playerIndex={1}/>
+                    <PlayerSelect gameState={this.props.gameState} playerIndex={2}/>
+                    <PlayerSelect gameState={this.props.gameState} playerIndex={3}/>
                 </Row>
                 <Row>
                     <Col style={{marginTop: 10}} xs={4} xsOffset={4}>
