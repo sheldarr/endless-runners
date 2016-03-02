@@ -1,31 +1,34 @@
 const playersControlsHandler = {
-    handle (pressedKeys, players) {
+    handle (keyboard, players) {
         players.forEach((player) => {
-            if (pressedKeys[player.controls.left]) {
+            let gamepads = navigator.getGamepads();
+            let controller = gamepads[player.index] ? gamepads[player.index] : keyboard;
+
+            if (controller.buttons[player.controls.left].pressed) {
                 if (player.velocity.x >= -player.maxSpeed) {
                     player.velocity.x -= player.acceleration;
                 }
             }
 
-            if (pressedKeys[player.controls.right]) {
+            if (controller.buttons[player.controls.right].pressed) {
                 if (player.velocity.x <= player.maxSpeed) {
                     player.velocity.x += player.acceleration;
                 }
             }
 
-            if (pressedKeys[player.controls.down]) {
+            if (controller.buttons[player.controls.down].pressed) {
                 if (player.velocity.y <= player.maxSpeed) {
                     player.velocity.y += player.acceleration;
                 }
             }
 
-            if (pressedKeys[player.controls.up]) {
+            if (controller.buttons[player.controls.up].pressed) {
                 if (player.velocity.y >= -player.maxSpeed) {
                     player.velocity.y -= player.acceleration;
                 }
             }
 
-            if (!pressedKeys[player.controls.left] && !pressedKeys[player.controls.right]) {
+            if (!controller.buttons[player.controls.left].pressed && !controller.buttons[player.controls.right].pressed) {
                 if (player.velocity.x > 0) {
                     if (player.velocity.x < player.acceleration) {
                         player.velocity.x = 0;
@@ -42,7 +45,7 @@ const playersControlsHandler = {
                 }
             }
 
-            if (!pressedKeys[player.controls.up] && !pressedKeys[player.controls.down]) {
+            if (!controller.buttons[player.controls.up].pressed && !controller.buttons[player.controls.down].pressed) {
                 if (player.velocity.y > 0) {
                     if (player.velocity.y < player.acceleration) {
                         player.velocity.y = 0;

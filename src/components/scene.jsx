@@ -50,7 +50,7 @@ const Scene = React.createClass({
     animate () {
         requestAnimationFrame(this.animate);
 
-        playersControlsHandler.handle(gameState.pressedKeys, gameState.players);
+        playersControlsHandler.handle(gameState.keyboard, gameState.players);
         collisionHandler.handle(gameState.players, this.state.background.children);
         coordinatesConverter.toScreen(gameState.players, this.state.background.children, this.state.camera);
         cameraHandler.handle(this.state.camera, gameState.players[0]);

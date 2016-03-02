@@ -4,11 +4,11 @@ import gameState from '../etc/gameState.js';
 const eventsBinder = {
     bind () {
         document.addEventListener('keydown', (event) => {
-            gameState.pressedKeys[event.keyCode] = true;
+            gameState.keyboard.buttons[event.keyCode].pressed = true;
         });
 
         document.addEventListener('keyup', (event) => {
-            gameState.pressedKeys[event.keyCode] = false;
+            gameState.keyboard.buttons[event.keyCode].pressed = false;
         });
 
         window.addEventListener('gamepadconnected', (event) => gamepadHandler.onConnect(event, gameState.players));
