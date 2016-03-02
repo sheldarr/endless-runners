@@ -6,6 +6,7 @@ import playersControlsHandler from '../handlers/playersControlsHandler.js';
 import collisionHandler from '../handlers/collisionHandler.js';
 import coordinatesConverter from '../handlers/coordinatesConverter.js';
 import cameraHandler from '../handlers/cameraHandler.js';
+import rendererHandler from '../handlers/rendererHandler.js';
 
 import gameState from '../etc/gameState.js';
 
@@ -32,7 +33,6 @@ const Scene = React.createClass({
         gameState.players.forEach((player) => {
             this.state.stage.addChild(player.sprite);
         });
-
         document.getElementById('scene').appendChild(this.state.renderer.view);
 
         this.setState({
@@ -43,8 +43,7 @@ const Scene = React.createClass({
         });
 
         window.addEventListener('resize', (event) => {
-            this.state.renderer.view.style.width = `${event.target.innerWidth}px`;
-            this.state.renderer.view.style.height = `${event.target.innerHeight}px`;
+            rendererHandler.adjustToWindow(this.state.renderer, this.state.stage);
         });
     },
 

@@ -2,6 +2,8 @@ import PIXI from 'pixi.js';
 
 const assetsLoader = {
     load (onProgress, onLoad) {
+        PIXI.SCALE_MODES.DEFAULT = PIXI.SCALE_MODES.NEAREST;
+
         PIXI.loader
             .add('./assets/tiles/grass.png')
             .add('./assets/tiles/dirt.png')
