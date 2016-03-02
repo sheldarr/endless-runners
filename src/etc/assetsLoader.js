@@ -5,8 +5,6 @@ const assetsLoader = {
         PIXI.SCALE_MODES.DEFAULT = PIXI.SCALE_MODES.NEAREST;
 
         PIXI.loader
-            .add('./assets/tiles/grass.png')
-            .add('./assets/tiles/dirt.png')
             .add('./assets/tiles/barrel.png')
             .add('./assets/tiles/floor_edge_bottom.png')
             .add('./assets/tiles/floor.png')

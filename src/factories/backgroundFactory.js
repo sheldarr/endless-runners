@@ -1,35 +1,6 @@
 import PIXI from 'pixi.js';
 
 const backgroundFactory = {
-    createDebugBackground () {
-        let background = new PIXI.Container();
-
-        for (let i = 0; i < 40; i++) {
-            for (let j = 0; j < 12; j++) {
-                let newTile;
-
-                let randomNumber = Math.random();
-                if (randomNumber <= 0.08) {
-                    newTile = new PIXI.Sprite(PIXI.utils.TextureCache['./assets/tiles/barrel.png']);
-                    newTile.isSolid = true;
-                } else if (randomNumber < 0.6) {
-                    newTile = new PIXI.Sprite(PIXI.utils.TextureCache['./assets/tiles/grass.png']);
-                    newTile.isSolid = false;
-                } else {
-                    newTile = new PIXI.Sprite(PIXI.utils.TextureCache['./assets/tiles/dirt.png']);
-                    newTile.isSolid = false;
-                }
-
-                newTile.worldPosition.x = i * 32;
-                newTile.worldPosition.y = j * 32;
-                newTile.scale.x = 1;
-                newTile.scale.y = 1;
-                background.addChild(newTile);
-            }
-        }
-        return background;
-    },
-
     createSewerBackground () {
         let background = new PIXI.Container();
 
