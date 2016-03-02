@@ -1,51 +1,61 @@
 const CHARACTERS = [{
     acceleration: 0.1,
     asset: 'blob.png',
-    maxSpeed: 4,
+    inersity: 0.5,
+    maxSpeed: 5,
     name: 'Blob'
 }, {
-    acceleration: 0.5,
+    acceleration: 0.8,
     asset: 'drake.png',
-    maxSpeed: 5,
+    inersity: 0.3,
+    maxSpeed: 8,
     name: 'Drake'
 }, {
-    acceleration: 0.2,
+    acceleration: 0.1,
     asset: 'ettercap.png',
+    inersity: 0.2,
     maxSpeed: 4,
     name: 'Ettercap'
 }, {
-    acceleration: 0.1,
+    acceleration: 0.2,
     asset: 'goblin.png',
-    maxSpeed: 2,
+    inersity: 0.1,
+    maxSpeed: 3,
     name: 'Goblin'
 }, {
-    acceleration: 0.2,
+    acceleration: 0.25,
     asset: 'mage.png',
+    inersity: 0.05,
     maxSpeed: 3,
     name: 'Mage'
 }, {
     acceleration: 0.2,
     asset: 'player.png',
-    maxSpeed: 2,
+    inersity: 0.1,
+    maxSpeed: 3,
     name: 'Player'
 }, {
-    acceleration: 0.1,
+    acceleration: 0.15,
     asset: 'skeleton.png',
+    inersity: 0.15,
     maxSpeed: 3,
     name: 'Skeleton'
 }, {
-    acceleration: 0.5,
+    acceleration: 0.3,
     asset: 'spider.png',
-    maxSpeed: 3,
+    inersity: 0.15,
+    maxSpeed: 5,
     name: 'Spider'
 }, {
     acceleration: 0.1,
     asset: 'tortoise.png',
-    maxSpeed: 8,
+    inersity: 0.4,
+    maxSpeed: 6,
     name: 'Tortoise'
 }, {
     acceleration: 1.0,
     asset: 'wasp.png',
+    inersity: 0.95,
     maxSpeed: 8,
     name: 'Wasp'
 }];

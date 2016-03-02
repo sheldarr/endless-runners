@@ -4,6 +4,7 @@ function Player (index, position, character, controls) {
     this.index = index;
 
     this.acceleration = character.acceleration;
+    this.inersity = character.inersity;
     this.maxSpeed = character.maxSpeed;
     this.velocity = {
         x: 0,

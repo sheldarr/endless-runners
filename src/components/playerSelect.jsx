@@ -106,13 +106,23 @@ const PlayerSelect = React.createClass({
                     </Col>
                 </Row>
                 <Row>
-                    <Col style={{marginTop: 15, textAlign: 'center'}}>
+                    <Col style={{textAlign: 'center'}}>
                         <span>{'Acceleration'}</span>
                     </Col>
                 </Row>
                 <Row>
                     <Col xs={10} xsOffset={1}>
-                        <ProgressBar bsStyle="success" now={this.state.selectedCharacter.acceleration / 1 * 100}/>
+                        <ProgressBar bsStyle="warning" now={this.state.selectedCharacter.acceleration / 1 * 100}/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col style={{textAlign: 'center'}}>
+                        <span>{'Inersity'}</span>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={10} xsOffset={1}>
+                        <ProgressBar bsStyle="danger" now={this.state.selectedCharacter.inersity / 1 * 100}/>
                     </Col>
                 </Row>
                 <Row>

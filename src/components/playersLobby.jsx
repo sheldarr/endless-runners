@@ -20,7 +20,7 @@ const playersLobby = React.createClass({
                     <PlayerSelect gameState={this.props.gameState} playerIndex={3}/>
                 </Row>
                 <Row>
-                    <Col style={{marginTop: 10}} xs={4} xsOffset={4}>
+                    <Col xs={4} xsOffset={4}>
                         <Button block bsStyle="success" onClick={this.props.onStart}>
                             <span><Glyphicon glyph="play"/> {'Start'}</span>
                         </Button>

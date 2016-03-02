@@ -33,14 +33,14 @@ const playersControlsHandler = {
                     if (player.velocity.x < player.acceleration) {
                         player.velocity.x = 0;
                     } else {
-                        player.velocity.x -= player.acceleration;
+                        player.velocity.x -= (player.acceleration - player.inersity * player.acceleration);
                     }
                 }
                 if (player.velocity.x < 0) {
                     if (player.velocity.x > -player.acceleration) {
                         player.velocity.x = 0;
                     } else {
-                        player.velocity.x += player.acceleration;
+                        player.velocity.x += (player.acceleration - player.inersity * player.acceleration);
                     }
                 }
             }
@@ -50,14 +50,14 @@ const playersControlsHandler = {
                     if (player.velocity.y < player.acceleration) {
                         player.velocity.y = 0;
                     } else {
-                        player.velocity.y -= player.acceleration;
+                        player.velocity.y -= (player.acceleration - player.inersity * player.acceleration);
                     }
                 }
                 if (player.velocity.y < 0) {
                     if (player.velocity.y > -player.acceleration) {
                         player.velocity.y = 0;
                     } else {
-                        player.velocity.y += player.acceleration;
+                        player.velocity.y += (player.acceleration - player.inersity * player.acceleration);
                     }
                 }
             }
