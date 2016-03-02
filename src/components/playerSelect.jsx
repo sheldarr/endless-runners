@@ -20,8 +20,7 @@ const PlayerSelect = React.createClass({
     componentDidMount () {
         this.updatePlayerCharacter();
 
-        console.log(this.props.gameState.players[this.props.playerIndex]);
-        console.log(this.props.gameState.players);
+        this.setState(this.state);
     },
 
     updatePlayerCharacter () {
@@ -72,9 +71,6 @@ const PlayerSelect = React.createClass({
     },
 
     render () {
-        console.log(this.props.gameState.players[this.props.playerIndex]);
-        console.log(this.props.gameState.players);
-
         if (!this.props.gameState.players[this.props.playerIndex]) {
             return (
                 <Col xs={3}>
