@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Simple 2D game",
   "author": "sheldarr",
+  "contributors": [{
+    "name": "BartoszBaczek",
+    "email": "bartosz.baczek@gmail.com"
+  }],
   "scripts": {
     "start": "nw .",
     "transpile": "webpack",
