@@ -47,7 +47,7 @@ const Application = React.createClass({
         });
     },
 
-    startGame (character) {
+    startGame () {
         this.setState({
             activeDisplay: ACTIVE_DISPLAY.GAME
         });
