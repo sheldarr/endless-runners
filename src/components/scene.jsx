@@ -22,6 +22,11 @@ const Scene = React.createClass({
         };
     },
 
+    componentWillMount () {
+        rendererHandler.adjustToWindow(window.innerWidth, window.innerHeight,
+            this.state.renderer, this.state.stage);
+    },
+
     componentDidMount () {
         var background = backgroundFactory.createSewerBackground();
         var camera = cameraFactory.create();
@@ -41,7 +46,8 @@ const Scene = React.createClass({
         });
 
         window.addEventListener('resize', (event) => {
-            rendererHandler.adjustToWindow(this.state.renderer, this.state.stage);
+            rendererHandler.adjustToWindow(event.target.innerWidth, event.target.innerHeight,
+                this.state.renderer, this.state.stage);
         });
     },
 
