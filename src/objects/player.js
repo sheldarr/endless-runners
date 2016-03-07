@@ -23,4 +23,16 @@ function Player (index, position, character, controls) {
     this.controls = controls;
 }
 
+Player.prototype.turnLeft = function () {
+    this.sprite.anchor.x = 0.5;
+    this.sprite.scale.x = -1;
+    this.sprite.anchor.x = 1;
+};
+
+Player.prototype.turnRight = function () {
+    this.sprite.anchor.x = 0.5;
+    this.sprite.scale.x = 1;
+    this.sprite.anchor.x = 0;
+}
+
 export default Player;

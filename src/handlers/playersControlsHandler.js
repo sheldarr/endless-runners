@@ -8,12 +8,14 @@ const playersControlsHandler = {
                 if (player.velocity.x >= -player.maxSpeed) {
                     player.velocity.x -= player.acceleration;
                 }
+                player.turnLeft();
             }
 
             if (controller.buttons[player.controls.right].pressed) {
                 if (player.velocity.x <= player.maxSpeed) {
                     player.velocity.x += player.acceleration;
                 }
+                player.turnRight();
             }
 
             if (controller.buttons[player.controls.down].pressed) {
