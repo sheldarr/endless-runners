@@ -1,11 +1,12 @@
+import PIXI from 'pixi.js';
+import React from 'react';
+
 import backgroundFactory from '../factories/backgroundFactory.js';
 import cameraFactory from '../factories/cameraFactory.js';
 import cameraHandler from '../handlers/cameraHandler.js';
 import collisionHandler from '../handlers/collisionHandler.js';
 import coordinatesConverter from '../handlers/coordinatesConverter.js';
 import playersControlsHandler from '../handlers/playersControlsHandler.js';
-import PIXI from 'pixi.js';
-import React from 'react';
 import rendererHandler from '../handlers/rendererHandler.js';
 
 const Scene = React.createClass({

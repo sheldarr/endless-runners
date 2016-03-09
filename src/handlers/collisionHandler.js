@@ -6,7 +6,7 @@ const collisionHandler = {
             (tile.worldPosition.y + 0.5 * tile.height < player.sprite.worldPosition.y + 0.5 * player.sprite.height &&
             tile.worldPosition.y + tile.height - player.sprite.worldPosition.y < player.sprite.worldPosition.x + player.sprite.width - tile.worldPosition.x &&
             tile.worldPosition.y + tile.height - player.sprite.worldPosition.y < tile.worldPosition.x + tile.width - player.sprite.worldPosition.x)) {
-            player.sprite.worldPosition.y = player.sprite.worldPosition.y - player.velocity.y;
+            player.sprite.worldPosition.y -= player.velocity.y;
             player.velocity.y = 0;
         }
     },
@@ -18,7 +18,7 @@ const collisionHandler = {
             (tile.worldPosition.x + 0.5 * tile.width < player.sprite.worldPosition.x + 0.5 * player.sprite.width &&
             tile.worldPosition.x + tile.width - player.sprite.worldPosition.x < player.sprite.worldPosition.y + player.sprite.height - tile.worldPosition.y &&
             tile.worldPosition.x + tile.width - player.sprite.worldPosition.x < tile.worldPosition.y + tile.height - player.sprite.worldPosition.y)) {
-            player.sprite.worldPosition.x = player.sprite.worldPosition.x - player.velocity.x;
+            player.sprite.worldPosition.x -= player.velocity.x;
             player.velocity.x = 0;
         }
     },

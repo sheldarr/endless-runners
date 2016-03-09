@@ -2,11 +2,11 @@ import PIXI from 'pixi.js';
 
 const backgroundFactory = {
     createSewerBackground () {
-        let background = new PIXI.Container();
+        const background = new PIXI.Container();
 
         for (let i = 0; i < 12; i++) {
             for (let j = 0; j < 40; j++) {
-                let floorTile = new PIXI.Sprite(PIXI.utils.TextureCache['./assets/tiles/floor.png']);
+                const floorTile = new PIXI.Sprite(PIXI.utils.TextureCache['./assets/tiles/floor.png']);
 
                 floorTile.worldPosition = new PIXI.Point();
 

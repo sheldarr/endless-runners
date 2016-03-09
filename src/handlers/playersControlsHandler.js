@@ -1,8 +1,8 @@
 const playersControlsHandler = {
     handle (keyboard, players) {
         players.forEach((player) => {
-            let gamepads = navigator.getGamepads();
-            let controller = gamepads[player.index] ? gamepads[player.index] : keyboard;
+            const gamepads = navigator.getGamepads();
+            const controller = gamepads[player.index] ? gamepads[player.index] : keyboard;
 
             if (controller.buttons[player.controls.left].pressed) {
                 if (player.velocity.x >= -player.maxSpeed) {

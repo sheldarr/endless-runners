@@ -11,8 +11,9 @@ function Player (index, position, character, controls) {
         y: 0
     };
 
-    let textureArray = [];
-    for (var i = 0; i < character.moveTextures.count; i++) {
+    const textureArray = [];
+
+    for (let i = 0; i < character.moveTextures.count; i++) {
         textureArray.push(PIXI.utils.TextureCache[`./assets/characters/${character.moveTextures.source[i]}`]);
     }
     this.sprite = new PIXI.extras.MovieClip(textureArray);
@@ -33,6 +34,6 @@ Player.prototype.turnRight = function () {
     this.sprite.anchor.x = 0.5;
     this.sprite.scale.x = 1;
     this.sprite.anchor.x = 0;
-}
+};
 
 export default Player;
