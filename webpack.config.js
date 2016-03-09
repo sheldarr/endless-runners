@@ -4,6 +4,7 @@ module.exports = {
         path: __dirname + '/bin',
         filename: 'bundle.js'
     },
+    target: 'node',
     module: {
         loaders: [
             {
@@ -24,6 +25,6 @@ module.exports = {
     },
     node: {
         console: true,
-        fs: 'empty'
+        __dirname: true
     }
 };
