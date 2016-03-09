@@ -1,13 +1,11 @@
-import React from 'react';
-
 import assetsLoader from '../etc/assetsLoader';
+import eventsBinder from '../etc/eventsBinder.js';
+import gameState from '../etc/gameState.js';
 import Menu from './menu.jsx';
 import Options from './options.jsx';
 import PlayersLobby from './playersLobby.jsx';
+import React from 'react';
 import Scene from './scene.jsx';
-
-import eventsBinder from '../etc/eventsBinder.js';
-import gameState from '../etc/gameState.js';
 
 const ACTIVE_DISPLAY = {
     MENU: 0,
@@ -61,7 +59,7 @@ const Application = React.createClass({
 
     updateOptions (gameOptions) {
         this.setState({
-            gameOptions: gameOptions
+            gameOptions
         });
     },
 

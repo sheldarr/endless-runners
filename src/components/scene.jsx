@@ -1,11 +1,11 @@
-import React from 'react';
-import PIXI from 'pixi.js';
 import backgroundFactory from '../factories/backgroundFactory.js';
 import cameraFactory from '../factories/cameraFactory.js';
-import playersControlsHandler from '../handlers/playersControlsHandler.js';
+import cameraHandler from '../handlers/cameraHandler.js';
 import collisionHandler from '../handlers/collisionHandler.js';
 import coordinatesConverter from '../handlers/coordinatesConverter.js';
-import cameraHandler from '../handlers/cameraHandler.js';
+import playersControlsHandler from '../handlers/playersControlsHandler.js';
+import PIXI from 'pixi.js';
+import React from 'react';
 import rendererHandler from '../handlers/rendererHandler.js';
 
 const Scene = React.createClass({
@@ -28,8 +28,8 @@ const Scene = React.createClass({
     },
 
     componentDidMount () {
-        var background = backgroundFactory.createSewerBackground();
-        var camera = cameraFactory.create();
+        const background = backgroundFactory.createSewerBackground();
+        const camera = cameraFactory.create();
 
         this.state.stage.addChild(background);
 
@@ -39,8 +39,8 @@ const Scene = React.createClass({
         document.getElementById('scene').appendChild(this.state.renderer.view);
 
         this.setState({
-            background: background,
-            camera: camera
+            background,
+            camera
         }, () => {
             this.animate();
         });

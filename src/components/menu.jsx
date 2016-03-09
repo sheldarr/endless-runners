@@ -1,5 +1,5 @@
+import {Button, Col, Glyphicon, Grid, ProgressBar, Row} from 'react-bootstrap';
 import React from 'react';
-import { Button, Col, Glyphicon, Grid, ProgressBar, Row } from 'react-bootstrap';
 
 const gui = global.window.nwDispatcher.requireNwGui();
 const window = gui.Window.get();

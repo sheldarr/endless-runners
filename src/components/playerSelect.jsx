@@ -1,9 +1,9 @@
+import {Button, Col, Glyphicon, Image, ProgressBar, Row} from 'react-bootstrap';
+import CHARACTERS from '../constants/characters.js';
 import PIXI from 'pixi.js';
 import React from 'react';
-import { Button, Col, Glyphicon, Image, ProgressBar, Row } from 'react-bootstrap';
-
-import CHARACTERS from '../constants/characters.js';
 import playersFactory from '../factories/playersFactory.js';
+
 
 const PlayerSelect = React.createClass({
     propTypes: {
@@ -31,7 +31,7 @@ const PlayerSelect = React.createClass({
     },
 
     previousCharacter () {
-        let selectedCharacterIndex = CHARACTERS.indexOf(this.state.selectedCharacter);
+        const selectedCharacterIndex = CHARACTERS.indexOf(this.state.selectedCharacter);
 
         if (selectedCharacterIndex === 0) {
             this.setState({
@@ -51,7 +51,7 @@ const PlayerSelect = React.createClass({
     },
 
     nextCharacter () {
-        let selectedCharacterIndex = CHARACTERS.indexOf(this.state.selectedCharacter);
+        const selectedCharacterIndex = CHARACTERS.indexOf(this.state.selectedCharacter);
 
         if (selectedCharacterIndex === CHARACTERS.length - 1) {
             this.setState({

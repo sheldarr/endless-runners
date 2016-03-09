@@ -1,7 +1,6 @@
-import React from 'react';
-import { Button, Col, Glyphicon, Grid, Row } from 'react-bootstrap';
-
+import {Button, Col, Glyphicon, Grid, Row} from 'react-bootstrap';
 import PlayerSelect from './PlayerSelect.jsx';
+import React from 'react';
 
 const playersLobby = React.createClass({
     propTypes: {
