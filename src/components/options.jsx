@@ -1,5 +1,5 @@
+import {Button, Col, Glyphicon, Grid, Input, Row} from 'react-bootstrap';
 import React from 'react';
-import { Button, Col, Glyphicon, Grid, Input, Row } from 'react-bootstrap';
 
 const Options = React.createClass({
     propTypes: {
