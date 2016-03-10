@@ -58,7 +58,7 @@ const Scene = React.createClass({
         playersControlsHandler.handle(this.props.gameState.keyboard, this.props.gameState.players);
         collisionHandler.handle(this.props.gameState.players, this.state.background.children);
         coordinatesConverter.toScreen(this.props.gameState.players, this.state.background.children, this.state.camera);
-        cameraHandler.handle(this.state.camera, this.props.gameState.players[0]);
+        cameraHandler.handle(this.state.camera);
 
         this.state.renderer.render(this.state.stage);
     },
