@@ -1,6 +1,6 @@
 const cameraHandler = {
     handle (camera) {
-            camera.rectangle.x += 1;
+        camera.position.x += 1;
     }
 };
 
