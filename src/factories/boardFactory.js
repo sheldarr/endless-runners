@@ -3,7 +3,7 @@ import PIXI from 'pixi.js';
 
 const boardFactory = {
     create () {
-        const container = new PIXI.Container();
+        const sewerTextures = new PIXI.Container();
 
         for (let i = 0; i < 12; i++) {
             for (let j = 0; j < 40; j++) {
@@ -17,7 +17,7 @@ const boardFactory = {
                 floorTile.scale.x = 1;
                 floorTile.scale.y = 1;
                 floorTile.position = new PIXI.Point(45, 54);
-                container.addChild(floorTile);
+                sewerTextures.addChild(floorTile);
             }
         }
 
@@ -35,7 +35,7 @@ const boardFactory = {
                         newTile.worldPosition.x = j * 32;
                         newTile.worldPosition.y = i * 32;
 
-                        container.addChild(newTile);
+                        sewerTextures.addChild(newTile);
                     }
 
                     continue;
@@ -62,11 +62,11 @@ const boardFactory = {
                 newTile.worldPosition.x = j * 32;
                 newTile.worldPosition.y = i * 32;
 
-                container.addChild(newTile);
+                sewerTextures.addChild(newTile);
             }
         }
 
-        return new Board(container);
+        return new Board(sewerTextures);
     }
 };
 
