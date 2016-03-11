@@ -5,7 +5,7 @@ function Camera (xPosition) {
     };
 }
 
-Camera.prototype.moveLeft = function (velocity) {
+Camera.prototype.moveRight = function (velocity) {
     this.position.x += velocity;
 };
 
