@@ -2,7 +2,6 @@ import PIXI from 'pixi.js';
 import React from 'react';
 
 import backgroundFactory from '../factories/backgroundFactory.js';
-import cameraFactory from '../factories/cameraFactory.js';
 import cameraHandler from '../handlers/cameraHandler.js';
 import collisionHandler from '../handlers/collisionHandler.js';
 import coordinatesConverter from '../handlers/coordinatesConverter.js';
@@ -17,7 +16,6 @@ const Scene = React.createClass({
     getInitialState () {
         return {
             background: undefined,
-            camera: undefined,
             renderer: new PIXI.WebGLRenderer(640, 320),
             stage: new PIXI.Container()
         };
@@ -30,7 +28,6 @@ const Scene = React.createClass({
 
     componentDidMount () {
         const background = backgroundFactory.createSewerBackground();
-        const camera = cameraFactory.create();
 
         this.state.stage.addChild(background);
 
@@ -40,8 +37,7 @@ const Scene = React.createClass({
         document.getElementById('scene').appendChild(this.state.renderer.view);
 
         this.setState({
-            background,
-            camera
+            background
         }, () => {
             this.animate();
         });
@@ -57,8 +53,8 @@ const Scene = React.createClass({
 
         playersControlsHandler.handle(this.props.gameState.keyboard, this.props.gameState.players);
         collisionHandler.handle(this.props.gameState.players, this.state.background.children);
-        coordinatesConverter.toScreen(this.props.gameState.players, this.state.background.children, this.state.camera);
-        cameraHandler.handle(this.state.camera);
+        coordinatesConverter.toScreen(this.props.gameState.players, this.state.background.children, this.props.gameState.camera);
+        cameraHandler.handle(this.props.gameState.camera);
 
         this.state.renderer.render(this.state.stage);
     },
