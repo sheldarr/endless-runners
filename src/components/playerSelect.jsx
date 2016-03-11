@@ -2,8 +2,8 @@ import {Button, Col, Glyphicon, Image, ProgressBar, Row} from 'react-bootstrap';
 import CHARACTERS from '../constants/characters.js';
 import PIXI from 'pixi.js';
 import React from 'react';
+import boardFactory from '../factories/boardFactory.js';
 import playersFactory from '../factories/playersFactory.js';
-
 
 const PlayerSelect = React.createClass({
     propTypes: {
@@ -28,6 +28,7 @@ const PlayerSelect = React.createClass({
             new PIXI.Point(128, 128),
             this.state.selectedCharacter
         );
+        this.props.gameState.board = boardFactory.create();
     },
 
     previousCharacter () {
