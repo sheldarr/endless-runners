@@ -1,8 +1,9 @@
+import Board from '../objects/board.js';
 import PIXI from 'pixi.js';
 
-const backgroundFactory = {
-    createSewerBackground () {
-        const background = new PIXI.Container();
+const boardFactory = {
+    create () {
+        const container = new PIXI.Container();
 
         for (let i = 0; i < 12; i++) {
             for (let j = 0; j < 40; j++) {
@@ -15,8 +16,8 @@ const backgroundFactory = {
                 floorTile.worldPosition.y = i * 32;
                 floorTile.scale.x = 1;
                 floorTile.scale.y = 1;
-
-                background.addChild(floorTile);
+                floorTile.position = new PIXI.Point(45, 54);
+                container.addChild(floorTile);
             }
         }
 
@@ -34,7 +35,7 @@ const backgroundFactory = {
                         newTile.worldPosition.x = j * 32;
                         newTile.worldPosition.y = i * 32;
 
-                        background.addChild(newTile);
+                        container.addChild(newTile);
                     }
 
                     continue;
@@ -61,11 +62,13 @@ const backgroundFactory = {
                 newTile.worldPosition.x = j * 32;
                 newTile.worldPosition.y = i * 32;
 
-                background.addChild(newTile);
+                container.addChild(newTile);
             }
         }
-        return background;
+
+        return new Board(container);
     }
 };
 
-export default backgroundFactory;
+
+export default boardFactory;
