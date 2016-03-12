@@ -4,7 +4,7 @@ import React from 'react';
 import cameraHandler from '../handlers/cameraHandler.js';
 import collisionHandler from '../handlers/collisionHandler.js';
 import coordinatesConverter from '../handlers/coordinatesConverter.js';
-import playersControlsHandler from '../handlers/playersControlsHandler.js';
+import playerMovementHandler from '../handlers/playerMovementHandler.js';
 import rendererHandler from '../handlers/rendererHandler.js';
 
 const Scene = React.createClass({
@@ -43,10 +43,10 @@ const Scene = React.createClass({
 
     animate () {
         requestAnimationFrame(this.animate);
-
-        playersControlsHandler.handle(this.props.gameState.keyboard, this.props.gameState.players);
-        collisionHandler.handle(this.props.gameState.players, this.props.gameState.board.sprites.children);
         coordinatesConverter.toScreen(this.props.gameState.players, this.props.gameState.board.sprites.children, this.props.gameState.camera);
+
+        playerMovementHandler.handle(this.props.gameState.keyboard, this.props.gameState.players);
+        collisionHandler.handle(this.props.gameState.players, this.props.gameState.board.sprites.children);
         cameraHandler.handle(this.props.gameState.camera);
 
         this.state.renderer.render(this.state.stage);
