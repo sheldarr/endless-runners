@@ -1,8 +1,8 @@
 const coordinatesConverter = {
     toScreen (players, tiles, camera) {
         players.forEach((player) => {
-            player.sprite.position.x = player.sprite.worldPosition.x - camera.position.x;
-            player.sprite.position.y = player.sprite.worldPosition.y - camera.position.y;
+            player.sprite.position.x = player.worldPosition.x - camera.position.x;
+            player.sprite.position.y = player.worldPosition.y - camera.position.y;
         });
 
         tiles.forEach((tile) => {
