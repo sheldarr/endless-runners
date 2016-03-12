@@ -7,6 +7,11 @@ const CHARACTERS = [{
         count: 12,
         animationSpeed: 0.2
     },
+    hitTextures: {
+        source: ['blob/blob_hit_0.png', 'blob/blob_hit_1.png'],
+        count: 2,
+        animationSpeed: 0.2
+    },
     inersity: 0.5,
     maxSpeed: 5,
     name: 'Blob'
@@ -17,6 +22,11 @@ const CHARACTERS = [{
         source: ['drake/drake_move_0.png', 'drake/drake_move_1.png', 'drake/drake_move_2.png', 'drake/drake_move_3.png'],
         count: 4,
         animationSpeed: 0.1
+    },
+    hitTextures: {
+        source: ['drake/drake_hit_0.png', 'drake/drake_hit_1.png'],
+        count: 2,
+        animationSpeed: 0.2
     },
     inersity: 0.3,
     maxSpeed: 8,
@@ -29,6 +39,11 @@ const CHARACTERS = [{
         count: 4,
         animationSpeed: 0.10
     },
+    hitTextures: {
+        source: ['ettercap/ettercap_hit_0.png', 'ettercap/ettercap_hit_1.png'],
+        count: 2,
+        animationSpeed: 0.2
+    },
     inersity: 0.2,
     maxSpeed: 4,
     name: 'Ettercap'
@@ -39,6 +54,11 @@ const CHARACTERS = [{
         source: ['goblin/goblin_move_0.png', 'goblin/goblin_move_1.png', 'goblin/goblin_move_2.png', 'goblin/goblin_move_3.png', 'goblin/goblin_move_4.png', 'goblin/goblin_move_5.png'],
         count: 6,
         animationSpeed: 0.07
+    },
+    hitTextures: {
+        source: ['goblin/goblin_hit_0.png', 'goblin/goblin_hit_1.png'],
+        count: 2,
+        animationSpeed: 0.2
     },
     inersity: 0.1,
     maxSpeed: 3,
@@ -51,6 +71,11 @@ const CHARACTERS = [{
         count: 7,
         animationSpeed: 0.12
     },
+    hitTextures: {
+        source: ['mage/mage_hit_0.png', 'mage/mage_hit_1.png'],
+        count: 2,
+        animationSpeed: 0.2
+    },
     inersity: 0.05,
     maxSpeed: 3,
     name: 'Mage'
@@ -61,6 +86,11 @@ const CHARACTERS = [{
         source: ['player/player_move_0.png', 'player/player_move_1.png', 'player/player_move_2.png', 'player/player_move_3.png'],
         count: 4,
         animationSpeed: 0.1
+    },
+    hitTextures: {
+        source: ['player/player_hit_0.png', 'player/player_hit_1.png'],
+        count: 2,
+        animationSpeed: 0.2
     },
     inersity: 0.1,
     maxSpeed: 3,
@@ -73,6 +103,11 @@ const CHARACTERS = [{
         count: 4,
         animationSpeed: 0.1
     },
+    hitTextures: {
+        source: ['skeleton/skeleton_hit_0.png', 'skeleton/skeleton_hit_1.png'],
+        count: 2,
+        animationSpeed: 0.2
+    },
     inersity: 0.15,
     maxSpeed: 3,
     name: 'Skeleton'
@@ -83,6 +118,11 @@ const CHARACTERS = [{
         source: ['spider/spider_move_0.png', 'spider/spider_move_1.png', 'spider/spider_move_2.png', 'spider/spider_move_3.png'],
         count: 4,
         animationSpeed: 0.1
+    },
+    hitTextures: {
+        source: ['spider/spider_hit_0.png', 'spider/spider_hit_1.png'],
+        count: 2,
+        animationSpeed: 0.2
     },
     inersity: 0.15,
     maxSpeed: 5,
@@ -95,6 +135,11 @@ const CHARACTERS = [{
         count: 4,
         animationSpeed: 0.1
     },
+    hitTextures: {
+        source: ['tortoise/tortoise_hit_0.png', 'tortoise/tortoise_hit_1.png'],
+        count: 2,
+        animationSpeed: 0.2
+    },
     inersity: 0.4,
     maxSpeed: 6,
     name: 'Tortoise'
@@ -105,6 +150,11 @@ const CHARACTERS = [{
         source: ['wasp/wasp_move_0.png', 'wasp/wasp_move_1.png', 'wasp/wasp_move_2.png', 'wasp/wasp_move_3.png'],
         count: 4,
         animationSpeed: 0.3
+    },
+    hitTextures: {
+        source: ['wasp/wasp_hit_0.png', 'wasp/wasp_hit_1.png'],
+        count: 2,
+        animationSpeed: 0.2
     },
     inersity: 0.95,
     maxSpeed: 8,
