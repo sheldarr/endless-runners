@@ -1,39 +1,48 @@
-import PIXI from 'pixi.js';
+import playerAnimationHandler from './../handlers/playerAnimationHandler.js';
+import playerSpriteFactory from './../factories/playerSpriteFactory.js';
 
 function Player (index, position, character, controls) {
     this.index = index;
+    this.character = character;
+
+    this.wasHit = false;
+    this.ignoreCollisions = false;
+
+    this.lives = 3;
+    this.worldPosition = position;
+    this.velocity = {x: 0, y: 0};
 
     this.acceleration = character.acceleration;
     this.inersity = character.inersity;
     this.maxSpeed = character.maxSpeed;
-    this.velocity = {
-        x: 0,
-        y: 0
-    };
 
-    const textureArray = [];
-
-    for (let i = 0; i < character.moveTextures.count; i++) {
-        textureArray.push(PIXI.utils.TextureCache[`./assets/characters/${character.moveTextures.source[i]}`]);
-    }
-    this.sprite = new PIXI.extras.MovieClip(textureArray);
-    this.sprite.animationSpeed = character.moveTextures.animationSpeed;
-    this.sprite.play();
-
-    this.sprite.worldPosition = position;
+    this.sprite = playerSpriteFactory.createDefaultTexture(this.character);
     this.controls = controls;
+
+    this.sprite.play();
 }
 
-Player.prototype.turnLeft = function () {
-    this.sprite.anchor.x = 0.5;
-    this.sprite.scale.x = -1;
-    this.sprite.anchor.x = 1;
+Player.prototype.tryToKill = function () {
+    if (!this.wasHit) {
+        if (this.lives > 0) {
+            this.lives--;
+        } else {
+            this.visible = false;
+        }
+    }
 };
 
-Player.prototype.turnRight = function () {
-    this.sprite.anchor.x = 0.5;
-    this.sprite.scale.x = 1;
-    this.sprite.anchor.x = 0;
+Player.prototype.onHitHappened = function () {
+    this.tryToKill();
+    this.wasHit = true;
+    this.ignoreCollisions = true;
+    playerAnimationHandler.setHitAnimation(this);
+};
+
+Player.prototype.onHitFinished = function () {
+    this.wasHit = false;
+    this.ignoreCollisions = false;
+    playerAnimationHandler.setMoveAnimation(this);
 };
 
 export default Player;
