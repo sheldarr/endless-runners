@@ -11,7 +11,6 @@ const collisionHandler = {
             if (!player.wasHit && player.sprite.position.x <= 0) {
                 player.onHitHappened();
             }
-            console.log('jeszcze zyc:   ' + player.lives);
         }
     },
 
