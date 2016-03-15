@@ -1,3 +1,4 @@
+import IHitable from './../handlers/IHitable.js';
 import playersControlsHandler from './playersControlsHandler.js';
 
 const playerMovementHandler = {

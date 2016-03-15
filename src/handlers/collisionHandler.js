@@ -1,3 +1,5 @@
+import IHitable from './../handlers/IHitable.js';
+
 const collisionHandler = {
     handle (players, tiles) {
         players.forEach((player) => {
