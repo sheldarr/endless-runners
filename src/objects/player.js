@@ -1,4 +1,3 @@
-import playerAnimationHandler from './../handlers/playerAnimationHandler.js';
 import playerSpriteFactory from './../factories/playerSpriteFactory.js';
 
 function Player (index, position, character, controls) {
@@ -28,24 +27,6 @@ Player.prototype.tryToKill = function () {
     } else {
         this.sprite.visible = false;
     }
-};
-
-Player.prototype.onHitHappened = function () {
-    this.tryToKill();
-    this.wasHit = true;
-    this.ignoreCollisions = true;
-    playerAnimationHandler.setHitAnimation(this);
-};
-
-Player.prototype.onHitLasts = function () {
-    this.velocity.x = 4;
-    this.worldPosition.x += this.velocity.x;
-};
-
-Player.prototype.onHitFinished = function () {
-    this.wasHit = false;
-    this.ignoreCollisions = false;
-    playerAnimationHandler.setMoveAnimation(this);
 };
 
 export default Player;
