@@ -23,12 +23,10 @@ function Player (index, position, character, controls) {
 }
 
 Player.prototype.tryToKill = function () {
-    if (!this.wasHit) {
-        if (this.lives > 0) {
-            this.lives--;
-        } else {
-            this.visible = false;
-        }
+    if (this.lives > 0) {
+        this.lives--;
+    } else {
+        this.sprite.visible = false;
     }
 };
 
