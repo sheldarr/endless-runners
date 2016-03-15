@@ -39,6 +39,11 @@ Player.prototype.onHitHappened = function () {
     playerAnimationHandler.setHitAnimation(this);
 };
 
+Player.prototype.onHitLasts = function () {
+    this.velocity.x = 4;
+    this.worldPosition.x += this.velocity.x;
+};
+
 Player.prototype.onHitFinished = function () {
     this.wasHit = false;
     this.ignoreCollisions = false;
