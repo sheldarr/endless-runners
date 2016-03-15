@@ -1,3 +1,4 @@
+import gameWorld from './../constants/gameWorld.js';
 import playerAnimationHandler from './playerAnimationHandler.js';
 
 const playersControlsHandler = {
@@ -73,8 +74,8 @@ const playersControlsHandler = {
             player.velocity.x = 0;
         }
 
-        if (player.worldPosition.x + player.sprite.width > 40 * 32) {
-            player.worldPosition.x = 40 * 32 - player.sprite.width;
+        if (player.worldPosition.x + player.sprite.width > gameWorld.mapWidthInPixels) {
+            player.worldPosition.x = gameWorld.mapWidthInPixels - player.sprite.width;
             player.velocity.x = 0;
         }
     }

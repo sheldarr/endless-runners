@@ -1,22 +1,22 @@
 import Board from '../objects/board.js';
 import PIXI from 'pixi.js';
+import gameWorld from './../constants/gameWorld';
 
 const boardFactory = {
     create () {
         const sewerTextures = new PIXI.Container();
 
-        for (let i = 0; i < 12; i++) {
-            for (let j = 0; j < 40; j++) {
+        for (let i = 0; i < gameWorld.mapHeightInTiles; i++) {
+            for (let j = 0; j < gameWorld.mapWidthInTiles; j++) {
                 const floorTile = new PIXI.Sprite(PIXI.utils.TextureCache['./assets/tiles/floor.png']);
 
                 floorTile.worldPosition = new PIXI.Point();
 
                 floorTile.isSolid = false;
-                floorTile.worldPosition.x = j * 32;
-                floorTile.worldPosition.y = i * 32;
+                floorTile.worldPosition.x = j * gameWorld.tileSizeInPixels;
+                floorTile.worldPosition.y = i * gameWorld.tileSizeInPixels;
                 floorTile.scale.x = 1;
                 floorTile.scale.y = 1;
-                floorTile.position = new PIXI.Point(45, 54);
                 sewerTextures.addChild(floorTile);
             }
         }
@@ -32,8 +32,8 @@ const boardFactory = {
 
                         newTile.worldPosition = new PIXI.Point();
 
-                        newTile.worldPosition.x = j * 32;
-                        newTile.worldPosition.y = i * 32;
+                        newTile.worldPosition.x = j * gameWorld.tileSizeInPixels;
+                        newTile.worldPosition.y = i * gameWorld.tileSizeInPixels;
 
                         sewerTextures.addChild(newTile);
                     }
@@ -59,8 +59,8 @@ const boardFactory = {
                     newTile.worldPosition = new PIXI.Point();
                 }
 
-                newTile.worldPosition.x = j * 32;
-                newTile.worldPosition.y = i * 32;
+                newTile.worldPosition.x = j * gameWorld.tileSizeInPixels;
+                newTile.worldPosition.y = i * gameWorld.tileSizeInPixels;
 
                 sewerTextures.addChild(newTile);
             }
