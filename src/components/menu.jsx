@@ -1,9 +1,6 @@
 import {Button, Col, Glyphicon, Grid, ProgressBar, Row} from 'react-bootstrap';
 import React from 'react';
 
-const gui = global.window.nwDispatcher.requireNwGui();
-const window = gui.Window.get();
-
 const Menu = React.createClass({
     propTypes: {
         gameLoaded: React.PropTypes.bool.isRequired,
@@ -14,7 +11,7 @@ const Menu = React.createClass({
     },
 
     close () {
-        window.close();
+        // window.close();
     },
 
     render () {

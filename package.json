@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "Simple 2D game",
   "author": "sheldarr",
-  "contributors": [{
-    "name": "BartoszBaczek",
-    "email": "bartosz.baczek@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "BartoszBaczek",
+      "email": "bartosz.baczek@gmail.com"
+    }
+  ],
   "scripts": {
     "start": "nw .",
     "transpile": "webpack",
@@ -34,7 +36,9 @@
     "max_height": 900,
     "position": "center"
   },
+  "chromium-args": "--enable-webgl --ignore-gpu-blacklist --disable-pinch",
   "dependencies": {
+    "nw": "^0.24.1",
     "pixi.js": "^3.0.9",
     "react": "^0.14.7",
     "react-bootstrap": "^0.28.3",
